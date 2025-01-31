@@ -1,0 +1,21 @@
+.nav-item {
+    display: flex;
+    flex-direction: column;
+    width: 10rem;
+    height: 7rem;
+    background-color: white;
+    border-radius: 1.5rem;
+    align-items: center;
+    padding: 0.5rem;
+
+}
+
+.nav-item > img {
+    /*width: 7.5rem;*/
+    height: 4.5rem;
+}
+
+.nav-item > span {
+    color: #2D4EB1;
+    font-size: 1.3rem;
+}

@@ -1,0 +1,11 @@
+.home-page {
+    background-image: url(../../assets/img/homebackground.png);
+    background-size: 100% 100%; /* Изображение будет масштабироваться, чтобы покрыть весь экран */
+    background-repeat: no-repeat; /* Изображение не будет повторяться */
+    background-attachment: fixed; /* Фон будет фиксированным при прокрутке страницы */
+    background-position: center; /* Изображение будет центрировано */
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    font-family: Arial, Helvetica, sans-serif;
+}

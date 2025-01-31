@@ -1,0 +1,25 @@
+.news-feed {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    height: auto;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.news-title {
+    color: #2D4EB1;
+    font-weight: 300;
+}
+
+.news-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    row-gap: 1rem;
+    column-gap: 3rem;
+    height: auto;
+    justify-content: center;
+    align-items: center;
+}

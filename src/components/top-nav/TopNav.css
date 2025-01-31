@@ -1,0 +1,7 @@
+.top-nav {
+    display: flex;
+    height: auto;
+    justify-content: center;
+    gap: 4rem;
+    margin-bottom: 1rem;
+}
