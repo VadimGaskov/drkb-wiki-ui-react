@@ -1,0 +1,22 @@
+.list-equipment{
+    padding: 10px;
+    border-radius: 10px;
+    margin-top: 10px;
+    background-color: #EBECEC;
+    min-width: 1000px;
+}
+.list-equipment > ul > li{
+    margin: 10px 0;
+    background-color: white;
+    border-radius: 5px;
+}
+
+.list-equipment > ul > li:hover{
+    background-color: #C5C6C6;
+}
+
+.list-equipment > ul > li > a{
+    font-size: 18px;
+    line-height: 30px;
+    height: 30px;
+}

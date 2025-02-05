@@ -1,0 +1,9 @@
+.equipments{
+    width: 60%;
+    margin-left: 10rem;
+}
+
+.equipments > h2{
+    color: #423185;
+}
+

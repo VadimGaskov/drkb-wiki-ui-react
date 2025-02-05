@@ -1,0 +1,31 @@
+.name-equipment-about{
+    margin-left: 20px;
+    text-decoration: none;
+}
+
+.document-icon {
+    width: 3rem;
+    height: 3rem;
+}
+
+li {
+    height: 4rem;
+}
+
+.element {
+    display: flex;
+    align-items: center;
+    margin: 0.8rem 0;
+    background-color: white;
+    border-radius: 5px;
+}
+
+.name-equipment-about :hover {
+    background-color: #C5C6C6;
+}
+
+.icon-wrapper {
+    margin-left: 0.5rem;
+    background-color: #2D4EB1;
+    border-radius: 0.2rem;
+}

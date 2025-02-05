@@ -1,0 +1,14 @@
+.navigation-for-equipments{
+    background-color: white;
+    height: 30px;
+    line-height: 30px;
+    border-radius: 10px;
+    min-width: 1000px;
+
+}
+.navigation-for-equipments > ul{
+    display: flex;
+}
+.navigation-for-equipments > ul > li > a{
+    color: black;
+}

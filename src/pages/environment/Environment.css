@@ -1,0 +1,26 @@
+.equipments{
+    width: 60%;
+    margin-left: 10rem;
+}
+
+.equipments > h2{
+    color: #423185;
+}
+
+.list-equipment-about{
+    padding: 0.6rem;
+    border-radius: 0.6rem;
+    margin-top: 1rem;
+    background-color: #EBECEC;
+    min-width: 1000px;
+}
+
+/*.list-equipment-about > ul > li > a{
+    font-size: 18px;
+    line-height: 60px;
+    height: 60px;
+}*/
+
+.name-equipment-about{
+    margin-left: 20px;
+}
