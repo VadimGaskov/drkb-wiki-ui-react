@@ -2,13 +2,15 @@ import "./ListEnvironment.css";
 import NameEquipment from "../../components/list-environment/name-equipment/NameEquipment";
 import {Link} from "react-router-dom";
 import {useEffect, useState} from "react";
+import {API_URLS} from "../../constants/ApiUrls";
+
 const ListEnvironment = () => {
     const [environments, setEnvironments] = useState([]);
 
     useEffect(() => {
         const fetchEquipments = async () => {
             try {
-                const response = await fetch("http://localhost:5065/api/environment-model/get-all");
+                const response = await fetch(`${API_URLS.ENVIRONMENT_MODEL}/get-all`);
                 if (!response.ok)
                     throw new Error('Ошибка при получении данных');
 
