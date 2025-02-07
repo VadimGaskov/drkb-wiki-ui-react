@@ -20,6 +20,7 @@ function App() {
                         <Route index path="documentation" element={<Documentation />}/>
                     </Route>
                 </Route>
+                {/*<Route path="*" element={} />*/}
             </Routes>
         </div>
       </BrowserRouter>
