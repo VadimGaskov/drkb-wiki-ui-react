@@ -7,5 +7,5 @@ export const API_URLS = {
     ENVIRONMENT_TYPE: "http://localhost:5065/api/environment-type",
     MANUFACTURER: "http://localhost:5065/api/specific-document",
 
-    AUTH: ""
+    AUTH: "http://localhost:5064/login"
 };
