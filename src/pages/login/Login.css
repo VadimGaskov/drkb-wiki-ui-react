@@ -1,0 +1,91 @@
+/* Общие настройки */
+.logo-container {
+    background-image: url(../../assets/img/layout/back.png);
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Стили для логотипа */
+.header-logo {
+    top: 1rem;
+    left: 1rem;
+    position: absolute;
+}
+
+.logo-image {
+    width: 10rem;
+    height: 10rem;
+}
+
+/* Блок входа */
+.auth-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+.auth-form-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: whitesmoke;
+    border-radius: 1.5rem;
+    padding: 2rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Добавляет тень для эффекта глубины */
+    width: 100%;
+    min-width: 30rem; /* Ограничивает максимальную ширину */
+}
+
+/* Стили для формы */
+#auth-form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem; /* Отступ между элементами формы */
+    width: 100%;
+}
+
+label {
+    font-weight: bold;
+}
+
+.auth-input {
+    padding: 0.75rem;
+    border: 1px solid #ccc;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    width: 100%;
+}
+
+/* Кнопка входа */
+.auth-submit-button {
+    padding: 0.75rem;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.auth-submit-button:hover {
+    background-color: #0056b3;
+}
+
+/* Адаптивность */
+@media (max-width: 600px) {
+    .auth-form-section {
+        padding: 1rem;
+    }
+
+    .auth-input,
+    .auth-submit-button {
+        max-width: 100%;
+    }
+}

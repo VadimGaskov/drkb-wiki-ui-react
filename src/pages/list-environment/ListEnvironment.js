@@ -3,26 +3,24 @@ import NameEquipment from "../../components/list-environment/name-equipment/Name
 import {Link} from "react-router-dom";
 import {useEffect, useState} from "react";
 import {API_URLS} from "../../constants/ApiUrls";
+import {getAllEnvironmentModels} from "../../services/drkb-wiki/EnvironmentModelService";
+import {getAllCommonDocument} from "../../services/drkb-wiki/CommonDocumentService";
 
 const ListEnvironment = () => {
     const [environments, setEnvironments] = useState([]);
 
     useEffect(() => {
-        const fetchEquipments = async () => {
+        const fetchEnvironmentModels = async () => {
             try {
-                const response = await fetch(`${API_URLS.ENVIRONMENT_MODEL}/get-all`);
-                if (!response.ok)
-                    throw new Error('Ошибка при получении данных');
-
-                const data = await response.json();
+                const data = await getAllEnvironmentModels();
                 setEnvironments(data);
-            }
-            catch (error){
-                console.error(error)
+            } catch (error) {
+                console.error(error);
             }
         }
 
-        fetchEquipments();
+        fetchEnvironmentModels();
+
     }, []);
 
     return(

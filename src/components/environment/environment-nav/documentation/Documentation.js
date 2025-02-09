@@ -4,29 +4,23 @@ import "./Documentation.css";
 import {useParams} from "react-router-dom";
 import {useEffect, useState} from "react";
 import {API_URLS} from "../../../../constants/ApiUrls";
+import {getAllByEnvironmentModel} from "../../../../services/drkb-wiki/CommonDocumentService";
 
 const Documentation = () => {
     const { id } = useParams();
     const [documents, setDocuments] = useState([]);
     useEffect(() => {
-        const fetchDocuments = async () => {
+        const fetchDocumentsByEnvironmentModel = async () => {
             try {
-                const url = new URL(`${API_URLS.COMMON_DOCUMENT}/get-all-by-environment-model`);
-                url.searchParams.append("environmentModelId", id);
-                const response =
-                    await fetch(url.toString());
-                if (!response.ok)
-                    console.error("ОШИБКА");
-
-                const data = await response.json();
-
+                const data = await getAllByEnvironmentModel(id);
                 setDocuments(data);
             }
             catch (error) {
                 console.error(error)
             }
         }
-        fetchDocuments();
+
+        fetchDocumentsByEnvironmentModel();
     }, [id]); // добавил зависимость от id для корректной работы при смене параметра
 
     return(
