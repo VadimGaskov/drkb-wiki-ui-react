@@ -1,8 +1,8 @@
-import Header from "../../components/header/Header";
-import TopNav from "../../components/top-nav/TopNav";
+import Header from "../../components/main-page/header/Header";
+import TopNav from "../../components/main-page/top-nav/TopNav";
 import "./Home.css";
-import NewsFeed from "../../components/news-feed/NewsFeed";
-import BottomNav from "../../components/bottom-nav/BottomNav";
+import NewsFeed from "../../components/main-page/news-feed/NewsFeed";
+import BottomNav from "../../components/main-page/bottom-nav/BottomNav";
 const Home = () => {
 return (
     <div className="home-page">
@@ -11,7 +11,7 @@ return (
         <NewsFeed />
         <BottomNav />
     </div>
-);
+    );
 }
 
 export default Home;

@@ -8,32 +8,35 @@ import SearchPeople from "../../src/assets/icons/layout/searchpeople.svg";
 import Pc from "../../src/assets/icons/layout/pc.svg";
 import Med from "../../src/assets/icons/layout/med.svg";
 import {Link, Outlet} from "react-router-dom";
+import SidebarElement from "../components/layout/sidebar/sidebar-element/SidebarElement";
+import Breadcrumbs from "../components/Breadcrumbs/Breadcrumbs";
 const Layout = () => {
     return(
         <>
             <header>
                 <div className="sidebar-nav">
                     <ul>
-                        <li><Link to="/"><img className="img-nav" src={DrkbLogo} alt="" /></Link></li>
-                        <li><a href="#"><img className="img-nav" src={HomeLogo} alt="" /></a></li>
-                        <li><a href="#"><img className="img-nav" src={Second} alt="" /></a></li>
-                        <li><a href="#"><img className="img-nav" src={Book} alt="" /></a></li>
-                        <li><a href="#"><img className="img-nav" src={Hz} alt="" /></a></li>
-                        <li><a href="#"><img className="img-nav" src={SearchPeople} alt="" /></a></li>
-                        <li><a href="#"><img className="img-nav" src={Pc} alt="" /></a></li>
-                        <li><a href="#"><img className="img-nav" src={Med} alt="" /></a></li>
+                        <SidebarElement img={DrkbLogo} path={"/"}/>
+                        <SidebarElement img={HomeLogo} path={"/"}/>
+                        <SidebarElement img={Second} path={"/"}/>
+                        <SidebarElement img={Book} path={"/"}/>
+                        <SidebarElement img={Hz} path={"/"}/>
+                        <SidebarElement img={SearchPeople} path={"/"}/>
+                        <SidebarElement img={Pc} path={"/"}/>
+                        <SidebarElement img={Med} path={"/"}/>
                     </ul>
                 </div>
 
                 <div className="wrapper-name-section">
-                    <div className="crumbs">
-                        {/*TODO Сделать программно навигацию*/}
+                    {/*<div className="crumbs">
+                        TODO Сделать программно навигацию
                         <a href="#">Главная - </a>
                         <a href="#"> Медицинское оборудование - </a>
                         <a href="#"> Список оборудование - </a>
                         <a href="#"> Дефибриллятор -  </a>
                         <a href="#"> Документация </a>
-                    </div>
+                    </div>*/}
+                    <Breadcrumbs />
                     <div className="name-page">
                         <h1>Раздел 7.</h1>
                         <h1>Медицинское оборудование.</h1>
@@ -44,7 +47,6 @@ const Layout = () => {
                 <div className="equipments">
                     <Outlet />
                 </div>
-
             </main>
         </>
     );

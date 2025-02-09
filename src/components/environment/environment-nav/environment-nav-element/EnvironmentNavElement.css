@@ -1,13 +1,17 @@
+.environment-nav-element {
+    list-style-type: none;
+}
+
 .list-nav-for-equipments{
     padding: 0 10px;
 }
 
 .list-nav-for-equipments:hover{
     background-color: #C5C6C6;
-    border-radius: 10px;
+    border-radius: 0.8rem;
 }
 
 .selected{
     background-color: #C5C6C6;
-    border-radius: 10px;
+    border-radius: 0.8rem;
 }

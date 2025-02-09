@@ -1,7 +1,7 @@
-import Navbar from "../navbar/Navbar";
+import Navbar from "../../navbar/Navbar";
 import './Header.css';
-import MainLogo from "../../assets/img/header/drkb-logo.png";
-import FoxLogo from "../../assets/img/header/foxlogo.svg";
+import MainLogo from "../../../assets/img/header/drkb-logo.png";
+import FoxLogo from "../../../assets/img/header/foxlogo.svg";
 
 const Header = () => {
     return(

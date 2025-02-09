@@ -9,6 +9,3 @@
 .navigation-for-equipments > ul{
     display: flex;
 }
-.navigation-for-equipments > ul > li > a{
-    color: black;
-}
