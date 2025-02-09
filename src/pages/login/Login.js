@@ -2,10 +2,12 @@ import "./Login.css";
 import DrkbLogo from "../../assets/img/header/drkb-logo.png";
 import React, {useContext, useState} from "react";
 import {AuthContext} from "../../context/AuthContext";
+import {jwtDecode} from "jwt-decode";
 const Login = () => {
     const [login, setLogin] = useState("");
     const [password, setPassword] = useState("");
     const { signIn } = useContext(AuthContext);
+    const { user } = useContext(AuthContext);
     const handleLogin = async (e) => {
         e.preventDefault();
         try {
@@ -15,8 +17,12 @@ const Login = () => {
         }
     }
 
+    if (user !== null)
+        console.log(jwtDecode(user.token));
+
+
     return(
-        <>
+        <div className="logo-container">
             <header className="header-logo">
                 <img src={DrkbLogo} alt="Логотип" className="logo-image" />
             </header>
@@ -48,7 +54,7 @@ const Login = () => {
                     </form>
                 </section>
             </main>
-        </>
+        </div>
     );
 }
 

@@ -9,6 +9,7 @@ import Environment from "./pages/environment/Environment";
 import Documentation from "./components/environment/environment-nav/documentation/Documentation";
 import Login from "./pages/login/Login";
 import {AuthContext, AuthProvider} from "./context/AuthContext";
+import PrivateRoute from "./components/private-route/PrivateRoute";
 
 function App() {
   return (
@@ -17,14 +18,18 @@ function App() {
               <div className="App">
                   <Routes>
                       <Route path="/login" element={<Login />}/>
-                      <Route path="/" element={<Home/>}/>
-                      <Route path="/home" element={<Layout />}>
+                      <Route path="/" element={
+                          <PrivateRoute>
+                            <Home/>
+                          </PrivateRoute>}
+                      />
+                      <Route path="/home" element={<PrivateRoute><Layout /></PrivateRoute>}>
                           <Route index element={<ListEnvironment/>}></Route>
+                          {/*Вынести нужный маршрут за пределы PrivateRoute*/}
                           <Route path="equipment/:id" element={<Environment />} >
                               <Route index path="documentation" element={<Documentation />}/>
                           </Route>
                       </Route>
-                      {/*<Route path="*" element={} />*/}
                   </Routes>
               </div>
           </BrowserRouter>

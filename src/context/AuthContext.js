@@ -7,7 +7,6 @@ export const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(getCurrentUser())
 
     const signIn = async (userLogin, password) => {
-        console.log("123123123123")
         const userData = await login(userLogin, password);
         setUser(userData);
     }
