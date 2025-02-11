@@ -5,6 +5,7 @@ import {useEffect, useState} from "react";
 import {API_URLS} from "../../constants/ApiUrls";
 import {getAllEnvironmentModels} from "../../services/drkb-wiki/EnvironmentModelService";
 import {getAllCommonDocument} from "../../services/drkb-wiki/CommonDocumentService";
+import Fox from "../../assets/img/foxes/list-environment-fox-min.svg";
 
 const ListEnvironment = () => {
     const [environments, setEnvironments] = useState([]);
@@ -25,6 +26,7 @@ const ListEnvironment = () => {
 
     return(
         <>
+            <img src={Fox} alt="" className="list-environment-fox"/>
             <h2>Список оборудования</h2>
             <div className="list-equipment">
                 <ul>

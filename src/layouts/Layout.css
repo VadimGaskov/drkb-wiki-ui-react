@@ -52,3 +52,13 @@ header {
 .name-page > h1{
     margin-right: 15px;
 }
+
+.equipments{
+    width: 80%;
+    max-width: 60%;
+    margin-left: 10rem;
+}
+
+.equipments > h2{
+    color: #423185;
+}

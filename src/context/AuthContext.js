@@ -9,6 +9,10 @@ export const AuthProvider = ({ children }) => {
     const signIn = async (userLogin, password) => {
         const userData = await login(userLogin, password);
         setUser(userData);
+        if (userData)
+            return userData;
+        else
+            return null;
     }
 
     const signOut = () => {

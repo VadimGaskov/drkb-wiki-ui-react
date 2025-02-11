@@ -1,14 +1,20 @@
 .environment-nav-element {
+    display: flex;
+    align-items: center;
     list-style-type: none;
+    height: 3rem;
 }
 
 .list-nav-for-equipments{
-    padding: 0 10px;
+    font-size: 1.1rem;
+    padding: 0 0.7rem;
+    color: #2D4EB1;
+    text-decoration: none;
 }
 
-.list-nav-for-equipments:hover{
+.environment-nav-element:hover{
     background-color: #C5C6C6;
-    border-radius: 0.8rem;
+    border-radius: 0.5rem;
 }
 
 .selected{
