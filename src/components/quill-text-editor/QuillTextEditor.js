@@ -4,11 +4,12 @@ import "quill/dist/quill.snow.css"; // Импорт стилей Quill
 import "./QuillTextEditor.css";
 import {API_URLS} from "../../constants/ApiUrls";
 import {SaveShortInstruction} from "../../services/drkb-wiki/EnvironmentModelService";
+import {useParams} from "react-router-dom";
 
 const QuillTextEditor = () => {
     const editorRef = useRef(null);
     const [value, setValue] = useState("");
-
+    const {id} = useParams();
     useEffect(() => {
         if (editorRef.current) {
             const quill = new Quill(editorRef.current, {
@@ -87,6 +88,8 @@ const QuillTextEditor = () => {
                     dangerouslySetInnerHTML={{ __html: value }}
                 />*/}
                 <button type="button" onClick={sendContentOnServer}>Отправить</button>
+                {/*<video src={"http://localhost:5065/video/какое-то-название-на-русском.mp4"} controls width="600"></video>*/}
+                <p1>{id}</p1>
             </div>
         </div>
     );

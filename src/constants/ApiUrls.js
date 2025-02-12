@@ -6,6 +6,6 @@ export const API_URLS = {
     ENVIRONMENT_MODEL: "http://localhost:5065/api/environment-model",
     ENVIRONMENT_TYPE: "http://localhost:5065/api/environment-type",
     MANUFACTURER: "http://localhost:5065/api/specific-document",
-
+    VIDEO: "http://localhost:5065/api/video",
     AUTH: "http://localhost:5064/login"
 };

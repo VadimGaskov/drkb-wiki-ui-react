@@ -1,4 +1,4 @@
-import video from "../../assets/video/1.mp4";
+
 import QuillTextEditor from "../../components/quill-text-editor/QuillTextEditor";
 const ShortInstruction = () => {
     return(
