@@ -3,15 +3,19 @@ import DrkbLogo from "../../assets/img/header/drkb-logo.png";
 import React, {useContext, useState} from "react";
 import {AuthContext} from "../../context/AuthContext";
 import {jwtDecode} from "jwt-decode";
+import {useNavigate} from "react-router-dom";
 const Login = () => {
     const [login, setLogin] = useState("");
     const [password, setPassword] = useState("");
     const { signIn } = useContext(AuthContext);
     const { user } = useContext(AuthContext);
+    const navigate = useNavigate();
     const handleLogin = async (e) => {
         e.preventDefault();
         try {
-            await signIn(login, password);
+            const result = await signIn(login, password);
+            if (result)
+                navigate("/")
         } catch (error) {
             alert('Ошибка авторизации!');
         }

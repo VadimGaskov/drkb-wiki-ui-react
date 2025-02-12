@@ -1,18 +1,10 @@
-.equipments{
-    width: 60%;
-    margin-left: 10rem;
-}
-
-.equipments > h2{
-    color: #423185;
-}
 
 .list-equipment-about{
     padding: 0.6rem;
     border-radius: 0.6rem;
     margin-top: 1rem;
     background-color: #EBECEC;
-    min-width: 1000px;
+    min-width: 80%;
 }
 
 /*.list-equipment-about > ul > li > a{

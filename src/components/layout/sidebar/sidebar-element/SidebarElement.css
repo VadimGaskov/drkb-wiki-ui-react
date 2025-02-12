@@ -1,0 +1,21 @@
+.sidebar-element {
+    border-bottom: 2px solid #423185;
+    height: 4.5rem;
+}
+
+.sidebar-img-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+.sidebar-element:hover {
+    transition: 0.3s;
+    background-color: #87A4E2;
+}
+
+.img-nav {
+    width: 4rem;
+    height: 4rem;
+}

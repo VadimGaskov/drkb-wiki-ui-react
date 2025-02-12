@@ -1,14 +1,12 @@
 .navigation-for-equipments{
     background-color: white;
-    height: 30px;
-    line-height: 30px;
+    height: 3rem;
     border-radius: 10px;
-    min-width: 1000px;
-
-}
-.navigation-for-equipments > ul{
+    min-width: 80%;
     display: flex;
+    align-items: center;
 }
-.navigation-for-equipments > ul > li > a{
-    color: black;
+
+.navigation-for-equipments-list {
+    display: flex;
 }

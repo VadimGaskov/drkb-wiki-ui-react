@@ -1,10 +1,10 @@
 import "./BottomNav.css";
 import BottomNavElement from "./BottomNavElement/BottomNavElement";
 
-import ProfileIcon from "../../assets/icons/profile.svg";
-import TestsIcon from "../../assets/icons/tests.svg";
-import DocumentsIcon from "../../assets/icons/documents.svg";
-import JournalsIcon from "../../assets/icons/journals.svg";
+import ProfileIcon from "../../../assets/icons/profile.svg";
+import TestsIcon from "../../../assets/icons/tests.svg";
+import DocumentsIcon from "../../../assets/icons/documents.svg";
+import JournalsIcon from "../../../assets/icons/journals.svg";
 const BottomNav = () => {
     return(
         <div className="bottom-nav">

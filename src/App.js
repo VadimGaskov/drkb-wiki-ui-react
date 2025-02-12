@@ -10,6 +10,8 @@ import Documentation from "./components/environment/environment-nav/documentatio
 import Login from "./pages/login/Login";
 import {AuthContext, AuthProvider} from "./context/AuthContext";
 import PrivateRoute from "./components/private-route/PrivateRoute";
+import ShortInstruction from "./pages/short-instruction/ShortInstruction";
+import Journal from "./pages/Journal/Journal";
 
 function App() {
   return (
@@ -28,6 +30,8 @@ function App() {
                           {/*Вынести нужный маршрут за пределы PrivateRoute*/}
                           <Route path="equipment/:id" element={<Environment />} >
                               <Route index path="documentation" element={<Documentation />}/>
+                              <Route path="journal" element={<Journal/>} />
+                              <Route path="short-instruction" element={<ShortInstruction />}/>
                           </Route>
                       </Route>
                   </Routes>
