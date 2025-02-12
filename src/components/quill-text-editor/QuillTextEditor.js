@@ -3,7 +3,7 @@ import Quill from "quill";
 import "quill/dist/quill.snow.css"; // Импорт стилей Quill
 import "./QuillTextEditor.css";
 import {API_URLS} from "../../constants/ApiUrls";
-import {SaveShortInstruction} from "../../services/drkb-wiki/EnvironmentModelService";
+import {getEnvironmentModelById, SaveShortInstruction} from "../../services/drkb-wiki/EnvironmentModelService";
 import {useParams} from "react-router-dom";
 
 
@@ -85,6 +85,14 @@ const QuillTextEditor = () => {
             quill.on("text-change", () => {
                 setValue(quill.root.innerHTML);
             });
+
+            const getCurrentShortInstruction = async (id) => {
+                const response = await getEnvironmentModelById(id);
+                setValue(response.shortInstruction);
+                quill.root.innerHTML = response.shortInstruction;
+            }
+
+            getCurrentShortInstruction(id);
         }
     }, []);
 
@@ -99,22 +107,23 @@ const QuillTextEditor = () => {
 
     return (
         <div className="editor-container">
-            <h2 className="editor-title">Редактор текста</h2>
+            <h2 className="editor-title">Редактировать инструкцию</h2>
             <div ref={editorRef} className="quill-editor" />
-
             {/* Предпросмотр */}
             <div className="preview-box">
-                {/*<h3 className="preview-title">Предпросмотр:</h3>
-                <div
-                    className="preview-content"
-                    dangerouslySetInnerHTML={{ __html: value }}
-                />*/}
                 <button type="button" onClick={sendContentOnServer}>Отправить</button>
                 {/*<video src={"http://localhost:5065/video/какое-то-название-на-русском.mp4"} controls width="600"></video>*/}
-                <p1>{id}</p1>
+                {/*<p1>{id}</p1>*/}
             </div>
         </div>
     );
 };
 
 export default QuillTextEditor;
+
+
+{/*<h3 className="preview-title">Предпросмотр:</h3>
+                <div
+                    className="preview-content"
+                    dangerouslySetInnerHTML={{ __html: value }}
+                />*/}
