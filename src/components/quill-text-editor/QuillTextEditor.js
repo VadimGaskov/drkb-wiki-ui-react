@@ -6,6 +6,9 @@ import {API_URLS} from "../../constants/ApiUrls";
 import {SaveShortInstruction} from "../../services/drkb-wiki/EnvironmentModelService";
 import {useParams} from "react-router-dom";
 
+
+///TODO Добавить удаление видео из сервера при отмене изменений.
+///Добавить препросмотр видео в редакторе.
 const QuillTextEditor = () => {
     const editorRef = useRef(null);
     const [value, setValue] = useState("");
