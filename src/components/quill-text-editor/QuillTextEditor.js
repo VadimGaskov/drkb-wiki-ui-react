@@ -39,16 +39,35 @@ const QuillTextEditor = () => {
                 fileInput.setAttribute("accept", "video/*");
                 fileInput.click();
 
-                fileInput.onchange = () => {
+                fileInput.onchange = async () => {
                     const file = fileInput.files[0];
-                    if (file) {
-                        const reader = new FileReader();
-                        reader.onload = (e) => {
-                            const videoUrl = e.target.result;
-                            const range = quill.getSelection(true);
-                            quill.insertEmbed(range.index, "video", videoUrl);
-                        };
-                        reader.readAsDataURL(file); // Преобразование в base64
+                    const environmentModelId = id; // ID из URL-параметра
+
+                    if (file && environmentModelId) {
+                        const formData = new FormData();
+                        formData.append("file", file); // Важно: имя должно совпадать с параметром контроллера
+                        formData.append("createVideoDto.environmentModelId", environmentModelId);
+                        // Указываем имя как "createVideoDto.environmentModelId" для корректной сериализации
+
+                        try {
+                            const response = await fetch(`${API_URLS.VIDEO}/save-video`, {
+                                method: "POST",
+                                body: formData,
+                            });
+
+                            if (response.ok) {
+                                const data = await response.json();
+                                const videoUrl = `${data.url}`;
+                                const range = quill.getSelection(true);
+                                quill.insertEmbed(range.index, "video", videoUrl);
+                            } else {
+                                alert("Ошибка загрузки видео");
+                            }
+                        } catch (error) {
+                            console.error("Ошибка при загрузке видео:", error);
+                        }
+                    } else {
+                        alert("Не выбран файл или отсутствует ID модели.");
                     }
                 };
             };

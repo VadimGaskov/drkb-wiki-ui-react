@@ -30,8 +30,8 @@ function App() {
                           {/*Вынести нужный маршрут за пределы PrivateRoute*/}
                           <Route path="equipment/:id" element={<Environment />} >
                               <Route index path="documentation" element={<Documentation />}/>
-                              <Route path="jounral" element={<Journal/>} />
-                              <Route index path="short-instruction" element={<ShortInstruction />}/>
+                              <Route path="journal" element={<Journal/>} />
+                              <Route path="short-instruction" element={<ShortInstruction />}/>
                           </Route>
                       </Route>
                   </Routes>
