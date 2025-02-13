@@ -111,6 +111,11 @@ const QuillTextEditor = () => {
             <div ref={editorRef} className="quill-editor" />
             {/* Предпросмотр */}
             <div className="preview-box">
+                <h3 className="preview-title">Предпросмотр:</h3>
+                <div
+                    className="preview-content"
+                    dangerouslySetInnerHTML={{ __html: value }}
+                />
                 <button type="button" onClick={sendContentOnServer}>Отправить</button>
                 {/*<video src={"http://localhost:5065/video/какое-то-название-на-русском.mp4"} controls width="600"></video>*/}
                 {/*<p1>{id}</p1>*/}
@@ -122,8 +127,3 @@ const QuillTextEditor = () => {
 export default QuillTextEditor;
 
 
-{/*<h3 className="preview-title">Предпросмотр:</h3>
-                <div
-                    className="preview-content"
-                    dangerouslySetInnerHTML={{ __html: value }}
-                />*/}

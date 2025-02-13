@@ -5,6 +5,7 @@
     margin-top: 1rem;
     background-color: #EBECEC;
     min-width: 80%;
+    overflow-y: auto;
 }
 
 /*.list-equipment-about > ul > li > a{
