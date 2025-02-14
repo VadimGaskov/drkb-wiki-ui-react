@@ -6,7 +6,7 @@ const NameEquipment = ({id,title}) => {
             <div className="symbol-plus">
                 +
             </div>
-            <Link to={`equipment/${id}/documentation`} className="name-equipment">{title}</Link>
+            <Link to={`equipment/${id}`} className="name-equipment">{title}</Link>
         </li>
     );
 }

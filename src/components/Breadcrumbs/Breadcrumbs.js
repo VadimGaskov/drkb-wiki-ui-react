@@ -1,40 +1,57 @@
 import { Link, useLocation, useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
+import {API_URLS} from "../../constants/ApiUrls";
+import {getEnvironmentModelById} from "../../services/drkb-wiki/EnvironmentModelService";
+
 const Breadcrumbs = () => {
     const location = useLocation();
-    const params = useParams();
-    const [breadcrumbs, setBreadcrumbs] = useState([]);
+    const pathnames = location.pathname.split('/').filter(x => x);
+    const params = useParams(); // Получаем параметры из URL
+    const [equipmentName, setEquipmentName] = useState(null); // Состояние для названия оборудования
+
+    const nameMap = {
+        'home': 'Главная',
+        'equipment': 'Медицинское оборудование',
+        'documentation': 'Документация',
+        'short-instruction' : "Краткая инструкция"
+    };
+
+    // Функция для получения названия оборудования по ID
+    const fetchEquipmentName = async (id) => {
+        try {
+            const response = await getEnvironmentModelById(id);
+            setEquipmentName(response.name || `Оборудование ${id}`); // Установка названия
+        } catch (error) {
+            console.error('Error fetching equipment name:', error);
+            setEquipmentName(`Оборудование ${id}`); // Если ошибка, используем заглушку
+        }
+    };
 
     useEffect(() => {
-        const pathnames = location.pathname.split('/').filter(x => x);
-        const crumbs = pathnames.map((value, index) => {
-            const to = `/${pathnames.slice(0, index + 1).join('/')}`;
-
-            // Задаём названия для маршрутов
-            const nameMap = {
-                'home': 'Главная',
-                'equipment': 'Медицинское оборудование',
-                'documentation': 'Документация',
-                [params.id]: `Оборудование - ${params.id}`
-            };
-
-            return {
-                name: nameMap[value] || value,
-                path: to
-            };
-        });
-
-        setBreadcrumbs(crumbs);
-    }, [location, params]);
+        // Проверяем, есть ли параметр id в пути
+        if (params.id) {
+            fetchEquipmentName(params.id); // Вызываем функцию для получения названия
+        }
+    }, [params.id]); // Запускаем эффект при изменении параметра id
 
     return (
         <div className="crumbs">
-            {breadcrumbs.map((crumb, index) => (
-                <span key={index}>
-                    <Link to={crumb.path}>{crumb.name}</Link>
-                    {index < breadcrumbs.length - 1 && ' - '}
-                </span>
-            ))}
+            {pathnames.map((value, index) => {
+                const path = `/${pathnames.slice(0, index + 1).join('/')}`;
+                let displayName = nameMap[value] || value;
+
+                // Если текущий путь содержит id, используем equipmentName
+                if (value === params.id && equipmentName) {
+                    displayName = equipmentName;
+                }
+
+                return (
+                    <span key={index}>
+                        <Link to={path}>{displayName}</Link>
+                        {index < pathnames.length - 1 && ' - '}
+                    </span>
+                );
+            })}
         </div>
     );
 };

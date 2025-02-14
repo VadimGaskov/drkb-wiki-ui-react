@@ -6,7 +6,7 @@ const Environment = ({title}) => {
     return(
         <>
             <img src={Fox} alt="" className="list-environment-fox"/>
-            {/*<h2>{title}</h2>*/}
+            <h2>{title}</h2>
                 <EnvironmentNav />
             <div className="list-equipment-about">
                 <Outlet />

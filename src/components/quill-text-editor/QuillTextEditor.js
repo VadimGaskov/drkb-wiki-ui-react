@@ -5,6 +5,7 @@ import "./QuillTextEditor.css";
 import {API_URLS} from "../../constants/ApiUrls";
 import {getEnvironmentModelById, SaveShortInstruction} from "../../services/drkb-wiki/EnvironmentModelService";
 import {useParams} from "react-router-dom";
+import {Button} from "@mui/material";
 
 
 ///TODO Добавить удаление видео из сервера при отмене изменений.
@@ -109,12 +110,13 @@ const QuillTextEditor = () => {
         <div className="editor-container">
             <h2 className="editor-title">Редактировать инструкцию</h2>
             <div ref={editorRef} className="quill-editor" />
-            {/* Предпросмотр */}
-            <div className="preview-box">
-                <button type="button" onClick={sendContentOnServer}>Отправить</button>
-                {/*<video src={"http://localhost:5065/video/какое-то-название-на-русском.mp4"} controls width="600"></video>*/}
-                {/*<p1>{id}</p1>*/}
-            </div>
+            <Button
+                type="button"
+                onClick={sendContentOnServer}
+                className="editor-save-btn"
+                variant="contained"
+            >Сохранить
+            </Button>
         </div>
     );
 };
@@ -122,8 +124,12 @@ const QuillTextEditor = () => {
 export default QuillTextEditor;
 
 
-{/*<h3 className="preview-title">Предпросмотр:</h3>
-                <div
-                    className="preview-content"
-                    dangerouslySetInnerHTML={{ __html: value }}
-                />*/}
+/*
+<div className="preview-box">
+    <h3 className="preview-title">Предпросмотр:</h3>
+    <div
+        className="preview-content"
+        dangerouslySetInnerHTML={{ __html: value }}
+    />
+    <button type="button" onClick={sendContentOnServer}>Отправить</button>
+</div>*/

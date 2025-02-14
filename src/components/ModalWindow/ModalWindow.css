@@ -1,0 +1,47 @@
+.modal-window-container {
+
+}
+
+.modal-window-content-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.modal-input {
+    font-size: 1.2rem;
+    height: 2.2rem;
+    border: 1px solid black;
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+}
+
+.hidden-input {
+    display: none;
+}
+
+.file-upload-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.custom-file-button {
+    display: inline-block;
+    padding: 8px 16px;
+    background-color: #1976d2;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+    text-align: center;
+}
+
+.custom-file-button:hover {
+    background-color: #1565c0;
+}
+
+.file-name {
+    font-size: 14px;
+    color: #333;
+}
