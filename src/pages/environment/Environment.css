@@ -5,7 +5,9 @@
     margin-top: 1rem;
     background-color: #EBECEC;
     min-width: 80%;
-    overflow-y: auto;
+    flex-grow: 1;
+    margin-bottom: 1rem;
+    overflow-y: hidden;
 }
 
 /*.list-equipment-about > ul > li > a{

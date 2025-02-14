@@ -13,7 +13,7 @@ import Breadcrumbs from "../components/Breadcrumbs/Breadcrumbs";
 const Layout = () => {
     return(
         <>
-            <header>
+            <div className="layout-wrapper">
                 <div className="sidebar-nav">
                     <ul>
                         <SidebarElement img={DrkbLogo} path={"/"}/>
@@ -26,30 +26,32 @@ const Layout = () => {
                         <SidebarElement img={Med} path={"/"}/>
                     </ul>
                 </div>
+                <main id="layout-content">
+                    <header>
+                        <Breadcrumbs />
+                    </header>
+                    <div className="wrapper-name-section">
+                        <div className="name-page">
+                            <h1>Раздел 7.</h1>
+                            <h1>Медицинское оборудование.</h1>
+                        </div>
+                    </div>
+                    <div className="equipments">
+                        <Outlet />
+                    </div>
+                </main>
+            </div>
+        </>
+    );
+}
 
-                <div className="wrapper-name-section">
-                    {/*<div className="crumbs">
+export default Layout;
+
+{/*<div className="crumbs">
                         TODO Сделать программно навигацию
                         <a href="#">Главная - </a>
                         <a href="#"> Медицинское оборудование - </a>
                         <a href="#"> Список оборудование - </a>
                         <a href="#"> Дефибриллятор -  </a>
                         <a href="#"> Документация </a>
-                    </div>*/}
-                    <Breadcrumbs />
-                    <div className="name-page">
-                        <h1>Раздел 7.</h1>
-                        <h1>Медицинское оборудование.</h1>
-                    </div>
-                </div>
-            </header>
-            <main>
-                <div className="equipments">
-                    <Outlet />
-                </div>
-            </main>
-        </>
-    );
-}
-
-export default Layout;
+                        </div>*/}

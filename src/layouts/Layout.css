@@ -10,21 +10,31 @@ body {
     font-family: Arial, Helvetica, sans-serif;
 }
 
-header {
+.layout-wrapper {
     display: flex;
-    height: auto;
-    min-height: 200px;
 }
 
 .sidebar-nav{
     background-color: #2D4EB1;
     height: 100vh;
     width: 6rem;
-    top: 0;
-    position: absolute;
+}
+
+#layout-content {
+    display: flex;
+    flex-direction: column;
+    padding: 3rem;
+    width: 100%;
+    flex-grow: 1;
+    --min-width: 850px;
+}
+
+header {
+    min-width: var(--min-width);
 }
 
 .wrapper-name-section{
+    min-width: var(--min-width);
     display: flex;
     flex-direction: column;
 }
@@ -32,8 +42,6 @@ header {
 .crumbs{
     display: flex;
     flex-direction: row;
-    margin-top: 50px;
-    margin-left: 10rem;
 }
 
 .crumbs > a{
@@ -45,7 +53,6 @@ header {
     height: 40px;
     display: flex;
     margin-top: 30px;
-    margin-left: 10rem;
     color : #423185;
 }
 
@@ -54,10 +61,11 @@ header {
 }
 
 .equipments{
-    width: 80%;
-    max-width: 60%;
-    margin-left: 10rem;
-    overflow-y: auto;
+    min-width: var(--min-width);
+    width: 70vw;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
 }
 
 .equipments > h2{
