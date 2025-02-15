@@ -1,12 +1,15 @@
 import "./Environment.css";
-import EnvironmentNav from "../../components/environment/environment-nav/EnvironmentNav";
-import {Outlet} from "react-router-dom";
+import {Outlet, useLocation, useParams, useRoutes} from "react-router-dom";
 import Fox from "../../assets/img/foxes/environment-fox-svg.svg";
-const Environment = ({title}) => {
+import EnvironmentNav from "./components/environment-nav/EnvironmentNav";
+import {useState} from "react";
+const Environment = () => {
+    /*const params = useParams();
+    console.log(params.id);*/
     return(
         <>
+            {/*TODO Добавить вывод названия оборудования на котором сейчас находимся*/}
             <img src={Fox} alt="" className="list-environment-fox"/>
-            <h2>{title}</h2>
                 <EnvironmentNav />
             <div className="list-equipment-about">
                 <Outlet />

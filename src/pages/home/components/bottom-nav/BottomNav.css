@@ -1,0 +1,9 @@
+.bottom-nav {
+    display: flex;
+    height: auto;
+    width: 100%;
+    justify-content: center;
+    column-gap: 4rem;
+    margin-top: 4rem;
+    margin-bottom: 5rem;
+}
