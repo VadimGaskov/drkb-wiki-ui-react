@@ -14,6 +14,7 @@ import ShortInstruction from "./pages/environment/routes/short-instruction/Short
 import Journal from "./pages/environment/routes/journal/Journal";
 import NotFound from "./pages/not-found/NotFound";
 import MaintenanceLogbook from "./pages/environment/routes/maintenance-logbook/MaintenanceLogbook";
+import {EnvironmentModelProvider} from "./context/EnvironmentModelContext";
 
 function App() {
   return (
@@ -23,22 +24,24 @@ function App() {
                   <Routes>
                       <Route path="/home" element={<PrivateRoute><Home /></PrivateRoute>} />
                       <Route path="/login" element={<Login />} />
-                      <Route path="/list-environment" element={<PrivateRoute><MainWikiLayout /></PrivateRoute>}>
-                          <Route index element={<ListEnvironment />} />
-                          <Route path="equipment/:id" element={<Environment />}>
-                              <Route index path="documentation" element={<Documentation />} />
-                              <Route path="maintenance-logbook" element={<MaintenanceLogbook />} />
-                              <Route path="journal" element={<Journal />} />
-                              <Route path="short-instruction" element={<ShortInstruction />} />
+                          <Route path="/list-environment" element={
+                              <PrivateRoute>
+                                  <EnvironmentModelProvider>
+                                      <MainWikiLayout />
+                                  </EnvironmentModelProvider>
+                              </PrivateRoute>}
+                          >
+                              <Route index element={<ListEnvironment />} />
+                              <Route path="equipment/:id" element={<Environment />}>
+                                  <Route index path="documentation" element={<Documentation />} />
+                                  <Route path="maintenance-logbook" element={<MaintenanceLogbook />} />
+                                  <Route path="journal" element={<Journal />} />
+                                  <Route path="short-instruction" element={<ShortInstruction />} />
+                              </Route>
                           </Route>
-                      </Route>
                         {/**/}
                       {/*//TODO Доделать переход неавторизованному пользователю*/}
                       <Route path="/list-environment/equipment/:id/short-instruction" element={<ShortInstruction />}/>
-
-
-
-
 
                       <Route path="*" element={<NotFound/>} />
                   </Routes>

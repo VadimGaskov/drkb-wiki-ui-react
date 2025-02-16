@@ -1,38 +1,22 @@
 import { Link, useLocation, useParams } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import {useContext, useEffect, useState} from 'react';
 import {API_URLS} from "../../../../constants/ApiUrls";
 import {getEnvironmentModelById} from "../../../../services/drkb-wiki/EnvironmentModelService";
+import {EnvironmentModelContext} from "../../../../context/EnvironmentModelContext";
 
 const Breadcrumbs = () => {
     const location = useLocation();
     const pathnames = location.pathname.split('/').filter(x => x);
     const params = useParams(); // Получаем параметры из URL
     const [equipmentName, setEquipmentName] = useState(null); // Состояние для названия оборудования
-
+    const environmentModel = useContext(EnvironmentModelContext);
+    console.log(environmentModel);
     const nameMap = {
         'home': 'Главная',
         'equipment': 'Медицинское оборудование',
         'documentation': 'Документация',
         'short-instruction' : "Краткая инструкция"
     };
-
-    // Функция для получения названия оборудования по ID
-    const fetchEquipmentName = async (id) => {
-        try {
-            const response = await getEnvironmentModelById(id);
-            setEquipmentName(response.name || `Оборудование ${id}`); // Установка названия
-        } catch (error) {
-            console.error('Error fetching equipment name:', error);
-            setEquipmentName(`Оборудование ${id}`); // Если ошибка, используем заглушку
-        }
-    };
-
-    useEffect(() => {
-        // Проверяем, есть ли параметр id в пути
-        if (params.id) {
-            fetchEquipmentName(params.id); // Вызываем функцию для получения названия
-        }
-    }, [params.id]); // Запускаем эффект при изменении параметра id
 
     return (
         <div className="crumbs">
@@ -41,8 +25,8 @@ const Breadcrumbs = () => {
                 let displayName = nameMap[value] || value;
 
                 // Если текущий путь содержит id, используем equipmentName
-                if (value === params.id && equipmentName) {
-                    displayName = equipmentName;
+                if (value === params.id && environmentModel) {
+                    displayName = environmentModel.name;
                 }
 
                 return (
