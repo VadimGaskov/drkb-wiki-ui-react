@@ -20,5 +20,6 @@ export const ROUTINGS = {
     DOCUMENTATION: "documentation",
     MAINTENANCE_LOGBOOK: "maintenance-logbook",
     JOURNALS: "journal",
-    SHORT_INSTRUCTION: "short-instruction"
+    SHORT_INSTRUCTION: "short-instruction",
+    ENVIRONMENTS: "environments"
 }
