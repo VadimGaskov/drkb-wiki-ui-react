@@ -8,6 +8,7 @@ export const EnvironmentModelContext = createContext();
 export const EnvironmentModelProvider = ({children}) => {
     const params = useParams();
     const environmentModelId = params.id;
+    console.log(environmentModelId);
     const [environmentModel, setEnvironmentModel] = useState(null);
     useEffect(() => {
         const fetchEnvironmentModel = async () => {

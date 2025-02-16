@@ -3,17 +3,16 @@ import {useContext, useEffect, useState} from 'react';
 import {API_URLS} from "../../../../constants/ApiUrls";
 import {getEnvironmentModelById} from "../../../../services/drkb-wiki/EnvironmentModelService";
 import {EnvironmentModelContext} from "../../../../context/EnvironmentModelContext";
-
+import "./Breadcrumbs.css";
 const Breadcrumbs = () => {
     const location = useLocation();
     const pathnames = location.pathname.split('/').filter(x => x);
     const params = useParams(); // Получаем параметры из URL
-    const [equipmentName, setEquipmentName] = useState(null); // Состояние для названия оборудования
     const environmentModel = useContext(EnvironmentModelContext);
-    console.log(environmentModel);
+
     const nameMap = {
-        'home': 'Главная',
-        'equipment': 'Медицинское оборудование',
+        'list-environment': 'Список оборудования',
+        'equipment': ' ',
         'documentation': 'Документация',
         'short-instruction' : "Краткая инструкция"
     };
@@ -30,9 +29,9 @@ const Breadcrumbs = () => {
                 }
 
                 return (
-                    <span key={index}>
-                        <Link to={path}>{displayName}</Link>
-                        {index < pathnames.length - 1 && ' - '}
+                    <span key={index} className="breadcrumbs-text">
+                        <Link to={path}> {displayName}</Link>
+                        {index < pathnames.length - 1 && displayName !== ' ' && ' – '}
                     </span>
                 );
             })}

@@ -62,6 +62,8 @@ header {
     display: flex;
     flex-direction: column;
     height: 100%;
+    overflow: hidden;
+    margin-bottom: 0;
 }
 
 .equipments > h2{

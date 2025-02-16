@@ -48,15 +48,22 @@ const QuillTextEditor = () => {
                     const environmentModelId = id; // ID из URL-параметра
 
                     if (file && environmentModelId) {
+                        console.log(file.name);
+                        console.log("ID " + environmentModelId);
                         const formData = new FormData();
-                        formData.append("file", file); // Важно: имя должно совпадать с параметром контроллера
                         formData.append("createVideoDto.environmentModelId", environmentModelId);
+                        formData.append("file", file); // Важно: имя должно совпадать с параметром контроллера
+
                         // Указываем имя как "createVideoDto.environmentModelId" для корректной сериализации
 
                         try {
                             const response = await fetch(`${API_URLS.VIDEO}/save-video`, {
                                 method: "POST",
                                 body: formData,
+                                headers: {
+                                    "Accept": "*/*",
+                                    "enctype": "multipart/form-data"
+                                }
                             });
 
                             if (response.ok) {

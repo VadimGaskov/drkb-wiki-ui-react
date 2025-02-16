@@ -3,9 +3,12 @@
     align-items: center;
     list-style-type: none;
     height: 3rem;
+    word-break: break-word;
+
 }
 
 .list-nav-for-equipments{
+    text-align: center;
     font-size: 1.1rem;
     padding: 0 0.7rem;
     color: #2D4EB1;

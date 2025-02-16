@@ -69,6 +69,10 @@
     color: #111827;
     padding: 10px;
 }
+.ql-editor > p > img {
+    width: 20rem;
+    height: 20rem;
+}
 
 /* Кастомизация тулбара */
 .ql-toolbar {
