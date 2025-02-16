@@ -5,6 +5,7 @@ import TestsIcon from "../../../../assets/icons/tests.svg";
 import JournalsIcon from "../../../../assets/icons/journals.svg";
 import MedEnvironmentIcon from "../../../../assets/icons/layout/med-env-blue.svg";
 import NavItem from "./nav-item/NavItem";
+import {ROUTINGS} from "../../../../constants/Routings";
 
 const TopNav = () => {
     return(
@@ -13,7 +14,7 @@ const TopNav = () => {
             <NavItem text="Документы" img={DocumentsIcon}/>
             <NavItem text="Тесты" img={TestsIcon}/>
             <NavItem text="Журналы" img={JournalsIcon}/>
-            <NavItem text="Оборудование" img={MedEnvironmentIcon} src="/list-environment"/>
+            <NavItem text="Оборудование" img={MedEnvironmentIcon} src={`${ROUTINGS.LIST_ENVIRONMENT}`}/>
         </div>
     );
 }

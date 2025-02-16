@@ -10,19 +10,20 @@ import Med from "../../assets/icons/layout/med.svg";
 import {Link, Outlet} from "react-router-dom";
 import SidebarElement from "./components/sidebar/sidebar-element/SidebarElement";
 import Breadcrumbs from "./components/breadcrumbs/Breadcrumbs";
+import {ROUTINGS} from "../../constants/Routings";
 const MainWikiLayout = () => {
     return(
         <>
             <div className="layout-wrapper">
                 <div className="sidebar-nav">
                     <ul>
-                        <SidebarElement img={DrkbLogo} path={"/home"}/>
-                        <SidebarElement img={HomeLogo} path={"/home"}/>
-                        <SidebarElement img={Second} path={"/home"}/>
-                        <SidebarElement img={Book} path={"/home"}/>
-                        <SidebarElement img={Hz} path={"/home"}/>
-                        <SidebarElement img={SearchPeople} path={"/home"}/>
-                        <SidebarElement img={Pc} path={"/home"}/>
+                        <SidebarElement img={DrkbLogo} path={`${ROUTINGS.HOME}`}/>
+                        <SidebarElement img={HomeLogo} path={`${ROUTINGS.HOME}`}/>
+                        <SidebarElement img={Second} path={`${ROUTINGS.HOME}`}/>
+                        <SidebarElement img={Book} path={`${ROUTINGS.HOME}`}/>
+                        <SidebarElement img={Hz} path={`${ROUTINGS.HOME}`}/>
+                        <SidebarElement img={SearchPeople} path={`${ROUTINGS.HOME}`}/>
+                        <SidebarElement img={Pc} path={`${ROUTINGS.HOME}`}/>
                         <SidebarElement img={Med} path={"/"}/>
                     </ul>
                 </div>

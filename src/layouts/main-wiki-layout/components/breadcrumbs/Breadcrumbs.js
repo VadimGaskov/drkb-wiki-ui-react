@@ -12,7 +12,8 @@ const Breadcrumbs = () => {
 
     const nameMap = {
         'list-environment': 'Список оборудования',
-        'equipment': ' ',
+        'environment-model': ' ',
+        'maintenance-logbook': 'Журнал техобслуживания',
         'documentation': 'Документация',
         'short-instruction' : "Краткая инструкция"
     };

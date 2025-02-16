@@ -2,10 +2,11 @@ import "./NotFound.css";
 import SadFoxIcon from "../../assets/img/foxes/list-environment-fox.svg";
 import {Button} from "@mui/material";
 import {useNavigate} from "react-router-dom";
+import {ROUTINGS} from "../../constants/Routings";
 const NotFound = () => {
     const navigate = useNavigate();
     const handleClick = () => {
-        navigate("/home");
+        navigate(`${ROUTINGS.HOME}`);
     }
 
     return (

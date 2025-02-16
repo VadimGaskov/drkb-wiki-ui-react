@@ -15,6 +15,7 @@ import Journal from "./pages/environment-model/routes/journal/Journal";
 import NotFound from "./pages/not-found/NotFound";
 import MaintenanceLogbook from "./pages/environment-model/routes/maintenance-logbook/MaintenanceLogbook";
 import {EnvironmentModelProvider} from "./context/EnvironmentModelContext";
+import {ROUTINGS} from "./constants/Routings";
 
 function App() {
   return (
@@ -22,9 +23,9 @@ function App() {
           <BrowserRouter>
               <div className="App">
                   <Routes>
-                      <Route path="/home" element={<PrivateRoute><Home /></PrivateRoute>} />
-                      <Route path="/login" element={<Login />} />
-                      <Route path="/list-environment" element={
+                      <Route path={`${ROUTINGS.HOME}`} element={<PrivateRoute><Home /></PrivateRoute>} />
+                      <Route path={`${ROUTINGS.LOGIN}`} element={<Login />} />
+                      <Route path={`${ROUTINGS.LIST_ENVIRONMENT}`} element={
                           <PrivateRoute>
                               <EnvironmentModelProvider>
                                   <MainWikiLayout />
@@ -32,15 +33,13 @@ function App() {
                           </PrivateRoute>}
                       >
                           <Route index element={<ListEnvironmentModel />} />
-                          <Route path="environment-model/:id" element={<EnvironmentModel />}>
-                              <Route index path="documentation" element={<Documentation />} />
-                              <Route path="maintenance-logbook" element={<MaintenanceLogbook />} />
-                              <Route path="journal" element={<Journal />} />
-                              <Route path="short-instruction" element={<ShortInstruction />} />
+                          <Route path={`${ROUTINGS.ENVIRONMENT_MODEL()}`} element={<EnvironmentModel />}>
+                              <Route index path={`${ROUTINGS.DOCUMENTATION}`} element={<Documentation />} />
+                              <Route path={`${ROUTINGS.MAINTENANCE_LOGBOOK}`} element={<MaintenanceLogbook />} />
+                              <Route path={`${ROUTINGS.JOURNALS}`} element={<Journal />} />
+                              <Route path={`${ROUTINGS.SHORT_INSTRUCTION}`} element={<ShortInstruction />} />
                           </Route>
                       </Route>
-                        {/**/}
-                      {/*//TODO Доделать переход неавторизованному пользователю*/}
                       <Route path="/list-environment/equipment/:id/short-instruction" element={<ShortInstruction />}/>
 
                       <Route path="*" element={<NotFound/>} />
@@ -69,6 +68,32 @@ export default App;
             <Route path={`${ROUTINGS.MAINTENANCE_LOGBOOK}`} element={<MaintenanceLogbook />} />
             <Route path={`${ROUTINGS.JOURNALS}`} element={<Journal />} />
             <Route path={`${ROUTINGS.SHORT_INSTRUCTION}`} element={<ShortInstruction />} />
+        </Route>
+    </Route>
+    {/!**!/}
+    {/!*!//TODO Доделать переход неавторизованному пользователю*!/}
+    <Route path="/list-environment/equipment/:id/short-instruction" element={<ShortInstruction />}/>
+
+    <Route path="*" element={<NotFound/>} />
+</Routes>*/
+
+/*
+<Routes>
+    <Route path="/home" element={<PrivateRoute><Home /></PrivateRoute>} />
+    <Route path="/login" element={<Login />} />
+    <Route path="/list-environment" element={
+        <PrivateRoute>
+            <EnvironmentModelProvider>
+                <MainWikiLayout />
+            </EnvironmentModelProvider>
+        </PrivateRoute>}
+    >
+        <Route index element={<ListEnvironmentModel />} />
+        <Route path="environment-model/:id" element={<EnvironmentModel />}>
+            <Route index path="documentation" element={<Documentation />} />
+            <Route path="maintenance-logbook" element={<MaintenanceLogbook />} />
+            <Route path="journal" element={<Journal />} />
+            <Route path="short-instruction" element={<ShortInstruction />} />
         </Route>
     </Route>
     {/!**!/}
