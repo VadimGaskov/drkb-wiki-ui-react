@@ -1,4 +1,4 @@
-.list-equipment{
+.list-environment-model{
     padding: 10px;
     border-radius: 10px;
     margin-top: 10px;
@@ -6,31 +6,20 @@
     min-width: 30rem;
     height: 100%;
 }
-.list-equipment > ul > li{
+
+.list-environment-model > ul > li{
     margin: 10px 0;
     background-color: white;
     border-radius: 5px;
 }
 
-.list-equipment > ul > li:hover{
+.list-environment-model > ul > li:hover{
     background-color: #C5C6C6;
 }
 
-.list-equipment > ul > li > a{
+.list-environment-model > ul > li > a{
     font-size: 18px;
     line-height: 30px;
     height: 30px;
 }
 
-.list-environment-fox {
-    position: absolute;
-    width: 300px;
-    right: 2%;
-    bottom: 4%;
-}
-
-@media (max-width: 1600px) {
-    .list-environment-fox {
-        display: none;
-    }
-}

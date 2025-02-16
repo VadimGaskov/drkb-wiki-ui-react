@@ -1,0 +1,29 @@
+
+.environment-model-details{
+    padding: 0.6rem;
+    border-radius: 0.6rem;
+    margin-top: 1rem;
+    background-color: #EBECEC;
+    min-width: 80%;
+    flex-grow: 1;
+    margin-bottom: 1rem;
+    overflow-y: auto;
+}
+
+.list-environment-model-fox {
+    position: absolute;
+    width: 300px;
+    right: 2%;
+    bottom: 4%;
+}
+
+@media (max-width: 1600px) {
+    .list-environment-model-fox {
+        display: none;
+    }
+}
+
+/*
+.environment-model-details{
+    margin-left: 20px;
+}*/

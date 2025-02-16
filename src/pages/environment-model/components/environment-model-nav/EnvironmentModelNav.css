@@ -1,4 +1,4 @@
-.navigation-for-equipments{
+.environment-model-nav-wrapper {
     background-color: white;
     height: 3rem;
     border-radius: 10px;
@@ -7,6 +7,6 @@
     align-items: center;
 }
 
-.navigation-for-equipments-list {
+.environment-model-nav {
     display: flex;
 }

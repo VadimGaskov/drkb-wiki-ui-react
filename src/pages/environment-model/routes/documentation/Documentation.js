@@ -1,4 +1,4 @@
-import EnvironmentNav from "../../components/environment-nav/EnvironmentNav";
+import EnvironmentModelNav from "../../components/environment-model-nav/EnvironmentModelNav";
 import DocumentationElement from "./documentation-element/DocumentationElement";
 import "./Documentation.css";
 import {useParams} from "react-router-dom";

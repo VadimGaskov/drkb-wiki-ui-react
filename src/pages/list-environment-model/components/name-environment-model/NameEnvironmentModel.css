@@ -1,4 +1,4 @@
-.name-equipment-element {
+.name-environment-model-element {
     display: flex;
     flex-direction: row;
     height: 3rem;
@@ -7,7 +7,7 @@
     align-items: center;
 }
 
-.name-equipment{
+.name-environment-model{
     margin-left: 20px;
 }
 

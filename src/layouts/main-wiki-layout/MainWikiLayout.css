@@ -56,7 +56,7 @@ header {
     margin-right: 15px;
 }
 
-.equipments{
+.environment-content-container{
     min-width: var(--min-width);
     width: 70vw;
     display: flex;
@@ -66,6 +66,6 @@ header {
     margin-bottom: 0;
 }
 
-.equipments > h2{
+.environment-content-container > h2{
     color: #423185;
 }

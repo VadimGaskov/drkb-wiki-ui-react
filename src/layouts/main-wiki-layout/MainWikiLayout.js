@@ -36,7 +36,7 @@ const MainWikiLayout = () => {
                             <h1>Медицинское оборудование.</h1>
                         </div>
                     </div>
-                    <div className="equipments">
+                    <div className="environment-content-container">
                         <Outlet />
                     </div>
                 </main>
