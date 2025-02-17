@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import {useContext, useEffect, useRef, useState} from "react";
 import Quill from "quill";
 import "quill/dist/quill.snow.css"; // Импорт стилей Quill
 import "./QuillTextEditor.css";
@@ -6,6 +6,7 @@ import {API_URLS} from "../../../../../constants/ApiUrls";
 import {getEnvironmentModelById, SaveShortInstruction} from "../../../../../services/drkb-wiki/EnvironmentModelService";
 import {useParams} from "react-router-dom";
 import {Button} from "@mui/material";
+import {EnvironmentModelContext} from "../../../../../context/EnvironmentModelContext";
 
 
 ///TODO Добавить удаление видео из сервера при отмене изменений.
@@ -14,6 +15,7 @@ const QuillTextEditor = () => {
     const editorRef = useRef(null);
     const [value, setValue] = useState("");
     const {id} = useParams();
+    const environmentModel = useContext(EnvironmentModelContext);
     useEffect(() => {
         if (editorRef.current) {
             const quill = new Quill(editorRef.current, {
@@ -106,7 +108,7 @@ const QuillTextEditor = () => {
 
 
     const sendContentOnServer = async () => {
-        const response = await SaveShortInstruction(value);
+        const response = await SaveShortInstruction(environmentModel.id,value);
         if (response.ok)
             alert('УДАЧНО');
         else

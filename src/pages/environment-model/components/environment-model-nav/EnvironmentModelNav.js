@@ -2,6 +2,7 @@
 import "./EnvironmentModelNav.css";
 import EnvironmentModelNavElement from "./environment-model-nav-element/EnvironmentModelNavElement";
 import {ROUTINGS} from "../../../../constants/Routings";
+import ModalWindow from "../../../../components/modal-window/ModalWindow";
 const EnvironmentModelNav = () => {
     return(
         <div className="environment-model-nav-wrapper">
