@@ -1,0 +1,13 @@
+.breadcrumbs-text {
+    color: #112C57;
+    font-size: 1.4rem;
+}
+
+.breadcrumbs-text > a {
+    text-decoration: none;
+}
+
+.breadcrumbs-text > a:visited {
+    color: #112C57;
+    text-decoration: none;
+}

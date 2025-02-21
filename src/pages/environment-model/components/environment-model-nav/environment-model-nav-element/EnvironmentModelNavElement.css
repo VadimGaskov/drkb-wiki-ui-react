@@ -1,0 +1,26 @@
+.environment-model-nav-element {
+    display: flex;
+    align-items: center;
+    list-style-type: none;
+    height: 3rem;
+    word-break: break-word;
+
+}
+
+.environment-model-nav-element:hover {
+    background-color: #C5C6C6;
+    border-radius: 0.5rem;
+}
+
+.environment-model-nav-link {
+    text-align: center;
+    font-size: 1.1rem;
+    padding: 0 0.7rem;
+    color: #2D4EB1;
+    text-decoration: none;
+}
+
+.selected{
+    background-color: #C5C6C6;
+    border-radius: 0.8rem;
+}

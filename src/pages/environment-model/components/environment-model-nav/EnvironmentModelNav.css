@@ -1,0 +1,12 @@
+.environment-model-nav-wrapper {
+    background-color: white;
+    height: 3rem;
+    border-radius: 10px;
+    min-width: 80%;
+    display: flex;
+    align-items: center;
+}
+
+.environment-model-nav {
+    display: flex;
+}

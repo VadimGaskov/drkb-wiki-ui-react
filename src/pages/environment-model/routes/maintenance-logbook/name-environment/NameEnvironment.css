@@ -1,0 +1,11 @@
+
+
+.more {
+    justify-self: end;
+    flex-grow: 1;
+    text-align: end;
+}
+
+.more > span {
+    margin: 0 1rem;
+}

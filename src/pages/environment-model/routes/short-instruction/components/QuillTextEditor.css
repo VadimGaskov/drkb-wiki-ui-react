@@ -1,0 +1,113 @@
+/* Контейнер редактора */
+.editor-container {
+    padding: 16px;
+    background-color: #f9fafb;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+/* Заголовок */
+.editor-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #1f2937;
+    margin-bottom: 12px;
+    text-align: center;
+}
+
+/* Сам редактор */
+.quill-editor {
+    background-color: #ffffff;
+    border: 1px solid #d1d5db;
+    border-radius: 0 0 8px 8px;
+    min-height: 10rem;
+    padding: 8px;
+    transition: border-color 0.3s ease;
+    margin-bottom: 1rem;
+    height: 100%;
+}
+
+.quill-editor:hover {
+    border-color: #2563eb; /* Синий бордер при наведении */
+}
+
+/* Предпросмотр */
+.preview-box {
+    background-color: #f3f4f6;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    padding: 12px;
+    margin-top: 16px;
+}
+
+.preview-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: #374151;
+    margin-bottom: 8px;
+}
+
+.preview-content {
+    display: flex;
+    justify-content: center;
+    background-color: #ffffff;
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #e5e7eb;
+    min-height: 100px;
+    white-space: pre-wrap;
+    overflow-wrap: break-word;
+}
+
+/* Настройки для текста внутри редактора */
+.ql-editor {
+    font-size: 1rem;
+    color: #111827;
+    padding: 10px;
+}
+.ql-editor > p > img {
+    width: 20rem;
+    height: 20rem;
+}
+
+.ql-editor .ql-video {
+    width: 40rem;
+    height: 20rem;
+}
+
+/* Кастомизация тулбара */
+.ql-toolbar {
+    border-radius: 8px 8px 0 0;
+    background-color: #f1f5f9;
+    border: 1px solid #d1d5db;
+}
+
+.ql-toolbar button:hover {
+    background-color: #e5e7eb;
+}
+
+/* Поддержка адаптивности */
+@media (max-width: 600px) {
+    .editor-container {
+        padding: 12px;
+        margin: 10px;
+    }
+
+    .editor-title {
+        font-size: 20px;
+    }
+}
+
+.ql-video {
+    width: fit-content;
+    height: fit-content;
+}
+
+.editor-save-btn {
+    width: 10rem;
+    align-self: end;
+}
