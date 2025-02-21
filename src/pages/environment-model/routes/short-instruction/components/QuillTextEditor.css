@@ -74,6 +74,11 @@
     height: 20rem;
 }
 
+.ql-editor .ql-video {
+    width: 40rem;
+    height: 20rem;
+}
+
 /* Кастомизация тулбара */
 .ql-toolbar {
     border-radius: 8px 8px 0 0;

@@ -50,8 +50,6 @@ const QuillTextEditor = () => {
                     const environmentModelId = id; // ID из URL-параметра
 
                     if (file && environmentModelId) {
-                        console.log(file.name);
-                        console.log("ID " + environmentModelId);
                         const formData = new FormData();
                         formData.append("createVideoDto.environmentModelId", environmentModelId);
                         formData.append("file", file); // Важно: имя должно совпадать с параметром контроллера

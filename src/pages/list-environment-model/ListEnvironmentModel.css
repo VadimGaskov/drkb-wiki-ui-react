@@ -5,6 +5,7 @@
     background-color: #EBECEC;
     min-width: 30rem;
     height: 100%;
+    overflow-y: auto;
 }
 
 .list-environment-model > ul > li{

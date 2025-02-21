@@ -21,5 +21,6 @@ export const ROUTINGS = {
     MAINTENANCE_LOGBOOK: "maintenance-logbook",
     JOURNALS: "journal",
     SHORT_INSTRUCTION: "short-instruction",
-    ENVIRONMENTS: "environments"
+    ENVIRONMENTS: "environments",
+    LIST_COURSES: "/list-courses"
 }

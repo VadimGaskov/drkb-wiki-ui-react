@@ -10,7 +10,7 @@ import {ROUTINGS} from "../../../../constants/Routings";
 const TopNav = () => {
     return(
         <div className="top-nav">
-            <NavItem text="Образование" img={EducationIcon}/>
+            <NavItem text="Образование" img={EducationIcon} src={`${ROUTINGS.LIST_COURSES}`}/>
             <NavItem text="Документы" img={DocumentsIcon}/>
             <NavItem text="Тесты" img={TestsIcon}/>
             <NavItem text="Журналы" img={JournalsIcon}/>

@@ -32,7 +32,6 @@ const Documentation = () => {
             {environmentModel && (
                 <ModalWindow className="upload-document-btn" title="Загрузить документ" environmentModelId={environmentModel.id}/>
             )}
-            <ul>
                 {documents.length > 0 ? (
                     <ul>
                         {documents.map(document => (
@@ -42,7 +41,6 @@ const Documentation = () => {
                 ) : (
                     <p>Документы не найдены.</p>
                 )}
-            </ul>
         </>
     );
 };

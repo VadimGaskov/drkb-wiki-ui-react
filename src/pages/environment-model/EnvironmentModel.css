@@ -23,6 +23,11 @@
     }
 }
 
+.environment-model-title {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
 /*
 .environment-model-details{
     margin-left: 20px;

@@ -59,7 +59,6 @@ const AddEnvironmentModelModal = ({title, environmentModelId}) => {
         const fetchManufacturers = async () => {
             try {
                 const data = await getAllManufacturers();
-                console.log(data);
                 setManufacturers(data);
                 if(data.length > 0) {
                     setSelectedManufacturer(data[0].id);
@@ -72,7 +71,6 @@ const AddEnvironmentModelModal = ({title, environmentModelId}) => {
         const fetchEnvironmentTypes = async () => {
             try {
                 const data = await getAllEnvironmentType();
-                console.log(data);
                 setEnvironmentTypes(data);
                 if(data.length > 0) {
                     setSelectedEnvironmentType(data[0].id);

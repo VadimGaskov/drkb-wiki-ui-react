@@ -15,7 +15,8 @@ const Breadcrumbs = () => {
         'environment-model': ' ',
         'maintenance-logbook': 'Журнал техобслуживания',
         'documentation': 'Документация',
-        'short-instruction' : "Краткая инструкция"
+        'short-instruction' : "Краткая инструкция",
+        'environments' : "Расположения"
     };
 
     return (

@@ -16,7 +16,7 @@ import NotFound from "./pages/not-found/NotFound";
 import MaintenanceLogbook from "./pages/environment-model/routes/maintenance-logbook/MaintenanceLogbook";
 import {EnvironmentModelProvider} from "./context/EnvironmentModelContext";
 import {ROUTINGS} from "./constants/Routings";
-import ListEnvironments from "./pages/environment-model/routes/list-environments/ListEnvironments";
+import ListCourses from "./pages/list-courses/ListCourses";
 
 function App() {
   return (
@@ -39,12 +39,22 @@ function App() {
                               <Route path={`${ROUTINGS.MAINTENANCE_LOGBOOK}`} element={<MaintenanceLogbook />} />
                               <Route path={`${ROUTINGS.JOURNALS}`} element={<Journal />} />
                               <Route path={`${ROUTINGS.SHORT_INSTRUCTION}`} element={<ShortInstruction />} />
-                              <Route path={`${ROUTINGS.ENVIRONMENTS}`} element={<ListEnvironments/>}>
-
-                              </Route>
                           </Route>
                       </Route>
-                      <Route path="/list-environment/equipment/:id/short-instruction" element={<ShortInstruction />}/>
+
+                      <Route path={`${ROUTINGS.LIST_COURSES}`} element={
+                          <PrivateRoute>
+                              <EnvironmentModelProvider>
+                                  <MainWikiLayout />
+                              </EnvironmentModelProvider>
+                          </PrivateRoute>}
+                      >
+                          <Route index element={<ListCourses/>}/>
+
+                      </Route>
+                      {/*<Route
+                          path="/list-environment/environment-model/:id/short-instruction"
+                          element={<ShortInstruction />}/>*/}
 
                       <Route path="*" element={<NotFound/>} />
                   </Routes>
