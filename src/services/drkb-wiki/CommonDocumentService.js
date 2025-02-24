@@ -1,18 +1,23 @@
 import {API_URLS} from "../../constants/ApiUrls";
+import {apiRequest, configureUrlParams} from "../ApiService";
 
 export const getAllCommonDocument = async () => {
-    try {
+    return await apiRequest(`${API_URLS.COMMON_DOCUMENT}/get-all`);
+
+    /*try {
         const response = await fetch(`${API_URLS.COMMON_DOCUMENT}/get-all`);
         if (response.ok) {
             return await response.json();
         }
     } catch (error) {
         return "Ошибка";
-    }
+    }*/
 }
 
 export const getAllByEnvironmentModel = async (idModel) => {
-    try {
+    const params = configureUrlParams({environmentModelId: idModel});
+    return await apiRequest(`${API_URLS.COMMON_DOCUMENT}/get-all-by-environment-model?${params}`);
+    /*try {
         const params = new URLSearchParams({environmentModelId: idModel}).toString();
         const response = await fetch(`${API_URLS.COMMON_DOCUMENT}/get-all-by-environment-model?${params}`);
         if (!response.ok){
@@ -21,7 +26,7 @@ export const getAllByEnvironmentModel = async (idModel) => {
         return await response.json();
     } catch (error) {
         throw error;
-    }
+    }*/
 }
 
 export const createDocument = async ({documentName, file, environmentModelId }) => {

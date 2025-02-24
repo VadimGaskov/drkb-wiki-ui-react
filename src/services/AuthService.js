@@ -1,7 +1,26 @@
 import {API_URLS} from "../constants/ApiUrls";
 import axios from "axios";
+import {apiRequest} from "./ApiService";
 export const login = async (login, password) => {
-    try {
+    const data = await apiRequest(`${API_URLS.AUTH}`, {
+        method: 'POST',
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({login: login, password: password}),
+    })
+
+    if (data) {
+        if (data.token) {
+            localStorage.setItem("user", JSON.stringify(data));
+            return data;
+        }
+        else {
+            console.error("Сервер не вернул токен");
+        }
+    }
+
+    /*try {
         // Создаем объект данных для отправки
         const data = {
             login,
@@ -36,7 +55,7 @@ export const login = async (login, password) => {
     } catch (error) {
         console.error('Ошибка авторизации:', error);
         throw error;
-    }
+    }*/
 }
 
 export const logout = () => {

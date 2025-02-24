@@ -21,7 +21,7 @@ const Login = () => {
         }
     }
 
-    if (user !== null)
+    if (user)
         console.log(jwtDecode(user.token));
 
 
