@@ -4,9 +4,14 @@ import React, {useContext, useState} from "react";
 import {AuthContext} from "../../context/AuthContext";
 import {jwtDecode} from "jwt-decode";
 import {useNavigate} from "react-router-dom";
+import {Alert} from "@mui/material";
+import {API_URLS} from "../../constants/ApiUrls";
+import {ROUTINGS} from "../../constants/Routings";
 const Login = () => {
     const [login, setLogin] = useState("");
     const [password, setPassword] = useState("");
+    const [isSuccessLogin, setSuccessLogin] = useState(false);
+    const [showErrorMessage, setShowErrorMessage] = useState(false);
     const { signIn } = useContext(AuthContext);
     const { user } = useContext(AuthContext);
     const navigate = useNavigate();
@@ -14,8 +19,15 @@ const Login = () => {
         e.preventDefault();
         try {
             const result = await signIn(login, password);
-            if (result)
-                navigate("/")
+            if (result) {
+                /*navigate("/")*/
+                setSuccessLogin(true);
+                const timeout = setTimeout(() => {
+                    navigate(`${ROUTINGS.HOME}`)
+                }, 1500);
+            } else {
+                setShowErrorMessage(true);
+            }
         } catch (error) {
             alert('Ошибка авторизации!');
         }
@@ -23,7 +35,6 @@ const Login = () => {
 
     if (user)
         console.log(jwtDecode(user.token));
-
 
     return(
         <div className="logo-container">
@@ -41,7 +52,10 @@ const Login = () => {
                             className="auth-input"
                             placeholder="Логин"
                             required
-                            onChange={(e) => setLogin(e.target.value)}
+                            onChange={(e) => {
+                                setLogin(e.target.value);
+                                setShowErrorMessage(false);
+                            }}
                         />
 
                         <label htmlFor="user-password">Введите пароль:</label>
@@ -51,14 +65,22 @@ const Login = () => {
                             className="auth-input"
                             placeholder="Пароль"
                             required
-                            onChange={(e) => setPassword(e.target.value)}
+                            onChange={(e) => {
+                                setPassword(e.target.value);
+                                setShowErrorMessage(false);
+                            }}
                         />
 
                         <button type="submit" className="auth-submit-button">Войти</button>
                     </form>
                 </section>
+                {isSuccessLogin ? <Alert variant="standard" severity="success" className="login-alert">
+                    Вы успешно авторизовались.
+                </Alert> : ""}
+                {showErrorMessage ? <Alert severity="error" className="login-alert">Неверное имя пользователя или пароль</Alert> : ""}
             </main>
         </div>
+
     );
 }
 

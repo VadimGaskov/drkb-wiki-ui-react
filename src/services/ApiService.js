@@ -28,41 +28,20 @@ const executeRequest = async (url, options = {}, isExpectingData) => {
     }
 
     if (response.status === 500) {
-        throw new Error("Server Error");
+        throw new Error("Ошибка сервера");
     }
 
     if (!response.ok) {
         const errorText = await response.text();
-        throw new Error(`Request failed with status ${response.status}: ${errorText}`);
+        console.error(`Request failed with status ${response.status}: ${errorText}`);
+        return false;
     }
 
-    // Check if there's a body and if it's JSON
-    const contentLength = response.headers.get('Content-Length');
-    const contentType = response.headers.get('Content-Type');
-
-    // If no content (e.g., Content-Length: 0 or no body), treat as success
-    /*if (response.status === 200 && (!contentLength || contentLength === '0')) {
-        return true; // Success with no content
-    }
-
-    // If there's a body, ensure it's JSON and parse it
-    if (contentType && contentType.includes('application/json')) {
-        try {
-            const s = await response.json();
-            console.log("ЖЕЙСОН КОТОРЫЙ ПРИХОДИТ ");
-            console.log(s);
-            return await response.json();
-
-        } catch (error) {
-            throw new Error("Failed to parse response as JSON: " + error.message);
-        }
-    }*/
     if (isExpectingData) {
         return await response.json();
     } else {
         return true;
     }
-
 };
 
 export const configureUrlParams = (params) => {

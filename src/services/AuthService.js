@@ -8,7 +8,7 @@ export const login = async (login, password) => {
             "Content-Type": "application/json",
         },
         body: JSON.stringify({login: login, password: password}),
-    })
+    });
 
     if (data) {
         if (data.token) {
