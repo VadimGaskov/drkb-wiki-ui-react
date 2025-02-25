@@ -30,7 +30,17 @@ export const getAllByEnvironmentModel = async (idModel) => {
 }
 
 export const createDocument = async ({documentName, file, environmentModelId }) => {
-    try {
+    const formData = new FormData();
+    formData.append("file", file);
+    formData.append("name", documentName);
+    if (environmentModelId) {
+        formData.append("environmentModelId", environmentModelId);
+    }
+    return await apiRequest(`${API_URLS.COMMON_DOCUMENT}/create`, {
+        method: "POST",
+        body: formData
+    });
+    /*try {
         const formData = new FormData();
         formData.append("file", file);
         formData.append("name", documentName);
@@ -52,5 +62,5 @@ export const createDocument = async ({documentName, file, environmentModelId }) 
 
     } catch (error) {
         console.error(error)
-    }
+    }*/
 }

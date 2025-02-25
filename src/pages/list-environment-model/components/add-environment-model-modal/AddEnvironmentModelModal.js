@@ -39,7 +39,7 @@ const AddEnvironmentModelModal = ({title, environmentModelId}) => {
 
         console.log(newEnvironmentModel);
         const result = await createEnvironmentModel(newEnvironmentModel);
-        if (result){
+        if (result) {
             alert("УСПЕШНОЕ СОХРАНЕНИЕ МОДЕЛИ ОБОРУДОВАНИЯ");
         }
         else {

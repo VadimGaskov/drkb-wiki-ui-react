@@ -64,15 +64,14 @@ export const SaveShortInstruction = async (environmentModelId,content) => {
 }
 
 export const createEnvironmentModel = async (newEnvironmentModel) => {
-    const data = await apiRequest(`${API_URLS.ENVIRONMENT_MODEL}/create`, {
+    return await apiRequest(`${API_URLS.ENVIRONMENT_MODEL}/create`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
         },
         body: JSON.stringify(newEnvironmentModel)
-    });
+    }, false);
 
-    return data;
     /*try {
         const response = await fetch(`${API_URLS.ENVIRONMENT_MODEL}/create`, {
             method: "POST",
