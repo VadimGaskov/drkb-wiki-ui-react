@@ -11,25 +11,21 @@ const Login = () => {
     const [login, setLogin] = useState("");
     const [password, setPassword] = useState("");
     const [isSuccessLogin, setSuccessLogin] = useState(false);
-    const [showErrorMessage, setShowErrorMessage] = useState(false);
+    const [error, setError] = useState({errorMessage: "", isActive: false});
     const { signIn } = useContext(AuthContext);
     const { user } = useContext(AuthContext);
     const navigate = useNavigate();
     const handleLogin = async (e) => {
         e.preventDefault();
-        try {
-            const result = await signIn(login, password);
-            if (result) {
-                /*navigate("/")*/
-                setSuccessLogin(true);
-                const timeout = setTimeout(() => {
-                    navigate(`${ROUTINGS.HOME}`)
-                }, 1500);
-            } else {
-                setShowErrorMessage(true);
-            }
-        } catch (error) {
-            alert('Ошибка авторизации!');
+
+        const result = await signIn(login, password);
+        if (result.success) {
+            setSuccessLogin(true);
+            const timeout = setTimeout(() => {
+                navigate(`${ROUTINGS.HOME}`)
+            }, 1500);
+        } else {
+            setError({errorMessage: result.errorMessage, isActive: true});
         }
     }
 
@@ -54,7 +50,7 @@ const Login = () => {
                             required
                             onChange={(e) => {
                                 setLogin(e.target.value);
-                                setShowErrorMessage(false);
+                                setError({errorMessage: "", isActive: false});
                             }}
                         />
 
@@ -67,7 +63,7 @@ const Login = () => {
                             required
                             onChange={(e) => {
                                 setPassword(e.target.value);
-                                setShowErrorMessage(false);
+                                setError({errorMessage: "", isActive: false});
                             }}
                         />
 
@@ -77,7 +73,7 @@ const Login = () => {
                 {isSuccessLogin ? <Alert variant="standard" severity="success" className="login-alert">
                     Вы успешно авторизовались.
                 </Alert> : ""}
-                {showErrorMessage ? <Alert severity="error" className="login-alert">Неверное имя пользователя или пароль</Alert> : ""}
+                {error.isActive ? <Alert severity="error" className="login-alert">{error.errorMessage}</Alert> : ""}
             </main>
         </div>
 

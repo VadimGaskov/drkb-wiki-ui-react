@@ -5,8 +5,10 @@ import {useEffect, useState} from "react";
 import {getAllManufacturers} from "../../../../services/drkb-wiki/ManufacturerService";
 import {getAllEnvironmentType} from "../../../../services/drkb-wiki/EnvironmentTypeService";
 import {createEnvironmentModel} from "../../../../services/drkb-wiki/EnvironmentModelService";
+import SuccessSnackbar from "../../../../components/SuccessSnackbar/SuccessSnackbar";
+import ErrorSnackbar from "../../../../components/ErrorSnackbar/ErrorSnackbar";
 
-const AddEnvironmentModelModal = ({title, environmentModelId}) => {
+const AddEnvironmentModelModal = ({title, environmentModelId, onSuccess, onFailure}) => {
     const [open, setOpen] = useState(false);
     const [name, setName] = useState("");
     const [brandName, setBrandName] = useState("");
@@ -14,17 +16,17 @@ const AddEnvironmentModelModal = ({title, environmentModelId}) => {
     const [shortInstruction, setShortInstruction] = useState("");
     const [fullInstruction, setFullInstruction] = useState("");
     const [registrationSertificateNumber, setRegistrationSertificateNumber] = useState("");
-    const [manufacturerId, setManufacturerId] = useState("");
-    const [environmentTypeId, setEnvironmentTypeId] = useState("");
-    const [accuracyClass, setAccuracyClass] = useState("");
-    const [measurmentRange, setMeasurmentRange] = useState("");
 
-
+    const [isLoadingManufacturers, setLoadingManufacturers] = useState(true);
     const [manufacturers, setManufacturers] = useState([]);
+    const [isLoadingEnvironmentTypes, setLoadingEnvironmentTypes] = useState(true);
     const [environmentTypes, setEnvironmentTypes] = useState([]);
 
     const [selectedManufacturer, setSelectedManufacturer] = useState("");
     const [selectedEnvironmentType, setSelectedEnvironmentType] = useState("");
+
+    const [successMessage, setSuccessMessage] = useState(null);
+    const [errorMessage, setErrorMessage] = useState(null);
     const handleCreateEnvironmentModel = async () => {
         const newEnvironmentModel = {
             name,
@@ -39,11 +41,19 @@ const AddEnvironmentModelModal = ({title, environmentModelId}) => {
 
         console.log(newEnvironmentModel);
         const result = await createEnvironmentModel(newEnvironmentModel);
-        if (result) {
-            alert("УСПЕШНОЕ СОХРАНЕНИЕ МОДЕЛИ ОБОРУДОВАНИЯ");
+        console.log(result);
+        if (result.success) {
+            if (onSuccess) {
+                onSuccess();
+                setSuccessMessage("Модель оборудования была успешно создана!");
+            }
         }
         else {
-            alert("НЕУДАЧНОЕ СОХРАНЕНИЕ МОДЕЛИ ОБОРУДОВАНИЯ");
+            if (onFailure) {
+                onFailure(result.errorMessage || "Ошибка добавления модели оборудования");
+            }
+            setErrorMessage( "Ошибка добавления модели оборудования");
+            console.log(errorMessage);
         }
     }
 
@@ -57,26 +67,32 @@ const AddEnvironmentModelModal = ({title, environmentModelId}) => {
 
     useEffect(() => {
         const fetchManufacturers = async () => {
-            try {
-                const data = await getAllManufacturers();
-                setManufacturers(data);
-                if(data.length > 0) {
-                    setSelectedManufacturer(data[0].id);
+            const result = await getAllManufacturers();
+            if (result.success) {
+                if (result.data.length > 0) {
+                    setSelectedManufacturer(result.data[0].id);
                 }
-            } catch (error) {
-                console.error(error);
+                setManufacturers(result.data);
+                setLoadingManufacturers(false);
+            }
+            else {
+                console.error(result.errorMessage);
+                setLoadingManufacturers(false);
             }
         }
 
         const fetchEnvironmentTypes = async () => {
-            try {
-                const data = await getAllEnvironmentType();
-                setEnvironmentTypes(data);
-                if(data.length > 0) {
-                    setSelectedEnvironmentType(data[0].id);
+            const result = await getAllEnvironmentType();
+            if (result.success) {
+                if (result.data.length > 0) {
+                    setSelectedEnvironmentType(result.data[0].id);
                 }
-            } catch (error) {
-                console.error(error);
+                setEnvironmentTypes(result.data);
+                setLoadingEnvironmentTypes(false);
+            }
+            else {
+                console.error(result.errorMessage);
+                setLoadingEnvironmentTypes(false);
             }
         }
 
@@ -86,6 +102,18 @@ const AddEnvironmentModelModal = ({title, environmentModelId}) => {
 
     return (
         <div className="modal-window-container">
+            {successMessage &&
+                <SuccessSnackbar
+                    message={successMessage}
+                    onClose={() => setSuccessMessage(null)}
+                />
+            }
+            {errorMessage &&
+                <ErrorSnackbar
+                    onClose={()=>setErrorMessage(null)}
+                    errorMessage={errorMessage}
+                />
+            }
             <Button variant="contained" onClick={() => setOpen(true)}>
                 {title}
             </Button>
