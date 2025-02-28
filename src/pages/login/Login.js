@@ -5,7 +5,6 @@ import {AuthContext} from "../../context/AuthContext";
 import {jwtDecode} from "jwt-decode";
 import {useNavigate} from "react-router-dom";
 import {Alert} from "@mui/material";
-import {API_URLS} from "../../constants/ApiUrls";
 import {ROUTINGS} from "../../constants/Routings";
 const Login = () => {
     const [login, setLogin] = useState("");

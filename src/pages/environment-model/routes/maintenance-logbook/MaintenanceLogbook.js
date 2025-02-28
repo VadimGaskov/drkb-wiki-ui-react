@@ -7,11 +7,22 @@ import { useContext, useEffect, useState } from "react";
 const MaintenanceLogbook = () => {
     const environmentModel = useContext(EnvironmentModelContext);
     const [environments, setEnvironments] = useState([]);
-    const [loading, setLoading] = useState(true); // Add loading state
+    /*const [loading, setLoading] = useState(true); // Add loading state*/
 
     useEffect(() => {
         const fetchEnvironments = async () => {
-            try {
+            if (environmentModel && environmentModel.id) {
+                const result = await getAllEnvironmentsByModelId(environmentModel.id);
+                console.log(result.data);
+                if (result.success) {
+                    setEnvironments(result.data);
+                }
+                else {
+                    console.error("Error fetching environments:");
+                }
+            }
+
+           /* try {
                 // Only fetch if environmentModel is available
                 if (environmentModel && environmentModel.id) {
                     const data = await getAllEnvironmentsByModelId(environmentModel.id);
@@ -21,15 +32,15 @@ const MaintenanceLogbook = () => {
                 console.error("Error fetching environments:", error);
             } finally {
                 setLoading(false); // Set loading to false once done
-            }
+            }*/
         };
 
         fetchEnvironments();
     }, [environmentModel]); // Dependency on environmentModel
 
-    if (loading) {
+    /*if (loading) {
         return <p>Загрузка...</p>; // Show loading state while fetching
-    }
+    }*/
 
     if (!environmentModel) {
         return <p>Модель оборудования не найдена.</p>; // Handle case where environmentModel remains null

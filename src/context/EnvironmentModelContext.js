@@ -11,7 +11,17 @@ export const EnvironmentModelProvider = ({children}) => {
     const [environmentModel, setEnvironmentModel] = useState(null);
     useEffect(() => {
         const fetchEnvironmentModel = async () => {
-            try {
+            if (environmentModelId !== undefined) {
+                const result = await getEnvironmentModelById(environmentModelId);
+                if (result.success) {
+                    setEnvironmentModel(result.data);
+                }
+                else {
+                    console.error("Ошибка получения environmentModel из контекста");
+                }
+            }
+
+            /*try {
                 if (environmentModelId !== undefined) {
                     const data = await getEnvironmentModelById(environmentModelId);
                     if (data) {
@@ -20,7 +30,7 @@ export const EnvironmentModelProvider = ({children}) => {
                 }
             } catch (error) {
                 console.error(error);
-            }
+            }*/
         }
 
         fetchEnvironmentModel();

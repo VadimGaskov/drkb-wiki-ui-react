@@ -37,6 +37,20 @@ export const apiRequest = async (url, options = {}, isExpectingData = true) => {
             }
         }
 
+        if (response.status === 204) {
+            if (isExpectingData) {
+                return {
+                    success: true,
+                    data: []
+                }
+            }
+            else {
+                return {
+                    success: true,
+                }
+            }
+        }
+
         if (!response.ok) {
             return {
                 success: false,
@@ -57,6 +71,7 @@ export const apiRequest = async (url, options = {}, isExpectingData = true) => {
             }
         }
     } catch (error) {
+        console.error(error);
         return {
             success: false,
             errorMessage: "Произошла ошибка при выполнении запроса. Пожалуйста, повторите позже"
