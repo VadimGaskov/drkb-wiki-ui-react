@@ -5,11 +5,13 @@ const Journal = () => {
     const [environmentModel, setEnvironmentModel] = useState(null);
     useEffect(() => {
         const getEnvironmentModel = async () => {
-            const data = await getEnvironmentModelById("3c6eba87-c7f4-4a0c-90aa-3aaf353805cb");
-            if (data)
-                setEnvironmentModel(data);
-            else
+            const result = await getEnvironmentModelById("3c6eba87-c7f4-4a0c-90aa-3aaf353805cb");
+            if (result.success) {
+                setEnvironmentModel(result.data);
+            }
+            else {
                 alert("ОШИБКА");
+            }
         }
 
         getEnvironmentModel();

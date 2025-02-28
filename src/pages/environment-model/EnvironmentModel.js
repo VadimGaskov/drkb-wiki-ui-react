@@ -5,7 +5,6 @@ import EnvironmentModelNav from "./components/environment-model-nav/EnvironmentM
 import {useContext, useState} from "react";
 import {EnvironmentModelContext} from "../../context/EnvironmentModelContext";
 const EnvironmentModel = () => {
-    const params = useParams();
     const environmentModel = useContext(EnvironmentModelContext);
     return (
         <>

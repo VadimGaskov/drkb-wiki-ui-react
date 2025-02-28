@@ -12,7 +12,6 @@ const EnvironmentModelNav = () => {
                 <EnvironmentModelNavElement url={`${ROUTINGS.DOCUMENTATION}`} title="График поверки"/>
                 <EnvironmentModelNavElement url={`${ROUTINGS.DOCUMENTATION}`} title="Журнал учета времени"/>
                 <EnvironmentModelNavElement url={`${ROUTINGS.SHORT_INSTRUCTION}`} title="Краткая инструкция по эксплуатации"/>
-
             </ul>
         </div>
     );

@@ -2,11 +2,13 @@ import {useContext, useEffect, useRef, useState} from "react";
 import Quill from "quill";
 import "quill/dist/quill.snow.css"; // Импорт стилей Quill
 import "./QuillTextEditor.css";
-import {API_URLS} from "../../../../../constants/ApiUrls";
 import {getEnvironmentModelById, SaveShortInstruction} from "../../../../../services/drkb-wiki/EnvironmentModelService";
-import {useParams} from "react-router-dom";
 import {Button} from "@mui/material";
 import {EnvironmentModelContext} from "../../../../../context/EnvironmentModelContext";
+import {saveVideo} from "../../../../../services/drkb-wiki/VideoService";
+import ProgressBar from "../../../../../components/ProgressBar/ProgressBar";
+import ErrorSnackbar from "../../../../../components/ErrorSnackbar/ErrorSnackbar";
+import SuccessSnackbar from "../../../../../components/SuccessSnackbar/SuccessSnackbar";
 
 
 ///TODO Добавить удаление видео из сервера при отмене изменений.
@@ -14,9 +16,14 @@ import {EnvironmentModelContext} from "../../../../../context/EnvironmentModelCo
 const QuillTextEditor = () => {
     const editorRef = useRef(null);
     const [value, setValue] = useState("");
-    const {id} = useParams();
+    const [isLoading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
+    const [successMessage, setSuccessMessage] = useState(false);
     const environmentModel = useContext(EnvironmentModelContext);
     useEffect(() => {
+        console.log(environmentModel);
+        if (!environmentModel)
+            return;
         if (editorRef.current) {
             const quill = new Quill(editorRef.current, {
                 theme: "snow",
@@ -47,38 +54,20 @@ const QuillTextEditor = () => {
 
                 fileInput.onchange = async () => {
                     const file = fileInput.files[0];
-                    const environmentModelId = id; // ID из URL-параметра
+                    const environmentModelId = environmentModel.id; // ID из URL-параметра
 
                     if (file && environmentModelId) {
-                        const formData = new FormData();
-                        formData.append("createVideoDto.environmentModelId", environmentModelId);
-                        formData.append("file", file); // Важно: имя должно совпадать с параметром контроллера
-
-                        // Указываем имя как "createVideoDto.environmentModelId" для корректной сериализации
-
-                        try {
-                            const response = await fetch(`${API_URLS.VIDEO}/save-video`, {
-                                method: "POST",
-                                body: formData,
-                                headers: {
-                                    "Accept": "*/*",
-                                    "enctype": "multipart/form-data"
-                                }
-                            });
-
-                            if (response.ok) {
-                                const data = await response.json();
-                                const videoUrl = `${data.url}`;
-                                const range = quill.getSelection(true);
-                                quill.insertEmbed(range.index, "video", videoUrl);
-                            } else {
-                                alert("Ошибка загрузки видео");
-                            }
-                        } catch (error) {
-                            console.error("Ошибка при загрузке видео:", error);
+                        const result = await saveVideo(environmentModelId, file);
+                        if (result.success) {
+                            const videoUrl = `${result.data.url}`;
+                            const range = quill.getSelection(true);
+                            quill.insertEmbed(range.index, "video", videoUrl);
+                        }
+                        else {
+                            setError(result.errorMessage);
                         }
                     } else {
-                        alert("Не выбран файл или отсутствует ID модели.");
+                        setError("Не выбран файл или отсутствует ID модели.");
                     }
                 };
             };
@@ -95,41 +84,61 @@ const QuillTextEditor = () => {
             });
 
             const getCurrentShortInstruction = async (id) => {
-                const response = await getEnvironmentModelById(id);
-                setValue(response.shortInstruction);
-                quill.root.innerHTML = response.shortInstruction;
+                const result = await getEnvironmentModelById(environmentModel.id);
+                //TODO доделать обработку ошибок
+                if (result.success) {
+                    setValue(result.data);
+                    quill.root.innerHTML = result.data.shortInstruction;
+                }
+                else {
+                    setError(result.errorMessage);
+                }
+                setLoading(false);
             }
 
-            getCurrentShortInstruction(id);
+            getCurrentShortInstruction(environmentModel.id);
         }
-    }, []);
+    }, [environmentModel, environmentModel?.id]);
 
 
     const sendContentOnServer = async () => {
-        const response = await SaveShortInstruction(environmentModel.id,value);
-        if (response.ok)
-            alert('УДАЧНО');
-        else
-            alert("НЕУДАЧНО");
+        const result = await SaveShortInstruction(environmentModel.id, value);
+        if (result.success) {
+            console.log("УСПЕХ");
+            setSuccessMessage("Сохранение инструкции прошло успешно!");
+        }
+        else {
+            console.log("ОШИБКА");
+            setError(result.errorMessage);
+        }
     }
 
     return (
         <div className="editor-container">
             <h2 className="editor-title">Редактировать инструкцию</h2>
-            <div ref={editorRef} className="quill-editor" />
-            <Button
-                type="button"
-                onClick={sendContentOnServer}
-                className="editor-save-btn"
-                variant="contained"
-            >Сохранить
-            </Button>
+                <>
+                    <div ref={editorRef} className="quill-editor" />
+                    <Button
+                        type="button"
+                        onClick={sendContentOnServer}
+                        className="editor-save-btn"
+                        variant="contained"
+                    >Сохранить
+                    </Button>
+                </>
+            <ErrorSnackbar
+                errorMessage={error}
+                onClose={() => setError(null)}
+            />
+            <SuccessSnackbar
+                message={successMessage}
+                onClose={()=> setSuccessMessage(null)}
+            />
         </div>
     );
 };
 
 export default QuillTextEditor;
-
 
 /*
 <div className="preview-box">

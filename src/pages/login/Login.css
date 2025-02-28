@@ -77,7 +77,9 @@ label {
 .auth-submit-button:hover {
     background-color: #0056b3;
 }
-
+.login-alert {
+    margin-top: 1rem;
+}
 /* Адаптивность */
 @media (max-width: 600px) {
     .auth-form-section {

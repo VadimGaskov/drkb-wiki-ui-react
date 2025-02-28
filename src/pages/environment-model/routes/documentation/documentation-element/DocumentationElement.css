@@ -29,3 +29,15 @@ li {
     background-color: #2D4EB1;
     border-radius: 0.2rem;
 }
+
+.documentation-edit-icon-wrapper {
+    margin-right: 0.5rem;
+    display: flex;
+    flex-grow: 1;
+    justify-content: end;
+}
+
+.documentation-edit-icon {
+    width: 3rem;
+    height: 3rem;
+}

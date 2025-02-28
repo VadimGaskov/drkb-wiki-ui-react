@@ -2,15 +2,15 @@ import {API_URLS} from "../constants/ApiUrls";
 import axios from "axios";
 import {apiRequest} from "./ApiService";
 export const login = async (login, password) => {
-    const data = await apiRequest(`${API_URLS.AUTH}`, {
+    return await apiRequest(`${API_URLS.AUTH}`, {
         method: 'POST',
         headers: {
             "Content-Type": "application/json",
         },
         body: JSON.stringify({login: login, password: password}),
-    })
+    });
 
-    if (data) {
+    /*if (result.success) {
         if (data.token) {
             localStorage.setItem("user", JSON.stringify(data));
             return data;
@@ -18,7 +18,7 @@ export const login = async (login, password) => {
         else {
             console.error("Сервер не вернул токен");
         }
-    }
+    }*/
 
     /*try {
         // Создаем объект данных для отправки
