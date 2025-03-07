@@ -1,6 +1,8 @@
 import {API_URLS} from "../constants/ApiUrls";
 import axios from "axios";
 import {apiRequest} from "./ApiService";
+import {jwtDecode} from "jwt-decode";
+
 export const login = async (login, password) => {
     return await apiRequest(`${API_URLS.AUTH}`, {
         method: 'POST',
@@ -66,6 +68,15 @@ export const getCurrentUser = () => {
     const user = localStorage.getItem('user');
     if (user) {
         return JSON.parse(user);
+    }
+    return null;
+}
+
+export const getUserRoles = () => {
+    const user = getCurrentUser();
+    if (user) {
+        console.log(user.user?.roles);
+        return user.user?.roles;
     }
     return null;
 }

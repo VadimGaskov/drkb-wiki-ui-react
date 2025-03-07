@@ -9,5 +9,7 @@ export const API_URLS = {
     ENVIRONMENT_TYPE: `${baseUrl}/api/environment-type`,
     MANUFACTURER: `${baseUrl}/api/manufacturer`,
     VIDEO: `${baseUrl}/api/video`,
-    AUTH: `${authBaseUrl}/login`
+
+    AUTH: `${authBaseUrl}/login`,
+    DEPARTMENT: `${authBaseUrl}/api/department`
 };

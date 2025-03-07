@@ -22,5 +22,7 @@ export const ROUTINGS = {
     JOURNALS: "journal",
     SHORT_INSTRUCTION: "short-instruction",
     ENVIRONMENTS: "environments",
-    LIST_COURSES: "/list-courses"
+    LIST_COURSES: "/list-courses",
+    NOT_ALLOWED: "/not-allowed",
+    LIST_DEPARTMENTS: "/list-environment/departments"
 }

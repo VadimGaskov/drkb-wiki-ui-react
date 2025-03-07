@@ -16,16 +16,6 @@ export const AuthProvider = ({ children }) => {
         }
 
         return result;
-
-
-
-
-
-        /*setUser(userData);
-        if (userData)
-            return userData;
-        else
-            return null;*/
     }
 
     const signOut = () => {

@@ -8,8 +8,10 @@ import {CircularProgress, Snackbar} from "@mui/material";
 import ErrorSnackbar from "../../components/ErrorSnackbar/ErrorSnackbar";
 import {EnvironmentModelContext} from "../../context/EnvironmentModelContext";
 import ProgressBar from "../../components/ProgressBar/ProgressBar";
+import {AuthContext} from "../../context/AuthContext";
 
 const ListEnvironmentModel = () => {
+    const {user} = useContext(AuthContext);
     const [environmentModels, setEnvironmentModels] = useState([]);
     const [isLoading, setLoading] = useState(true);
     const [error, setError] = useState(null);
