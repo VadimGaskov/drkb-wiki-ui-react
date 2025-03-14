@@ -6,6 +6,11 @@ export const getAllEnvironmentModels = async () => {
 
 };
 
+export const getAllEnvironmentModelsByDepartment = async (departmentId) => {
+    const params = configureUrlParams({departmentId: departmentId});
+    return await apiRequest(`${API_URLS.ENVIRONMENT_MODEL}/get-all-by-department?${params}`);
+};
+
 export const getEnvironmentModelById = async (id) => {
     const params = configureUrlParams({environmentModelId: id});
     return await apiRequest(`${API_URLS.ENVIRONMENT_MODEL}/get-by-id?${params}`)

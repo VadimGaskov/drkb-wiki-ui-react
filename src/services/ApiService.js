@@ -21,7 +21,7 @@ export const apiRequest = async (url, options = {}, isExpectingData = true) => {
             ...options,
             headers
         });
-
+        console.log(response.status);
         //Для дополнительной логики если надо будет хз
         if (response.status === 401) {
             localStorage.removeItem("jwtToken");

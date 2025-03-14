@@ -23,7 +23,8 @@ const ModalWindow = ({ title , environmentModelId}) => {
 
     const handleCreateDocument = async () => {
         const result = await createDocument({documentName, file, environmentModelId});
-        if (result === true) {
+        console.log(result);
+        if (result.success) {
             window.location.reload();
         }
         else {

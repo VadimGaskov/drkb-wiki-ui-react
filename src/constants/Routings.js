@@ -15,7 +15,7 @@ export const ABSOLUTE_ROUTINGS = {
 export const ROUTINGS = {
     HOME : "/home",
     LOGIN: "/login",
-    LIST_ENVIRONMENT: "/list-environment",
+    LIST_ENVIRONMENT_MODEL: (departmnetId = ":departmentId") => `/list-environment/${departmnetId}`,
     ENVIRONMENT_MODEL: (id = ":id") => `environment-model/${id}`,
     DOCUMENTATION: "documentation",
     MAINTENANCE_LOGBOOK: "maintenance-logbook",
@@ -24,5 +24,5 @@ export const ROUTINGS = {
     ENVIRONMENTS: "environments",
     LIST_COURSES: "/list-courses",
     NOT_ALLOWED: "/not-allowed",
-    LIST_DEPARTMENTS: "/list-environment/departments"
+    LIST_DEPARTMENTS: "/departments"
 }

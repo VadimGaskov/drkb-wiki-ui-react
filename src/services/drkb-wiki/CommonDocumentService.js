@@ -39,7 +39,7 @@ export const createDocument = async ({documentName, file, environmentModelId }) 
     return await apiRequest(`${API_URLS.COMMON_DOCUMENT}/create`, {
         method: "POST",
         body: formData
-    });
+    }, false);
     /*try {
         const formData = new FormData();
         formData.append("file", file);

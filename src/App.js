@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import {BrowserRouter, Navigate, Route, Routes, useNavigate} from "react-router-dom";
+import {BrowserRouter, Navigate, Route, Routes, useLocation, useNavigate, useRoutes} from "react-router-dom";
 import logo from './logo.svg';
 import './App.css';
 
@@ -28,17 +28,12 @@ import { getCurrentUser, getUserRoles } from "./services/AuthService";
 // Constants
 import { ROUTINGS } from "./constants/Routings";
 import ListDepartment from "./pages/ListDepartment/ListDepartment";
+import {hasRight, USER_RIGHTS} from "./constants/UserRights";
 
 function App() {
-    const [user, setUser] = useState(getCurrentUser());
-    const [userRoles, setUserRoles] = useState(getUserRoles());
-    // Коррекция useEffect: обновление состояния не требуется, если оно не меняется извне
-    useEffect(() => {
-        setUser(getCurrentUser()); // Если user обновляется только здесь, это избыточно
-    }, []);
+    const { user } = useContext(AuthContext); // Теперь user из контекста
 
     return (
-        <AuthProvider>
             <BrowserRouter>
                 <div className="App">
                     <Routes>
@@ -46,18 +41,20 @@ function App() {
                         <Route
                             path={ROUTINGS.HOME}
                             element={
-                                <PrivateRoute isAllowed={!!user && userRoles.includes("Создание пользователей")}>
+                                <PrivateRoute isAllowed={!!user}>
                                     <Home />
                                 </PrivateRoute>
                             }
                         />
 
                         {/* Страница логина */}
+
                         <Route path={ROUTINGS.LOGIN} element={<Login />} />
 
-                        {/* Маршруты для списка окружений */}
+                        {/* Маршруты для списка оборудований */}
+
                         <Route
-                            path={ROUTINGS.LIST_ENVIRONMENT}
+                            path={ROUTINGS.LIST_ENVIRONMENT_MODEL()}
                             element={
                                 <PrivateRoute isAllowed={!!user}>
                                     <EnvironmentModelProvider>
@@ -66,7 +63,7 @@ function App() {
                                 </PrivateRoute>
                             }
                         >
-                            <Route path={ROUTINGS.LIST_DEPARTMENTS} element={<ListDepartment/>}/>
+                            {/*<Route path={ROUTINGS.LIST_DEPARTMENTS} element={<ListDepartment/>}/>*/}
                             <Route index element={<ListEnvironmentModel />}/>
                             <Route path={ROUTINGS.ENVIRONMENT_MODEL()} element={<EnvironmentModel />}>
                                 <Route path={ROUTINGS.DOCUMENTATION} element={<Documentation />} />
@@ -91,6 +88,19 @@ function App() {
                             <Route index element={<ListCourses />} />
                         </Route>
 
+                        <Route
+                            path={ROUTINGS.LIST_DEPARTMENTS}
+                            element={
+                            <PrivateRoute isAllowed={!!user && hasRight(USER_RIGHTS.CREATE_USER)}>
+                                <EnvironmentModelProvider>
+                                    <MainWikiLayout />
+                                </EnvironmentModelProvider>
+                            </PrivateRoute>}
+                        >
+                            <Route index element={<ListDepartment/>} />
+                        </Route>
+
+
                         {/* Обработка ошибок */}
                         <Route path="/" element={<Navigate to={`${ROUTINGS.HOME}`}/>} />
                         <Route path={ROUTINGS.NOT_ALLOWED} element={<NotAllowed />} />
@@ -98,7 +108,6 @@ function App() {
                     </Routes>
                 </div>
             </BrowserRouter>
-        </AuthProvider>
     );
 }
 

@@ -8,6 +8,7 @@ import ErrorSnackbar from "../../components/ErrorSnackbar/ErrorSnackbar";
 import {useEffect, useState} from "react";
 import "./ListDepartment.css";
 import {getAllDepartment} from "../../services/drkb-main/DepartmentService";
+import NameDepartment from "./components/NameDepartment/NameDepartment";
 
 const ListDepartment = () => {
     const [departments, setDepartments] = useState([]);
@@ -42,9 +43,9 @@ const ListDepartment = () => {
                     <>
                         <ul>
                             {departments.map(department => (
-                                <NameEnvironmentModel
+                                <NameDepartment
                                     key={department.id}
-                                    id={department.id}
+                                    departmentId={department.id}
                                     title={department.name}
                                 />
                             ))}

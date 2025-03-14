@@ -6,7 +6,7 @@ import SadFoxIcon from "../../assets/img/foxes/list-environment-fox.svg";
 const NotAllowed = () => {
     const navigate = useNavigate();
     const handleClick = () => {
-        navigate(`${ROUTINGS.HOME}`);
+        navigate(`${ROUTINGS.LOGIN}`);
     }
 
     return (
@@ -18,7 +18,7 @@ const NotAllowed = () => {
                 variant="contained"
                 onClick={handleClick}
                 color="secondary"
-            >На главную</Button>
+            >На страницу авторизации</Button>
             <img id="not-found-fox" src={SadFoxIcon}/>
         </div>
 
