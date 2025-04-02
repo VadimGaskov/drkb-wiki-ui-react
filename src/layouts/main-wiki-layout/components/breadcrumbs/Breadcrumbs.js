@@ -7,12 +7,14 @@ import "./Breadcrumbs.css";
 import {apiRequest} from "../../../../services/ApiService";
 import {getAllDepartment, getDepartmentById} from "../../../../services/drkb-main/DepartmentService";
 import ErrorSnackbar from "../../../../components/ErrorSnackbar/ErrorSnackbar";
+import {getCourseById} from "../../../../services/drkb-wiki-education/CourseService";
 const Breadcrumbs = () => {
     const location = useLocation();
     const pathnames = location.pathname.split('/').filter(x => x);
     const params = useParams(); // Получаем параметры из URL
     const environmentModel = useContext(EnvironmentModelContext);
     const [department, setDepartment] = useState(null);
+    const [course, setCourse] = useState(null);
     const [error, setError] = useState(null);
     const nameMap = {
         'list-environment': 'Список оборудования',
@@ -21,7 +23,8 @@ const Breadcrumbs = () => {
         'documentation': 'Документация',
         'short-instruction' : "Краткая инструкция",
         'environments' : "Расположения",
-        'departments': "Список отделений"
+        'departments': "Список отделений",
+        'list-courses' : "Список курсов"
     };
 
     useEffect(() => {
@@ -40,6 +43,21 @@ const Breadcrumbs = () => {
         }
     }, [params.departmentId]);
 
+    useEffect(() => {
+        const fetchCourse = async (courseId) => {
+            const result = await getCourseById(courseId);
+            if (result.success) {
+                setCourse(result.data);
+            }
+            else {
+                setError(result.errorMessage);
+            }
+        }
+        if (params.courseId) {
+            fetchCourse(params.courseId);
+        }
+    }, [params.courseId]);
+
     return (
         <>
             <div className="crumbs">
@@ -53,6 +71,9 @@ const Breadcrumbs = () => {
                     }
                     if(value === params.departmentId && department) {
                         displayName = department.name;
+                    }
+                    if(value === params.courseId && course) {
+                        displayName = course.title;
                     }
                         return (
                             <span key={index} className="breadcrumbs-text">

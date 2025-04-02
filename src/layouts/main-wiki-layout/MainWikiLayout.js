@@ -12,6 +12,19 @@ import SidebarElement from "./components/sidebar/sidebar-element/SidebarElement"
 import Breadcrumbs from "./components/breadcrumbs/Breadcrumbs";
 import {ROUTINGS} from "../../constants/Routings";
 const MainWikiLayout = () => {
+    const path = window.location.pathname;
+    let title;
+
+    if (path.includes(ROUTINGS.LIST_COURSES)) {
+        title = "Раздел 3. Обучение и развитие";
+    } else if (path.includes(ROUTINGS.LIST_DEPARTMENTS)) {
+        title = "Раздел 7. Медицинское оборудование";
+    } else if (path.includes(ROUTINGS.LIST_ENVIRONMENT)) {
+        title = "Раздел 7. Медицинское оборудование";
+    } else {
+        title = "Неизвестный раздел";
+    }
+
     return(
         <>
             <div className="layout-wrapper">
@@ -33,8 +46,7 @@ const MainWikiLayout = () => {
                     </header>
                     <div className="wrapper-name-section">
                         <div className="name-page">
-                            <h1>Раздел 7.</h1>
-                            <h1>Медицинское оборудование.</h1>
+                            <h1>{title}</h1>
                         </div>
                     </div>
                     <div className="environment-content-container">

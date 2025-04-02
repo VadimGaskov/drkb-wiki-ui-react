@@ -9,6 +9,8 @@ import {useEffect, useState} from "react";
 import "./ListDepartment.css";
 import {getAllDepartment} from "../../services/drkb-main/DepartmentService";
 import NameDepartment from "./components/NameDepartment/NameDepartment";
+import NameCourse from "../list-courses/components/NameCourse/NameCourse";
+import CommonTemplate1 from "../../components/CommonTemplate1/CommonTemplate1";
 
 const ListDepartment = () => {
     const [departments, setDepartments] = useState([]);
@@ -32,7 +34,7 @@ const ListDepartment = () => {
     }, [addedNewDepartment]);
 
     return(
-        <>
+        /*<>
             <img src={Fox} alt="" className="list-environment-model-fox"/>
             <h2>Список отделений</h2>
             <div className="list-environment-model">
@@ -55,10 +57,18 @@ const ListDepartment = () => {
                 <ErrorSnackbar
                     errorMessage={error}
                     autoHideDuration={6000}
-                    /*onClose={() => setError(null)} // Optional: clear error after closing*/
+                    /!*onClose={() => setError(null)} // Optional: clear error after closing*!/
                 />
             </div>
-        </>
+        </>*/
+        <CommonTemplate1
+            title="Список отделений"
+            data={departments}
+            isLoading={isLoading}
+            error={error}
+            renderItem={(department) => <NameDepartment key={department.id} title={department.name} departmentId={department.id} />}
+            modal={<AddEnvironmentModelModal title="Добавить отделение" environmentModelId="" />}
+        />
     );
 }
 

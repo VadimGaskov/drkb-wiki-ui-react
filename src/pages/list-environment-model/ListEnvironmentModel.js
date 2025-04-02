@@ -14,6 +14,8 @@ import ProgressBar from "../../components/ProgressBar/ProgressBar";
 import {AuthContext} from "../../context/AuthContext";
 import {useNavigate, useParams} from "react-router-dom";
 import {ROUTINGS} from "../../constants/Routings";
+import NameDepartment from "../ListDepartment/components/NameDepartment/NameDepartment";
+import CommonTemplate1 from "../../components/CommonTemplate1/CommonTemplate1";
 
 const ListEnvironmentModel = () => {
     const { user } = useContext(AuthContext);
@@ -44,7 +46,7 @@ const ListEnvironmentModel = () => {
     }, [addedNewEnvironment, user, departmentId, navigate]);
 
     return(
-        <>
+        /*<>
             <img src={Fox} alt="" className="list-environment-model-fox"/>
             <h2>Список оборудования</h2>
             <div className="list-environment-model">
@@ -57,7 +59,7 @@ const ListEnvironmentModel = () => {
                             title={"Добавить оборудование"}
                             environmentModelId={""}
                             onSuccess={() => setAddedNewEnvironment(true)}
-                            /*onFailure={(errorMessage) => setError(errorMessage)}*/
+                            /!*onFailure={(errorMessage) => setError(errorMessage)}*!/
                         />
                         <ul>
                             {environmentModels.map(environmentModel => (
@@ -73,10 +75,30 @@ const ListEnvironmentModel = () => {
                 <ErrorSnackbar
                     errorMessage={error}
                     autoHideDuration={6000}
-                    /*onClose={() => setError(null)} // Optional: clear error after closing*/
+                    /!*onClose={() => setError(null)} // Optional: clear error after closing*!/
                 />
             </div>
-        </>
+        </>*/
+        <CommonTemplate1
+            title="Список оборудования"
+            data={environmentModels}
+            isLoading={isLoading}
+            error={error}
+            renderItem={(environmentModel => (
+                <NameEnvironmentModel
+                    key={environmentModel.id}
+                    id={environmentModel.id}
+                    title={environmentModel.name}
+                />
+            ))}
+            modal={<AddEnvironmentModelModal
+                title={"Добавить оборудование"}
+                environmentModelId={""}
+                onSuccess={() => setAddedNewEnvironment(true)}
+                /*onFailure={(errorMessage) => setError(errorMessage)}*/
+                />
+            }
+        />
     );
 }
 

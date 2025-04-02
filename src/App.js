@@ -29,6 +29,8 @@ import { getCurrentUser, getUserRoles } from "./services/AuthService";
 import { ROUTINGS } from "./constants/Routings";
 import ListDepartment from "./pages/ListDepartment/ListDepartment";
 import {hasRight, USER_RIGHTS} from "./constants/UserRights";
+import Course from "./pages/Course/Course";
+import {CourseProvider} from "./context/CourseContext";
 
 function App() {
     const { user } = useContext(AuthContext); // Теперь user из контекста
@@ -79,13 +81,16 @@ function App() {
                             path={ROUTINGS.LIST_COURSES}
                             element={
                                 <PrivateRoute isAllowed={!!user}>
-                                    <EnvironmentModelProvider>
+                                    <CourseProvider>
                                         <MainWikiLayout />
-                                    </EnvironmentModelProvider>
+                                    </CourseProvider>
                                 </PrivateRoute>
                             }
                         >
                             <Route index element={<ListCourses />} />
+                            <Route path={ROUTINGS.COURSE()} element={<Course />}>
+
+                            </Route>
                         </Route>
 
                         <Route
@@ -99,7 +104,6 @@ function App() {
                         >
                             <Route index element={<ListDepartment/>} />
                         </Route>
-
 
                         {/* Обработка ошибок */}
                         <Route path="/" element={<Navigate to={`${ROUTINGS.HOME}`}/>} />
