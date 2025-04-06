@@ -7,6 +7,8 @@ import ErrorSnackbar from "../../components/ErrorSnackbar/ErrorSnackbar";
 import ProgressBar from "../../components/ProgressBar/ProgressBar";
 import NameCourse from "./components/NameCourse/NameCourse";
 import CommonTemplate1 from "../../components/CommonTemplate1/CommonTemplate1";
+import {ROUTINGS} from "../../constants/Routings";
+import {Outlet} from "react-router-dom";
 
 const ListCourses = () => {
     const [courses, setCourses] = useState([]);
@@ -53,14 +55,17 @@ const ListCourses = () => {
             />
         </>*/
 
-        <CommonTemplate1
-            title="Список статей"
-            data={courses}
-            isLoading={isLoading}
-            error={error}
-            renderItem={(course) => <NameCourse key={course.id} title={course.title} courseId={course.id} />}
-            modal={<AddEnvironmentModelModal title="Добавить курс" environmentModelId="" />}
-        />
+        <>
+            <CommonTemplate1
+                title="Список курсов"
+                data={courses}
+                isLoading={isLoading}
+                error={error}
+                renderItem={(course) => <NameCourse key={course.id} title={course.title} courseId={course.id} />}
+                modal={<AddEnvironmentModelModal title="Добавить курс" environmentModelId="" />}
+            />
+        </>
+
     );
 }
 

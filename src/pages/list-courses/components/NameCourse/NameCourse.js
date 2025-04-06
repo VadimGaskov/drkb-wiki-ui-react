@@ -7,7 +7,7 @@ const NameCourse = ({courseId,title}) => {
             <div className="symbol-plus">
                 +
             </div>
-            <Link to={`${ROUTINGS.COURSE(courseId)}`} className="name-environment-model">{title}</Link>
+            <Link to={`${ROUTINGS.LIST_ARTICLE(courseId)}`} className="name-environment-model">{title}</Link>
         </li>
     )
 }

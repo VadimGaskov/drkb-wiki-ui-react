@@ -26,5 +26,6 @@ export const ROUTINGS = {
     LIST_COURSES: "/list-courses",
     NOT_ALLOWED: "/not-allowed",
     LIST_DEPARTMENTS: "/departments",
-    COURSE: (courseId = ":courseId") => `/list-courses/${courseId}`
+    LIST_ARTICLE: (courseId = ":courseId") => `/list-courses/${courseId}`,
+    ARTICLE: (articleId = ":articleId") => `article/${articleId}`
 }

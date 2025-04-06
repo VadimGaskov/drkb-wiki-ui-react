@@ -1,4 +1,4 @@
-import {useContext, useEffect, useState} from "react";
+import {use, useContext, useEffect, useState} from "react";
 import {CourseContext} from "../../context/CourseContext";
 import Fox from "../../assets/img/foxes/list-environment-fox-min.svg";
 import AddEnvironmentModelModal
@@ -7,12 +7,18 @@ import ProgressBar from "../../components/ProgressBar/ProgressBar";
 import NameCourse from "../list-courses/components/NameCourse/NameCourse";
 import ErrorSnackbar from "../../components/ErrorSnackbar/ErrorSnackbar";
 import {getAllArticlesByCourse} from "../../services/drkb-wiki-education/ArticleService";
+import CommonTemplate1 from "../../components/CommonTemplate1/CommonTemplate1";
+import {Outlet, useLocation} from "react-router-dom";
+import NameArticle from "./Components/NameArticle";
 
-const Course = () => {
+const ListArticles = () => {
     const course = useContext(CourseContext);
     const [articles, setArticles] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState(null);
+
+    const [isArticlePath, setIsArticlePath] = useState(false);
+    const location = useLocation();
     useEffect(() => {
         if (course === null || course === undefined) return;
 
@@ -31,9 +37,13 @@ const Course = () => {
 
     }, [course]);
 
+    useEffect(() => {
+        setIsArticlePath(location.pathname.includes("article"));
+    }, [location]);
+
     return(
-        <>
-            <img src={Fox} alt="" className="list-environment-model-fox"/>
+       /* <>
+            /!*<img src={Fox} alt="" className="list-environment-model-fox"/>
             <h2>Список статей</h2>
             <div className="list-environment-model">
                 <AddEnvironmentModelModal title={"Добавить статью"} environmentModelId={""}></AddEnvironmentModelModal>
@@ -53,10 +63,28 @@ const Course = () => {
             <ErrorSnackbar
                 errorMessage={error}
                 autoHideDuration={6000}
-                /*onClose={() => setError(null)} // Optional: clear error after closing*/
-            />
+                /!*onClose={() => setError(null)} // Optional: clear error after closing*!/
+            />*
+
+
+        </>*/
+        <>
+            {/*Такой говнокод необходим для того, чтобы сохранить вложенность
+            маршрутов чтобы хоебные крошки корректно путь отображали я рот ебал этот проект и эти требования*/}
+            {isArticlePath ?
+                <Outlet/> :
+                <CommonTemplate1
+                    title="Список статей"
+                    data={articles}
+                    isLoading={isLoading}
+                    error={error}
+                    renderItem={(article) => <NameArticle key={article.id} title={article.title} articleId={article.id}/>}
+                    modal={<AddEnvironmentModelModal title="Добавить статью" environmentModelId=""
+                />}
+            />}
         </>
+
     )
 }
 
-export default Course;
+export default ListArticles;

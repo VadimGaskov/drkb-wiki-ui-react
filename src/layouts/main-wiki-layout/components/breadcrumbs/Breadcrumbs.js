@@ -77,9 +77,9 @@ const Breadcrumbs = () => {
                     }
                         return (
                             <span key={index} className="breadcrumbs-text">
-                        <Link to={path}> {displayName}</Link>
+                                <Link to={path}> {displayName}</Link>
                                 {index < pathnames.length - 1 && displayName !== ' ' && ' – '}
-                    </span>
+                            </span>
                         );
                 })}
             </div>
