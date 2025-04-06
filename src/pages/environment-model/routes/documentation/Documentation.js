@@ -27,7 +27,7 @@ const Documentation = () => {
         };
 
         fetchDocumentsByEnvironmentModel();
-    }, [environmentModel, environmentModel.id, isAdded]); // Используем optional chaining
+    }, [environmentModel, isAdded]); // Используем optional chaining
 
     return (
         <>

@@ -4,8 +4,11 @@ import Fox from "../../assets/img/foxes/environment-fox-svg.svg";
 import EnvironmentModelNav from "./components/environment-model-nav/EnvironmentModelNav";
 import {useContext, useState} from "react";
 import {EnvironmentModelContext} from "../../context/EnvironmentModelContext";
+import {getUserRoles} from "../../services/AuthService";
+import {AuthContext} from "../../context/AuthContext";
 const EnvironmentModel = () => {
     const environmentModel = useContext(EnvironmentModelContext);
+    const {user, } = useContext(AuthContext)
     return (
         <>
             <h2 className="environment-model-title">{environmentModel ?  environmentModel.name : "Загрузка..."}</h2>

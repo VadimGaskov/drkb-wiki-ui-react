@@ -7,11 +7,25 @@ import Hz from "../../assets/icons/layout/hz.svg";
 import SearchPeople from "../../assets/icons/layout/searchpeople.svg";
 import Pc from "../../assets/icons/layout/pc.svg";
 import Med from "../../assets/icons/layout/med.svg";
-import {Link, Outlet} from "react-router-dom";
+import Admin from "../../assets/icons/layout/admin-icon.svg";
+import {Link, Outlet, useLocation} from "react-router-dom";
 import SidebarElement from "./components/sidebar/sidebar-element/SidebarElement";
 import Breadcrumbs from "./components/breadcrumbs/Breadcrumbs";
 import {ROUTINGS} from "../../constants/Routings";
 const MainWikiLayout = () => {
+    const location = useLocation();
+    let title;
+
+    if (location.pathname.includes(ROUTINGS.LIST_COURSES)) {
+        title = "Раздел 3. Обучение и развитие";
+    } else if (location.pathname.includes(ROUTINGS.LIST_DEPARTMENTS)) {
+        title = "Раздел 7. Медицинское оборудование";
+    } else if (location.pathname.includes(ROUTINGS.LIST_ENVIRONMENT)) {
+        title = "Раздел 7. Медицинское оборудование";
+    } else {
+        title = "Неизвестный раздел";
+    }
+
     return(
         <>
             <div className="layout-wrapper">
@@ -25,6 +39,8 @@ const MainWikiLayout = () => {
                         <SidebarElement img={SearchPeople} path={`${ROUTINGS.HOME}`}/>
                         <SidebarElement img={Pc} path={`${ROUTINGS.HOME}`}/>
                         <SidebarElement img={Med} path={"/"}/>
+                        <SidebarElement img={Admin} path={"/"}/>
+
                     </ul>
                 </div>
                 <main id="layout-content">
@@ -33,8 +49,7 @@ const MainWikiLayout = () => {
                     </header>
                     <div className="wrapper-name-section">
                         <div className="name-page">
-                            <h1>Раздел 7.</h1>
-                            <h1>Медицинское оборудование.</h1>
+                            <h1>{title}</h1>
                         </div>
                     </div>
                     <div className="environment-content-container">

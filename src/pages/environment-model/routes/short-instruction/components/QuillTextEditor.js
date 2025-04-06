@@ -59,6 +59,7 @@ const QuillTextEditor = () => {
                     if (file && environmentModelId) {
                         const result = await saveVideo(environmentModelId, file);
                         if (result.success) {
+                            console.log(result.data);
                             const videoUrl = `${result.data.url}`;
                             const range = quill.getSelection(true);
                             quill.insertEmbed(range.index, "video", videoUrl);
