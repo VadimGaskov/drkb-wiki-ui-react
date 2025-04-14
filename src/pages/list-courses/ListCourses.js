@@ -9,9 +9,11 @@ import NameCourse from "./components/NameCourse/NameCourse";
 import CommonTemplate1 from "../../components/CommonTemplate1/CommonTemplate1";
 import {ROUTINGS} from "../../constants/Routings";
 import {Outlet} from "react-router-dom";
+import useFetch from "../../hooks/useFetch";
 
 const ListCourses = () => {
-    const [courses, setCourses] = useState([]);
+    const [courses, isLoading, error] = useFetch(() => getAllCourses())
+    /*const [courses, setCourses] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState(null);
     useEffect(() => {
@@ -27,7 +29,7 @@ const ListCourses = () => {
         }
 
         fetchCourses();
-    }, []);
+    }, []);*/
 
     return(
         /*<>

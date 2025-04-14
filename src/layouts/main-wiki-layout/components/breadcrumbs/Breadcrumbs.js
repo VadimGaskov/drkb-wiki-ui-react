@@ -8,6 +8,7 @@ import {apiRequest} from "../../../../services/ApiService";
 import {getAllDepartment, getDepartmentById} from "../../../../services/drkb-main/DepartmentService";
 import ErrorSnackbar from "../../../../components/ErrorSnackbar/ErrorSnackbar";
 import {getCourseById} from "../../../../services/drkb-wiki-education/CourseService";
+import {ROUTINGS} from "../../../../constants/Routings";
 const Breadcrumbs = () => {
     const location = useLocation();
     const pathnames = location.pathname.split('/').filter(x => x);
@@ -17,14 +18,16 @@ const Breadcrumbs = () => {
     const [course, setCourse] = useState(null);
     const [error, setError] = useState(null);
     const nameMap = {
-        'list-environment': 'Список оборудования',
+        [ROUTINGS.LIST_ENVIRONMENT]: 'Список оборудования',
         'environment-model': ' ',
         'maintenance-logbook': 'Журнал техобслуживания',
         'documentation': 'Документация',
         'short-instruction' : "Краткая инструкция",
         'environments' : "Расположения",
         'departments': "Список отделений",
-        'list-courses' : "Список курсов"
+        'courses' : "Список курсов",
+        'article' : ' ',
+        'test' : ' '
     };
 
     useEffect(() => {

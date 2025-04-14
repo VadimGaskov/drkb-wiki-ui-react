@@ -1,5 +1,5 @@
 //const DRKB_WIKI_BASE_URL = "http://172.16.2.32:5065";
-const DRKB_WIKI_BASE_URL = "https://localhost:7271";
+const DRKB_WIKI_BASE_URL = "http://172.16.2.32:5065";
 const DRKB_AUTH_BASE_URL = "http://localhost:5064";
 const DRKB_WIKI_EDUCATION_BASE_URL = "http://localhost:5264";
 

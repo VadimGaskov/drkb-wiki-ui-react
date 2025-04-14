@@ -10,15 +10,19 @@ import {getAllArticlesByCourse} from "../../services/drkb-wiki-education/Article
 import CommonTemplate1 from "../../components/CommonTemplate1/CommonTemplate1";
 import {Outlet, useLocation} from "react-router-dom";
 import NameArticle from "./Components/NameArticle";
+import useFetch from "../../hooks/useFetch";
 
 const ListArticles = () => {
     const course = useContext(CourseContext);
-    const [articles, setArticles] = useState([]);
+    const [articles, isLoading, error] = useFetch(() => getAllArticlesByCourse(course?.id), [course]);
+    const [isArticlePath, setIsArticlePath] = useState(false);
+    const location = useLocation();
+    /*const [articles, setArticles] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState(null);
 
-    const [isArticlePath, setIsArticlePath] = useState(false);
-    const location = useLocation();
+
+
     useEffect(() => {
         if (course === null || course === undefined) return;
 
@@ -35,7 +39,7 @@ const ListArticles = () => {
 
         fetchArticles();
 
-    }, [course]);
+    }, [course]);*/
 
     useEffect(() => {
         setIsArticlePath(location.pathname.includes("article"));

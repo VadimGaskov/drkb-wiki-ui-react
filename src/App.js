@@ -32,6 +32,7 @@ import {hasRight, USER_RIGHTS} from "./constants/UserRights";
 import ListArticles from "./pages/ListArticles/ListArticles";
 import {CourseProvider} from "./context/CourseContext";
 import Article from "./pages/Article/Article";
+import Test from "./pages/Test/Test";
 
 function App() {
     const { user } = useContext(AuthContext); // Теперь user из контекста
@@ -90,7 +91,9 @@ function App() {
                         >
                             <Route index element={<ListCourses />} />
                             <Route path={ROUTINGS.LIST_ARTICLE()} element={<ListArticles />}>
-                                <Route path={ROUTINGS.ARTICLE()} element={<Article/>} />
+                                <Route path={ROUTINGS.ARTICLE()} element={<Article/>} >
+                                    <Route path={ROUTINGS.TEST()} element={<Test />}/>
+                                </Route>
                             </Route>
                         </Route>
 
