@@ -31,15 +31,15 @@ const MainWikiLayout = () => {
             <div className="layout-wrapper">
                 <div className="sidebar-nav">
                     <ul>
-                        <SidebarElement img={DrkbLogo} path={`${ROUTINGS.HOME}`}/>
-                        <SidebarElement img={HomeLogo} path={`${ROUTINGS.HOME}`}/>
-                        <SidebarElement img={Second} path={`${ROUTINGS.HOME}`}/>
-                        <SidebarElement img={Book} path={`${ROUTINGS.HOME}`}/>
-                        <SidebarElement img={Hz} path={`${ROUTINGS.HOME}`}/>
-                        <SidebarElement img={SearchPeople} path={`${ROUTINGS.HOME}`}/>
-                        <SidebarElement img={Pc} path={`${ROUTINGS.HOME}`}/>
-                        <SidebarElement img={Med} path={"/"}/>
-                        <SidebarElement img={Admin} path={"/"}/>
+                        <SidebarElement img={DrkbLogo} path={ROUTINGS.HOME} label="Главная" />
+                        <SidebarElement img={HomeLogo} path={ROUTINGS.HOME} label="Домой" />
+                        {/*<SidebarElement img={Second} path={ROUTINGS.HOME} label="Корпоративная культура" />*/}
+                        <SidebarElement img={Book} path={`${ROUTINGS.LIST_COURSES}`} label="Образование"/>
+                        {/*<SidebarElement img={Hz} path={`${ROUTINGS.HOME}`} label="Хз чо за вкладка"/>*/}
+                        {/*<SidebarElement img={SearchPeople} path={`${ROUTINGS.HOME}`} label="Поиск чего?"/>
+                        <SidebarElement img={Pc} path={`${ROUTINGS.HOME}`} label="Компудахтер?"/>*/}
+                        <SidebarElement img={Med} path={`${ROUTINGS.LIST_DEPARTMENTS}`} label="Мед оборудование"/>
+                        <SidebarElement img={Admin} path={"/home"} label="Админ панель"/>
 
                     </ul>
                 </div>
@@ -62,12 +62,3 @@ const MainWikiLayout = () => {
 }
 
 export default MainWikiLayout;
-
-{/*<div className="crumbs">
-                        TODO Сделать программно навигацию
-                        <a href="#">Главная - </a>
-                        <a href="#"> Медицинское оборудование - </a>
-                        <a href="#"> Список оборудование - </a>
-                        <a href="#"> Дефибриллятор -  </a>
-                        <a href="#"> Документация </a>
-                        </div>*/}

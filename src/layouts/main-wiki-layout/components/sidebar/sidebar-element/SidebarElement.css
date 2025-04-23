@@ -1,21 +1,36 @@
 .sidebar-element {
     border-bottom: 2px solid #423185;
     height: 4.5rem;
+    white-space: nowrap;
 }
 
 .sidebar-img-wrapper {
     display: flex;
     align-items: center;
-    justify-content: center;
     height: 100%;
+    padding-left: 1.25rem;
+    transition: padding 0.3s;
+    text-decoration: none;
 }
 
-.sidebar-element:hover {
-    transition: 0.3s;
-    background-color: #87A4E2;
+.sidebar-label {
+    color: white;
+    margin-left: 1rem;
+    font-size: 1rem;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.sidebar-nav:hover .sidebar-label {
+    opacity: 1;
 }
 
 .img-nav {
-    width: 4rem;
-    height: 4rem;
+    width: 3.5rem;
+    height: 3.5rem;
+}
+
+.active-element {
+    z-index: 10;
+    background-color: #94b3e8;
 }

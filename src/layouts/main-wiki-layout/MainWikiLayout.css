@@ -8,18 +8,31 @@
     display: flex;
     min-width: 1024px;
     font-family: Arial, Helvetica, sans-serif;
+    position: relative;
 }
 
-.sidebar-nav{
+.sidebar-nav {
     background-color: #2D4EB1;
     height: 100vh;
     width: 6rem;
+    transition: width 0.3s;
+    overflow: hidden;
+    position: fixed; /* <-- добавляем */
+    top: 0;
+    left: 0;
+    z-index: 1000; /* поверх контента */
+}
+
+.sidebar-nav:hover {
+    width: 300px;
+    opacity: 95%;
 }
 
 #layout-content {
     display: flex;
     flex-direction: column;
     padding: 3rem;
+    padding-left: 8rem; /* <-- фиксированный отступ */
     width: 100%;
     flex-grow: 1;
     --min-width: 850px;

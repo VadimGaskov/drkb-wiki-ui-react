@@ -15,8 +15,8 @@ const TopNav = () => {
         <div className="top-nav">
             <NavItem text="Образование" img={EducationIcon} src={`${ROUTINGS.LIST_COURSES}`}/>
             <NavItem text="Документы" img={DocumentsIcon}/>
-            <NavItem text="Тесты" img={TestsIcon}/>
-            <NavItem text="Журналы" img={JournalsIcon}/>
+            {/*<NavItem text="Тесты" img={TestsIcon}/>*/}
+            {/*<NavItem text="Журналы" img={JournalsIcon}/>*/}
             <NavItem text="Оборудование"
                      img={MedEnvironmentIcon}
                      src={userRoles.includes('Создание пользователей')

@@ -8,7 +8,7 @@ export const ABSOLUTE_ROUTINGS = {
         environmentModel: (id = ":id") => `/list-environment/environment-model/${id}`,
         documentation: (id = ":id") => `/list-environment/environment-model/${id}/${documentationPath}`,
         maintenanceLogbook: (id = ":id") => `/list-environment/environment-model/${id}/${maintenanceLogBookPath}`,
-
+        /*test: ()*/
     }
 }
 
