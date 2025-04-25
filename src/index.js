@@ -8,9 +8,11 @@ import {AuthProvider} from "./context/AuthContext";
 const root = ReactDOM.createRoot(document.getElementById('root'));
 //TODO Вернуть strict mod
 root.render(
+    <React.StrictMode>
         <AuthProvider>
             <App />
         </AuthProvider>
+    </React.StrictMode>
 
 /*<React.StrictMode>
     <AuthProvider>

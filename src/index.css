@@ -4,6 +4,14 @@
   box-sizing: border-box;
 }
 
+a {
+  color: inherit; /* Цвет ссылок становится таким же, как цвет родительского элемента */
+  text-decoration: none; /* Убираем подчёркивание */
+  background-color: transparent; /* Фон прозрачный, чтобы не выделяться */
+  cursor: pointer; /* Оставляем указатель, чтобы было понятно, что ссылка кликабельна */
+  color: #2D4EB1;
+}
+
 body {
   /*margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
