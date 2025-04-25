@@ -12,6 +12,7 @@ import {Link, Outlet, useLocation} from "react-router-dom";
 import SidebarElement from "./components/sidebar/sidebar-element/SidebarElement";
 import Breadcrumbs from "./components/breadcrumbs/Breadcrumbs";
 import {ROUTINGS} from "../../constants/Routings";
+import Sidebar from "../../components/Sidebar/Sidebar";
 const MainWikiLayout = () => {
     const location = useLocation();
     let title;
@@ -29,20 +30,7 @@ const MainWikiLayout = () => {
     return(
         <>
             <div className="layout-wrapper">
-                <div className="sidebar-nav">
-                    <ul>
-                        <SidebarElement img={DrkbLogo} path={ROUTINGS.HOME} label="Главная" />
-                        <SidebarElement img={HomeLogo} path={ROUTINGS.HOME} label="Домой" />
-                        {/*<SidebarElement img={Second} path={ROUTINGS.HOME} label="Корпоративная культура" />*/}
-                        <SidebarElement img={Book} path={`${ROUTINGS.LIST_COURSES}`} label="Образование"/>
-                        {/*<SidebarElement img={Hz} path={`${ROUTINGS.HOME}`} label="Хз чо за вкладка"/>*/}
-                        {/*<SidebarElement img={SearchPeople} path={`${ROUTINGS.HOME}`} label="Поиск чего?"/>
-                        <SidebarElement img={Pc} path={`${ROUTINGS.HOME}`} label="Компудахтер?"/>*/}
-                        <SidebarElement img={Med} path={`${ROUTINGS.LIST_DEPARTMENTS}`} label="Мед оборудование"/>
-                        <SidebarElement img={Admin} path={"/home"} label="Админ панель"/>
-
-                    </ul>
-                </div>
+                <Sidebar />
                 <main id="layout-content">
                     <header>
                         <Breadcrumbs />

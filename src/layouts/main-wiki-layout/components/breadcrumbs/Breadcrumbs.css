@@ -17,6 +17,8 @@
 }
 
 .breadcrumbs-link {
+    font-size: 1.4rem;
     text-align: center;
     text-decoration: none;
+    white-space: nowrap;
 }

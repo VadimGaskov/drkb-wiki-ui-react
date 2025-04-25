@@ -1,0 +1,12 @@
+.admin-education-wrapper {
+    border: 1px solid yellow;
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 4rem;
+    row-gap: 2rem;
+    padding: 2rem;
+    justify-content: space-evenly;
+    overflow-y: auto;
+}
+

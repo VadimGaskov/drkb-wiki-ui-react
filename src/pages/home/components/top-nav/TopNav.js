@@ -23,6 +23,7 @@ const TopNav = () => {
                          ? `${ROUTINGS.LIST_DEPARTMENTS}`
                          : `${ROUTINGS.LIST_ENVIRONMENT_MODEL()}`}
             />
+            <NavItem text="Панель администратора" img={DocumentsIcon} src={"/admin"}/>
         </div>
     );
 }

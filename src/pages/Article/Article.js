@@ -42,10 +42,8 @@ const Article = () => {
                         {isLoading && <ProgressBar />}
 
                         {!isLoading && !error && (
-                            <ul>
+                            <ul style={{display: "flex", justifyContent: "end"}}>
                                 {tests.map((test, index)=> <Button variant={"contained"} className="go-to-test-btn" onClick={() => redirectToTest(test.id)}>Пройти тест по теме</Button>)}
-
-                                {/*{tests.map((test, index)=> <NameArticle testId={test.id} text={"Пройти тест по теме " + test.title}/>)}*/}
                             </ul>
                         )}
 

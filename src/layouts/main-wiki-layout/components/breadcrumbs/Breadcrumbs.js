@@ -32,7 +32,8 @@ const Breadcrumbs = () => {
         'courses' : "Список курсов",
         'article' : ' ',
         'test' : ' ',
-        'environment' : ' '
+        'environment' : ' ',
+        'admin' : 'Панель администратора'
     };
 
     useEffect(() => {
@@ -99,38 +100,34 @@ const Breadcrumbs = () => {
     return (
         <>
             <div className="crumbs">
-                {pathnames.map((value, index) => {
-                    const path = `/${pathnames.slice(0, index + 1).join('/')}`;
-                    let displayName = nameMap[value] || value;
+                <span>
+                    {pathnames.map((value, index) => {
+                        const path = `/${pathnames.slice(0, index + 1).join('/')}`;
+                        let displayName = nameMap[value] || value;
 
-                    // Если текущий путь содержит id, используем equipmentName
-                    if (value === params.id && environmentModel) {
-                        displayName = environmentModel.name;
-                    }
-                    if(value === params.departmentId && department) {
-                        displayName = department.name;
-                    }
-                    if(value === params.courseId && course) {
-                        displayName = course.title;
-                    }
-                    if(value === params.articleId && article) {
-                        displayName = article.title;
-                    }
-                    if(value === params.testId && test) {
-                        displayName = test.title;
-                    }
-                        return (
-                            <>
-                                <span key={index} className="breadcrumbs-text">
-                                <Link to={path} className={"breadcrumbs-link"}> {displayName}</Link>
-
-                                </span>
-                                <span key={index} className="breadcrumbs-text">
-                                    {index < pathnames.length - 1 && displayName !== ' ' && ' – '}
-                                </span>
-                            </>
-                        );
-                })}
+                        // Если текущий путь содержит id, используем equipmentName
+                        if (value === params.id && environmentModel) {
+                            displayName = environmentModel.name;
+                        }
+                        if(value === params.departmentId && department) {
+                            displayName = department.name;
+                        }
+                        if(value === params.courseId && course) {
+                            displayName = course.title;
+                        }
+                        if(value === params.articleId && article) {
+                            displayName = article.title;
+                        }
+                        if(value === params.testId && test) {
+                            displayName = test.title;
+                        }
+                            return (
+                                <>
+                                    <Link to={path} className={"breadcrumbs-link"}>{displayName}</Link> {index < pathnames.length - 1 && displayName !== ' ' && ' – '}
+                                </>
+                            );
+                    })}
+                </span>
             </div>
             <ErrorSnackbar
                 errorMessage={error}

@@ -1,0 +1,18 @@
+.admin-nav {
+    height: 3rem;
+    display: flex;
+    gap: 1rem;
+    border: 1px solid black;
+    justify-content: center;
+    margin-top: 0.5rem;
+    align-items: center;
+    font-size: 1.4rem;
+}
+
+.admin-nav-link  {
+    transition: all 0.5s;
+}
+
+.admin-nav-link:hover {
+    color: #003366;
+}

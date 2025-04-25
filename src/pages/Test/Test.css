@@ -8,3 +8,8 @@
 .test-title {
     color: #423185;
 }
+
+.test-button-wrapper {
+    display: flex;
+    justify-content: end;
+}
