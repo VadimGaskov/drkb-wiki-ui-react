@@ -5,6 +5,11 @@ export const getAllDepartment = async () => {
     return await apiRequest(`${API_URLS.DEPARTMENT}/get-all`);
 }
 
+export const getAllDepartmentWithUsers = async () => {
+    return await apiRequest(`${API_URLS.DEPARTMENT}/get-all-with-users`);
+}
+
+
 export const getDepartmentById = async (departmentId) => {
     const params = configureUrlParams({departmentId: departmentId});
     return await apiRequest(`${API_URLS.DEPARTMENT}/get-by-id?${params}`);

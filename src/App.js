@@ -36,6 +36,7 @@ import Test from "./pages/Test/Test";
 import {ArticleContext, ArticleProvider} from "./context/ArticleContext";
 import AdminPanel from "./pages/AdminPanel/AdminPanel";
 import AdminEducation from "./pages/AdminPanel/routes/AdminEducation/AdminEducation";
+import CreateCourse from "./pages/AdminPanel/routes/CreateCourse/CreateCourse";
 
 function App() {
     const { user } = useContext(AuthContext); // Теперь user из контекста
@@ -115,7 +116,8 @@ function App() {
                         {/* Обработка ошибок */}
                         <Route path="/" element={<Navigate to={`${ROUTINGS.HOME}`}/>} />
                         <Route path="/admin" element={<AdminPanel />} >
-                            <Route path="/admin/education" element={<AdminEducation/>}/>
+                            <Route path="/admin/education" element={<AdminEducation />}/>
+                            <Route path="/admin/create-course" element={<CreateCourse />}/>
                         </Route>
                         <Route path={ROUTINGS.NOT_ALLOWED} element={<NotAllowed />} />
                         <Route path="*" element={<NotFound />} />

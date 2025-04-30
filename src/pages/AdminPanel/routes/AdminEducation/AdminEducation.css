@@ -10,3 +10,10 @@
     overflow-y: auto;
 }
 
+.admin-education-wrapper-top {
+    display: flex;
+    padding: 1rem 2rem;
+    justify-content: start;
+    align-items: center;
+    height: 4rem;
+}
