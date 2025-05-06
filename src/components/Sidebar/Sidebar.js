@@ -1,5 +1,5 @@
 import "./Sidebar.css";
-import SidebarElement from "../../layouts/main-wiki-layout/components/sidebar/sidebar-element/SidebarElement";
+import SidebarElement from "../../layouts/MainWikiLayout/_components/Sidebar/sidebar-element/SidebarElement";
 import DrkbLogo from "../../assets/icons/layout/drkb-logo.png";
 import {ROUTINGS} from "../../constants/Routings";
 import HomeLogo from "../../assets/icons/layout/home.svg";

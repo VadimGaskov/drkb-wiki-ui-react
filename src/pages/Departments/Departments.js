@@ -1,0 +1,75 @@
+import {getAllEnvironmentModels} from "../../services/drkb-wiki/EnvironmentModelService";
+import Fox from "../../assets/img/foxes/list-environment-fox-min.svg";
+import ProgressBar from "../../components/ProgressBar/ProgressBar";
+import AddEnvironmentModelModal
+    from "../EnvironmentModels/_components/add-environment-model-modal/AddEnvironmentModelModal";
+import NameEnvironmentModel from "../EnvironmentModels/_components/name-environment-model/NameEnvironmentModel";
+import ErrorSnackbar from "../../components/ErrorSnackbar/ErrorSnackbar";
+import {useEffect, useState} from "react";
+import "./Departments.css";
+import {getAllDepartment} from "../../services/drkb-main/DepartmentService";
+import NameDepartment from "./_components/NameDepartment/NameDepartment";
+import NameCourse from "../Courses/_components/NameCourse/NameCourse";
+import CommonTemplate1 from "../../components/CommonTemplate1/CommonTemplate1";
+
+const Departments = () => {
+    const [departments, setDepartments] = useState([]);
+    const [isLoading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
+    const [addedNewDepartment, setAddedNewDepartment] = useState(false);
+    useEffect(() => {
+        const fetchDepartments = async () => {
+            const result = await getAllDepartment();
+            if (result.success) {
+                setDepartments(result.data);
+            } else {
+                setError(result.errorMessage);
+                console.error(result.errorMessage);
+            }
+            setLoading(false);
+            setAddedNewDepartment(false);
+        }
+
+        fetchDepartments();
+    }, [addedNewDepartment]);
+
+    return(
+        /*<>
+            <img src={Fox} alt="" className="list-environment-model-fox"/>
+            <h2>Список отделений</h2>
+            <div className="list-environment-model">
+
+                {isLoading && <ProgressBar/>}
+
+                {!isLoading && !error && (
+                    <>
+                        <ul>
+                            {departments.map(department => (
+                                <NameDepartment
+                                    key={department.id}
+                                    departmentId={department.id}
+                                    title={department.name}
+                                />
+                            ))}
+                        </ul>
+                    </>
+                )}
+                <ErrorSnackbar
+                    errorMessage={error}
+                    autoHideDuration={6000}
+                    /!*onClose={() => setError(null)} // Optional: clear error after closing*!/
+                />
+            </div>
+        </>*/
+        <CommonTemplate1
+            title="Список отделений"
+            data={departments}
+            isLoading={isLoading}
+            error={error}
+            renderItem={(department) => <NameDepartment key={department.id} title={department.name} departmentId={department.id} />}
+            modal={<AddEnvironmentModelModal title="Добавить отделение" environmentModelId="" />}
+        />
+    );
+}
+
+export default Departments;
