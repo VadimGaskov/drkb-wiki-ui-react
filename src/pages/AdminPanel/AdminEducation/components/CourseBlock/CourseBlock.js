@@ -1,5 +1,6 @@
 import "./CourseBlock.css";
-const CourseBlock = ({title, description}) => {
+import {Button} from "@mui/material";
+const CourseBlock = ({title, description, courseId}) => {
     return(
         <div className={"course-block"}>
             <div className={"course-block-title"}>
@@ -7,6 +8,9 @@ const CourseBlock = ({title, description}) => {
             </div>
             <div className={"course-block-content"}>
                 <span>{description}</span>
+            </div>
+            <div className={"course-block-footer"}>
+                <Button variant={"contained"} sx={{height: "1.5rem"}}>Подробнее</Button>
             </div>
         </div>
     )

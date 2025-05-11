@@ -31,8 +31,8 @@
 #layout-content {
     display: flex;
     flex-direction: column;
-    padding: 3rem;
-    padding-left: 8rem; /* <-- фиксированный отступ */
+    padding: 2rem 1rem 1rem 8rem;
+    /*padding-left: 8rem; !* <-- фиксированный отступ *!*/
     width: 100%;
     flex-grow: 1;
     --min-width: 850px;

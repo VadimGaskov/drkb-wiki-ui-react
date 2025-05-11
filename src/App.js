@@ -37,6 +37,9 @@ import AdminPanel from "./pages/AdminPanel/AdminPanel";
 import AdminEducation from "./pages/AdminPanel/AdminEducation/AdminEducation";
 import AdminCourse from "./pages/AdminPanel/AdminEducation/AdminCourse/AdminCourse";
 import Users from "./pages/AdminPanel/Users/Users";
+import AdminCourses from "./pages/AdminPanel/AdminEducation/AdminCourses/AdminCourses";
+import AdminArticles from "./pages/AdminPanel/AdminEducation/AdminArticles/AdminArticles";
+import AdminTests from "./pages/AdminPanel/AdminEducation/AdminTests/AdminTests";
 
 function App() {
     const { user } = useContext(AuthContext); // Теперь user из контекста
@@ -118,7 +121,15 @@ function App() {
 
                         <Route path="/admin" element={<AdminPanel />} >
                             <Route path="education" element={<AdminEducation />}>
-                                <Route path={"course-info/:adminCourseId"} element={<AdminCourse/>} />
+                                <Route path={"courses"} element={<AdminCourses/>}>
+                                    <Route path={":adminCourseId"} element={<AdminCourse />} />
+                                </Route>
+                                <Route path={"articles"} element={<AdminArticles/>}>
+
+                                </Route>
+                                <Route path={"tests"} element={<AdminTests/>}>
+
+                                </Route>
                             </Route>
                             <Route path={"users"} element={<Users/>}>
 

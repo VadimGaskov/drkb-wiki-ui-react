@@ -1,0 +1,8 @@
+.inner-nav-menu {
+    display: flex;
+    height: 3rem;
+    gap: 1rem;
+    border: 1px solid orange;
+    justify-content: center;
+    align-items: center;
+}

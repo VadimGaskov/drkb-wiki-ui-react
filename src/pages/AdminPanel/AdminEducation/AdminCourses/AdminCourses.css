@@ -1,0 +1,19 @@
+.admin-education-wrapper {
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 4rem;
+    row-gap: 2rem;
+    padding: 1rem;
+    justify-content: space-evenly;
+    overflow-y: auto;
+}
+
+.admin-education-wrapper-top {
+    display: flex;
+    padding: 1rem 2rem;
+    justify-content: start;
+    align-items: center;
+    height: 3rem;
+    border-bottom: 1px solid black;
+}

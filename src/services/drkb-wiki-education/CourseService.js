@@ -10,6 +10,12 @@ export const getCourseById = async (courseId) => {
     return await apiRequest(`${API_URLS.COURSE}/get-by-id-course?${params}`);
 }
 
+export const getFullCourseInfo = async (courseId) => {
+    const params = configureUrlParams({idCourse: courseId});
+    return await apiRequest(`${API_URLS.COURSE}/get-full-course-info?${params}`);
+}
+
+
 export const createCourse = async (course) => {
     console.log(`${API_URLS.COURSE}/create-course-with-user-and-articles`);
     return await apiRequest(`${API_URLS.COURSE}/create-course-with-user-and-articles`, {
