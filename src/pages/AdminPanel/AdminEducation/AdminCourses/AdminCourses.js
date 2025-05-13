@@ -39,26 +39,11 @@ const AdminCourses = () => {
                         {courses.map((course) => {
                             return (
                                 <>
-                                    <CourseBlock title={course.title} description={"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis, voluptatum."} courseId={course.id}/>
-                                    <CourseBlock title={course.title} description={course.id}/>
-                                    <CourseBlock title={course.title} description={course.id}/>
-                                    <CourseBlock title={course.title} description={course.id}/>
-                                    <CourseBlock title={course.title} description={course.id}/>
-                                    <CourseBlock title={course.title} description={course.id}/>
-                                    <CourseBlock title={course.title} description={course.id}/>
-                                    <CourseBlock title={course.title} description={course.id}/>
-                                    <CourseBlock title={course.title} description={course.id}/>
-                                    <CourseBlock title={course.title} description={course.id}/>
-                                    <CourseBlock title={course.title} description={course.id}/>
-                                    <CourseBlock title={course.title} description={course.id}/>
-                                    <CourseBlock title={course.title} description={course.id}/>
-                                    <CourseBlock title={course.title} description={course.id}/>
-                                    <CourseBlock title={course.title} description={course.id}/>
-                                    <CourseBlock title={course.title} description={course.id}/>
-                                    <CourseBlock title={course.title} description={course.id}/>
-                                    <CourseBlock title={course.title} description={course.id}/>
-                                    <CourseBlock title={course.title} description={course.id}/>
-                                    <CourseBlock title={course.title} description={course.id}/>
+                                    <CourseBlock
+                                        title={course.title}
+                                        description={"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis, voluptatum."}
+                                        courseId={course.id}
+                                    />
                                 </>
                             );
                         })}

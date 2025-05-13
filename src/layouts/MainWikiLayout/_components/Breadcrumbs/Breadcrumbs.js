@@ -33,7 +33,9 @@ const Breadcrumbs = () => {
         'article' : ' ',
         'test' : ' ',
         'environment' : ' ',
-        'admin' : 'Панель администратора'
+        'admin' : 'Панель администратора',
+        'education' : "Образование",
+        'articles': "Статьи"
     };
 
     useEffect(() => {

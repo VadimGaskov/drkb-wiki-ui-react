@@ -1,3 +1,66 @@
 .admin-course-wrapper {
-    padding: 2rem;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto; /* чтобы по центру, но всё ещё full width */
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    height: auto;
+}
+
+.course-info {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.course-info .form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.course-info .form-group span {
+    font-weight: bold;
+    margin-bottom: 6px;
+}
+
+.course-info input {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 16px;
+    width: 100%;
+}
+
+.users-section,
+.articles-section {
+    padding: 16px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+}
+
+.users-section h3,
+.articles-section h3 {
+    margin-bottom: 12px;
+}
+
+.button-wrapper {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.button-wrapper button {
+    padding: 10px 20px;
+    background-color: #1976d2;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.button-wrapper button:hover {
+    background-color: #125a9c;
 }

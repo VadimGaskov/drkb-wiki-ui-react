@@ -19,9 +19,7 @@ const TopNav = () => {
             {/*<NavItem text="Журналы" img={JournalsIcon}/>*/}
             <NavItem text="Оборудование"
                      img={MedEnvironmentIcon}
-                     src={userRoles.includes('Создание пользователей')
-                         ? `${ROUTINGS.LIST_DEPARTMENTS}`
-                         : `${ROUTINGS.LIST_ENVIRONMENT_MODEL()}`}
+                     src={`${ROUTINGS.LIST_ENVIRONMENT_MODEL()}`}
             />
             <NavItem text="Панель администратора" img={DocumentsIcon} src={"/admin"}/>
         </div>

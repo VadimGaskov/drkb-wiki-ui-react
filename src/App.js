@@ -104,7 +104,7 @@ function App() {
                             </Route>
                         </Route>
 
-                        <Route
+                        {/*<Route
                             path={ROUTINGS.LIST_DEPARTMENTS}
                             element={
                             <PrivateRoute isAllowed={!!user && hasRight(USER_RIGHTS.CREATE_USER)}>
@@ -114,7 +114,7 @@ function App() {
                             </PrivateRoute>}
                         >
                             <Route index element={<Departments/>} />
-                        </Route>
+                        </Route>*/}
 
                         {/* Обработка ошибок */}
                         <Route path="/" element={<Navigate to={`${ROUTINGS.HOME}`}/>} />
@@ -125,7 +125,7 @@ function App() {
                                     <Route path={":adminCourseId"} element={<AdminCourse />} />
                                 </Route>
                                 <Route path={"articles"} element={<AdminArticles/>}>
-
+                                    <Route path={":adminArticleId"} element={<AdminArticles/>}/>
                                 </Route>
                                 <Route path={"tests"} element={<AdminTests/>}>
 
