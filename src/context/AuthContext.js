@@ -1,18 +1,28 @@
-import {createContext, useState} from "react";
-import {getCurrentUser, login, logout} from "../services/AuthService";
+import {createContext, useEffect, useState} from "react";
+import {login, logout} from "../services/AuthService";
 import {jwtDecode} from "jwt-decode";
+import {clearToken, getToken, getUserFromToken} from "../utils/authHelper";
 
 export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
-    const [user, setUser] = useState(getCurrentUser())
+    const [user, setUser] = useState(getUserFromToken())
+
+    useEffect(() => {
+        const token = getToken();
+        if(token) {
+            setUser(getUserFromToken())
+        }
+    }, []);
+
     const signIn = async (userLogin, password) => {
         const result = await login(userLogin, password);
-        if (result.success) {
-            if (result.data.token) {
-                localStorage.setItem("user", JSON.stringify(result.data));
-                setUser(result.data);
-            }
+        if (result.success && result.data.token) {
+            localStorage.setItem("token", JSON.stringify(result.data.token));
+            //TODO УБРАТЬ
+            localStorage.setItem("decodedToken", JSON.stringify(jwtDecode(result.data.token)));
+            setUser(getUserFromToken());
+
         }
 
         return result;
@@ -20,6 +30,7 @@ export const AuthProvider = ({ children }) => {
 
     const signOut = () => {
         logout();
+        clearToken();
         setUser(null);
     }
 

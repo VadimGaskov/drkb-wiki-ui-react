@@ -28,8 +28,6 @@ const Login = () => {
         }
     }
 
-    if (user)
-        console.log(jwtDecode(user.token));
 
     return(
         <div className="logo-container">

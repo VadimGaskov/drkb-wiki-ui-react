@@ -68,6 +68,8 @@
     font-size: 1rem;
     color: #111827;
     padding: 10px;
+    height: 100%;
+    overflow-y: auto;
 }
 .ql-editor > p > img {
     width: 20rem;
@@ -81,9 +83,18 @@
 
 /* Кастомизация тулбара */
 .ql-toolbar {
-    border-radius: 8px 8px 0 0;
+    position: sticky;
+    top: 0;
+    z-index: 10000;
     background-color: #f1f5f9;
     border: 1px solid #d1d5db;
+    border-radius: 0 0 0.7rem 0.7rem;
+}
+
+.ql-toolbar.ql-snow {
+    font-size: 2rem;
+    display: flex;
+    justify-content: center;
 }
 
 .ql-toolbar button:hover {

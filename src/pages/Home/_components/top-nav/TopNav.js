@@ -7,9 +7,12 @@ import MedEnvironmentIcon from "../../../../assets/icons/layout/med-env-blue.svg
 import NavItem from "./nav-item/NavItem";
 import {ROUTINGS} from "../../../../constants/Routings";
 import {useContext} from "react";
-import {getUserRoles} from "../../../../services/AuthService";
+import {AuthContext} from "../../../../context/AuthContext";
+import {getUserRoles} from "../../../../utils/authHelper";
+import {USER_RIGHTS} from "../../../../constants/userRoles";
 
 const TopNav = () => {
+    const {user} = useContext(AuthContext);
     const userRoles = getUserRoles();
     return(
         <div className="top-nav">
@@ -19,7 +22,7 @@ const TopNav = () => {
             {/*<NavItem text="Журналы" img={JournalsIcon}/>*/}
             <NavItem text="Оборудование"
                      img={MedEnvironmentIcon}
-                     src={`${ROUTINGS.LIST_ENVIRONMENT_MODEL()}`}
+                     src={ userRoles.includes(USER_RIGHTS.CREATE_USER) ? `${ROUTINGS.LIST_DEPARTMENTS}` : `${ROUTINGS.LIST_ENVIRONMENT_MODEL()}`}
             />
             <NavItem text="Панель администратора" img={DocumentsIcon} src={"/admin"}/>
         </div>

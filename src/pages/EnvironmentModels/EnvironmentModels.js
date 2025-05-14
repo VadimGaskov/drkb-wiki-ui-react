@@ -16,6 +16,8 @@ import {useNavigate, useParams} from "react-router-dom";
 import {ROUTINGS} from "../../constants/Routings";
 import NameDepartment from "../Departments/_components/NameDepartment/NameDepartment";
 import CommonTemplate1 from "../../components/CommonTemplate1/CommonTemplate1";
+import {getUserDepartments} from "../../utils/authHelper";
+import {Outlet, useLocation} from "react-router-dom";
 
 const EnvironmentModels = () => {
     const { user } = useContext(AuthContext);
@@ -25,12 +27,18 @@ const EnvironmentModels = () => {
     const [addedNewEnvironment, setAddedNewEnvironment] = useState(false);
     const {departmentId} = useParams();
     const navigate = useNavigate();
+    const userDepartments = getUserDepartments();
+
+    const [isEnvironmentModelPath, setIsEnvModelPath] = useState(false);
+
+    const {id} = useParams();
+
     useEffect(() => {
         const fetchEnvironmentModels = async () => {
             if (departmentId === ':departmentId') {
-                navigate(`${ROUTINGS.LIST_ENVIRONMENT_MODEL(user.user.departments[0].id)}`);
+                navigate(`${ROUTINGS.LIST_ENVIRONMENT_MODEL(userDepartments[1])}`);
             }
-            const result = await getAllEnvironmentModelsByDepartment(departmentId === null ? user.user.departments[0].id : departmentId);
+            const result = await getAllEnvironmentModelsByDepartment(departmentId === null ? userDepartments[1] : departmentId);
             if (result.success) {
                 setEnvironmentModels(result.data);
             }
@@ -45,61 +53,39 @@ const EnvironmentModels = () => {
         fetchEnvironmentModels();
     }, [addedNewEnvironment, user, departmentId, navigate]);
 
+    useEffect(() => {
+        console.log(userDepartments)
+    }, [userDepartments]);
+
+    useEffect(() => {
+        if (id) {
+            setIsEnvModelPath(true);
+        }
+        else {
+            setIsEnvModelPath(false);
+        }
+    }, [id]);
+
     return(
-        /*<>
-            <img src={Fox} alt="" className="list-environment-model-fox"/>
-            <h2>Список оборудования</h2>
-            <div className="list-environment-model">
-
-                {isLoading && <ProgressBar/>}
-
-                {!isLoading && !error && (
-                    <>
-                        <AddEnvironmentModelModal
-                            title={"Добавить оборудование"}
-                            environmentModelId={""}
-                            onSuccess={() => setAddedNewEnvironment(true)}
-                            /!*onFailure={(errorMessage) => setError(errorMessage)}*!/
+        <>
+            {isEnvironmentModelPath ? (<Outlet/>) : (
+                <CommonTemplate1
+                    title="Список оборудования"
+                    data={environmentModels}
+                    isLoading={isLoading}
+                    error={error}
+                    renderItem={(environmentModel => (
+                        <NameEnvironmentModel
+                            key={environmentModel.id}
+                            id={environmentModel.id}
+                            title={environmentModel.name}
                         />
-                        <ul>
-                            {environmentModels.map(environmentModel => (
-                                <NameEnvironmentModel
-                                    key={environmentModel.id}
-                                    id={environmentModel.id}
-                                    title={environmentModel.name}
-                                />
-                            ))}
-                        </ul>
-                    </>
-                )}
-                <ErrorSnackbar
-                    errorMessage={error}
-                    autoHideDuration={6000}
-                    /!*onClose={() => setError(null)} // Optional: clear error after closing*!/
+                    ))}
                 />
-            </div>
-        </>*/
-        <CommonTemplate1
-            title="Список оборудования"
-            data={environmentModels}
-            isLoading={isLoading}
-            error={error}
-            renderItem={(environmentModel => (
-                <NameEnvironmentModel
-                    key={environmentModel.id}
-                    id={environmentModel.id}
-                    title={environmentModel.name}
-                />
-            ))}
-            modal={<AddEnvironmentModelModal
-                title={"Добавить оборудование"}
-                environmentModelId={""}
-                onSuccess={() => setAddedNewEnvironment(true)}
-                /*onFailure={(errorMessage) => setError(errorMessage)}*/
-                />
-            }
-        />
-    );
+            )}
+        </>
+
+    )
 }
 
 export default EnvironmentModels;

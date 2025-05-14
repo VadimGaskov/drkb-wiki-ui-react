@@ -27,7 +27,7 @@ import { getCurrentUser, getUserRoles } from "./services/AuthService";
 // Constants
 import { ROUTINGS } from "./constants/Routings";
 import Departments from "./pages/Departments/Departments";
-import {hasRight, USER_RIGHTS} from "./constants/UserRights";
+import {USER_RIGHTS} from "./constants/userRoles";
 import Articles from "./pages/Courses/Articles/Articles";
 import {CourseProvider} from "./context/CourseContext";
 import Article from "./pages/Courses/Articles/Article/Article";
@@ -40,6 +40,8 @@ import Users from "./pages/AdminPanel/Users/Users";
 import AdminCourses from "./pages/AdminPanel/AdminEducation/AdminCourses/AdminCourses";
 import AdminArticles from "./pages/AdminPanel/AdminEducation/AdminArticles/AdminArticles";
 import AdminTests from "./pages/AdminPanel/AdminEducation/AdminTests/AdminTests";
+import {hasRight} from "./utils/authHelper";
+import ShortInstructionForAll from "./pages/ShortInstructionForAll/ShortInstructionForAll";
 
 function App() {
     const { user } = useContext(AuthContext); // Теперь user из контекста
@@ -60,28 +62,39 @@ function App() {
 
                         {/* Страница логина */}
 
-                        <Route path={ROUTINGS.LOGIN} element={<Login />} />
+
 
                         {/* Маршруты для списка оборудований */}
 
-                        <Route
-                            path={ROUTINGS.LIST_ENVIRONMENT_MODEL()}
+                        <Route path={ROUTINGS.LIST_DEPARTMENTS}
                             element={
                                 <PrivateRoute isAllowed={!!user}>
                                     <EnvironmentModelProvider>
-                                        <MainWikiLayout />
+                                        <MainWikiLayout>
+                                            <Departments/>
+                                        </MainWikiLayout>
                                     </EnvironmentModelProvider>
                                 </PrivateRoute>
                             }
                         >
-                            {/*<Route path={ROUTINGS.LIST_DEPARTMENTS} element={<ListDepartment/>}/>*/}
-                            <Route index element={<EnvironmentModels />}/>
-                            <Route path={ROUTINGS.ENVIRONMENT_MODEL()} element={<EnvironmentModel />}>
-                                <Route path={ROUTINGS.DOCUMENTATION} element={<Documentation />} />
-                                <Route path={ROUTINGS.MAINTENANCE_LOGBOOK} element={<MaintenanceLogbook />} />
-                                <Route path={ROUTINGS.JOURNALS} element={<Journal />} />
-                                <Route path={ROUTINGS.SHORT_INSTRUCTION} element={<ShortInstruction />} />
+                            <Route index element={<Departments/>} />
+                            <Route path={ROUTINGS.LIST_ENVIRONMENT_MODEL()}
+                                element={
+                                    <EnvironmentModelProvider>
+                                        <EnvironmentModels />
+                                    </EnvironmentModelProvider>
+                                }
+                            >
+                                <Route path={ROUTINGS.ENVIRONMENT_MODEL()}
+                                       element={<EnvironmentModel />}
+                                >
+                                    <Route path={ROUTINGS.DOCUMENTATION} element={<Documentation />} />
+                                    <Route path={ROUTINGS.MAINTENANCE_LOGBOOK} element={<MaintenanceLogbook />} />
+                                    <Route path={ROUTINGS.JOURNALS} element={<Journal />} />
+                                    <Route path={ROUTINGS.SHORT_INSTRUCTION} element={<ShortInstruction />} />
+                                </Route>
                             </Route>
+
                         </Route>
 
                         {/* Маршруты для списка курсов */}
@@ -104,21 +117,10 @@ function App() {
                             </Route>
                         </Route>
 
-                        {/*<Route
-                            path={ROUTINGS.LIST_DEPARTMENTS}
-                            element={
-                            <PrivateRoute isAllowed={!!user && hasRight(USER_RIGHTS.CREATE_USER)}>
-                                <EnvironmentModelProvider>
-                                    <MainWikiLayout />
-                                </EnvironmentModelProvider>
-                            </PrivateRoute>}
-                        >
-                            <Route index element={<Departments/>} />
-                        </Route>*/}
-
                         {/* Обработка ошибок */}
                         <Route path="/" element={<Navigate to={`${ROUTINGS.HOME}`}/>} />
 
+                        {/*Админ панель*/}
                         <Route path="/admin" element={<AdminPanel />} >
                             <Route path="education" element={<AdminEducation />}>
                                 <Route path={"courses"} element={<AdminCourses/>}>
@@ -137,6 +139,14 @@ function App() {
                         </Route>
 
                         <Route path={ROUTINGS.NOT_ALLOWED} element={<NotAllowed />} />
+
+                        <Route path={ROUTINGS.LOGIN} element={<Login />} />
+
+                        <Route path={ROUTINGS.SHORT_INSTRUCTION_SECOND}
+                               element={
+                                   <ShortInstructionForAll/>
+                                }
+                        />
 
                         <Route path="*" element={<NotFound />} />
                     </Routes>

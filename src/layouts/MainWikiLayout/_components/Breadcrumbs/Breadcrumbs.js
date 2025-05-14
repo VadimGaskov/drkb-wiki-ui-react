@@ -27,7 +27,7 @@ const Breadcrumbs = () => {
         'maintenance-logbook': 'Журнал техобслуживания',
         'documentation': 'Документация',
         'short-instruction' : "Краткая инструкция",
-        'environments' : "Расположения",
+        'environments' : ' ',
         'departments': "Список отделений",
         'courses' : "Список курсов",
         'article' : ' ',

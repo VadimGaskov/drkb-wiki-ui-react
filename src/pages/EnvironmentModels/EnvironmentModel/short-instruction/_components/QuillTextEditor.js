@@ -101,7 +101,6 @@ const QuillTextEditor = () => {
         }
     }, [environmentModel, environmentModel?.id]);
 
-
     const sendContentOnServer = async () => {
         const result = await SaveShortInstruction(environmentModel.id, value);
         if (result.success) {
@@ -115,18 +114,17 @@ const QuillTextEditor = () => {
     }
 
     return (
-        <div className="editor-container">
-            <h2 className="editor-title">Редактировать инструкцию</h2>
-                <>
-                    <div ref={editorRef} className="quill-editor" />
-                    <Button
-                        type="button"
-                        onClick={sendContentOnServer}
-                        className="editor-save-btn"
-                        variant="contained"
-                    >Сохранить
-                    </Button>
-                </>
+        <>
+            <>
+                <div ref={editorRef} className="quill-editor" />
+                <Button
+                    type="button"
+                    onClick={sendContentOnServer}
+                    className="editor-save-btn"
+                    variant="contained"
+                >Сохранить
+                </Button>
+            </>
             <ErrorSnackbar
                 errorMessage={error}
                 onClose={() => setError(null)}
@@ -135,18 +133,9 @@ const QuillTextEditor = () => {
                 message={successMessage}
                 onClose={()=> setSuccessMessage(null)}
             />
-        </div>
+        </>
+
     );
 };
 
 export default QuillTextEditor;
-
-/*
-<div className="preview-box">
-    <h3 className="preview-title">Предпросмотр:</h3>
-    <div
-        className="preview-content"
-        dangerouslySetInnerHTML={{ __html: value }}
-    />
-    <button type="button" onClick={sendContentOnServer}>Отправить</button>
-</div>*/
