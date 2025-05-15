@@ -2,13 +2,19 @@ import CommonModalWindow from "../../../../../../components/ModalWindow/CommonMo
 import QuillTextEditor from "../QuillTextEditor";
 import {Button, DialogActions, DialogContent, DialogTitle} from "@mui/material";
 import {useState} from "react";
+import "./ShowInstructionModal.css";
 
 const ShowInstructionModal = ({open, onClose}) => {
     const [scroll, setScroll] = useState('paper');
     const [value, setValue] = useState(null);
     return(
         <CommonModalWindow isOpen={open} onClose={onClose} maxWidth={"false"}>
-            <DialogTitle id="scroll-dialog-title">Subscribe</DialogTitle>
+            <DialogTitle id="scroll-dialog-title">
+                <div className={"instruction-modal-title-wrapper"}>
+                    <span className={"instruction-modal-title"}>Редактирование инструкции</span>
+                    <Button variant={"outlined"} className={"close-modal-btn"} color={"info"} onClick={onClose}>X</Button>
+                </div>
+            </DialogTitle>
             <DialogContent dividers={scroll === 'paper'} sx={{padding: "0px"}}>
                 <QuillTextEditor />
             </DialogContent>

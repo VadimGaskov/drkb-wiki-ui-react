@@ -1,0 +1,13 @@
+.instruction-modal-title-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.instruction-modal-title {
+
+}
+
+.close-modal-btn {
+    align-self: end;
+}
