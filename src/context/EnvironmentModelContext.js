@@ -37,6 +37,11 @@ export const EnvironmentModelProvider = ({children}) => {
 
     }, [environmentModelId]);
 
+    useEffect(() => {
+        console.log("ENV MODEL FRoM CONTEXT");
+        console.log(environmentModel);
+    }, [environmentModel]);
+
     return (
         <EnvironmentModelContext.Provider value={environmentModel}>
             {children}

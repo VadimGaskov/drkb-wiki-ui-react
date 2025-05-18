@@ -1,0 +1,38 @@
+
+
+.course-block {
+    width: 500px;
+    height: 200px;
+    border: 1px solid green;
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+}
+
+@media (max-width: 1024px) {
+    .course-block {
+        width: 350px;
+    }
+}
+
+.course-block-title {
+    padding-top: 0.5rem;
+    height: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.course-block-content {
+    padding: 1rem;
+    height: 100%;
+}
+
+.course-block-footer {
+    display: flex;
+    height: 3rem;
+    justify-content: end;
+    align-items: center;
+    padding-right: 0.5rem;
+    padding-bottom: 0.2rem;
+}
