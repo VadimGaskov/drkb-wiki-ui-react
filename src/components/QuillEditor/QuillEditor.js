@@ -151,20 +151,11 @@ const QuillTextEditor = ({value, setValue, error, setError}) => {
 
             quill.on("text-change", () => {
                 setValue(quill.root.innerHTML);
-
-                const videos = quill.root.querySelectorAll("iframe");
-                console.log("НАШЕЛ СТОЛЬКО ТЕГОВ ВИДЕО ");
-                console.log(videos);
-                console.log(videos.length)
-                videos.forEach((video) => {
-                    video.removeAttribute("autoplay");
-                    // Дополнительно можешь заменить iframe на video, если нужно
-                });
             });
 
             quill.root.innerHTML = value;
         }
-    }, [value, setError, setValue]);
+    }, [setError]);
 
     return (
         <>

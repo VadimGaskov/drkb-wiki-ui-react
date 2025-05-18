@@ -5,8 +5,8 @@ import ErrorSnackbar from "../../../../components/ErrorSnackbar/ErrorSnackbar";
 import {useEffect, useState} from "react";
 import {Outlet,useParams} from "react-router-dom";
 import {Button} from "@mui/material";
-import CourseBlock from "../components/CourseBlock/CourseBlock";
-import CreateCourseModal from "../components/CreateCourseModal/CreateCourseModal";
+import CourseBlock from "../_components/CourseBlock/CourseBlock";
+import CreateCourseModal from "../_components/CreateCourseModal/CreateCourseModal";
 
 const AdminArticles = () => {
     const [articles, isLoadingArticles, articleError] = useFetch(()=> getAllArticles());
@@ -43,7 +43,7 @@ const AdminArticles = () => {
                                     <CourseBlock
                                         title={article.title}
                                         description={"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis, voluptatum."}
-                                        courseId={article.id}
+                                        id={article.id}
                                     />
                                 </>
                             );

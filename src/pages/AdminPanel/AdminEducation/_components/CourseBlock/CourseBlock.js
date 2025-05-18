@@ -1,7 +1,7 @@
 import "./CourseBlock.css";
 import {Button} from "@mui/material";
 import {useNavigate} from "react-router-dom";
-const CourseBlock = ({title, description, courseId}) => {
+const CourseBlock = ({title, description, id}) => {
     const navigate = useNavigate();
 
 
@@ -15,7 +15,7 @@ const CourseBlock = ({title, description, courseId}) => {
                 <span>{description}</span>
             </div>
             <div className={"course-block-footer"}>
-                <Button variant={"contained"} sx={{height: "1.5rem"}} onClick={() => navigate(`${courseId}`)}>Подробнее</Button>
+                <Button variant={"contained"} sx={{height: "1.5rem"}} onClick={() => navigate(`${id}`)}>Подробнее</Button>
             </div>
         </div>
     )

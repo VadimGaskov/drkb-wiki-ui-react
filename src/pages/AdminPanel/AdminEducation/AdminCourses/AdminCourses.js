@@ -1,7 +1,7 @@
 import {Button} from "@mui/material";
 import ProgressBar from "../../../../components/ProgressBar/ProgressBar";
-import CourseBlock from "../components/CourseBlock/CourseBlock";
-import CreateCourseModal from "../components/CreateCourseModal/CreateCourseModal";
+import CourseBlock from "../_components/CourseBlock/CourseBlock";
+import CreateCourseModal from "../_components/CreateCourseModal/CreateCourseModal";
 import useFetch from "../../../../hooks/useFetch";
 import {getAllCourses} from "../../../../services/drkb-wiki-education/CourseService";
 import {Outlet, useLocation, useNavigate, useParams, useRoutes} from "react-router-dom";
@@ -42,7 +42,7 @@ const AdminCourses = () => {
                                     <CourseBlock
                                         title={course.title}
                                         description={"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis, voluptatum."}
-                                        courseId={course.id}
+                                        id={course.id}
                                     />
                                 </>
                             );
