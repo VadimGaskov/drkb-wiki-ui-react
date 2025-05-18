@@ -5,7 +5,7 @@ import "./QuillTextEditor.css";
 import {getEnvironmentModelById, SaveShortInstruction} from "../../../../../services/drkb-wiki/EnvironmentModelService";
 import {Button} from "@mui/material";
 import {EnvironmentModelContext} from "../../../../../context/EnvironmentModelContext";
-import {saveVideo} from "../../../../../services/drkb-wiki/VideoService";
+/*import {saveVideo} from "../../../../../services/drkb-wiki/VideoService";*/
 import ProgressBar from "../../../../../components/ProgressBar/ProgressBar";
 import ErrorSnackbar from "../../../../../components/ErrorSnackbar/ErrorSnackbar";
 import SuccessSnackbar from "../../../../../components/SuccessSnackbar/SuccessSnackbar";
@@ -56,7 +56,7 @@ const QuillTextEditor = () => {
                     const file = fileInput.files[0];
                     const environmentModelId = environmentModel.id; // ID из URL-параметра
 
-                    if (file && environmentModelId) {
+                    /*if (file && environmentModelId) {
                         const result = await saveVideo(environmentModelId, file);
                         if (result.success) {
                             console.log(result.data);
@@ -69,7 +69,7 @@ const QuillTextEditor = () => {
                         }
                     } else {
                         setError("Не выбран файл или отсутствует ID модели.");
-                    }
+                    }*/
                 };
             };
 

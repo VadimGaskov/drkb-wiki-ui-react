@@ -1,6 +1,7 @@
 import {API_URLS} from "../../constants/ApiUrls";
 import {apiRequest} from "../ApiService";
 
+/*
 export const saveVideo = async (environmentModelId, file) => {
     const formData = new FormData();
     formData.append("createVideoDto.environmentModelId", environmentModelId);
@@ -13,4 +14,4 @@ export const saveVideo = async (environmentModelId, file) => {
             "enctype": "multipart/form-data"
         }
     })
-}
+}*/
