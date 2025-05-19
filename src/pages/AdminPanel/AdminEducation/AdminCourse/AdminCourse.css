@@ -1,12 +1,12 @@
 .admin-course-wrapper {
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto; /* чтобы по центру, но всё ещё full width */
-    padding: 24px;
+    padding: 2rem;
     display: flex;
     flex-direction: column;
-    gap: 32px;
+    gap: 2rem;
+    margin: 2rem;
     height: auto;
+    background-color: white;
+    border-radius: 1rem;
 }
 
 .course-info {
@@ -38,7 +38,6 @@
     padding: 16px;
     border: 1px solid #e0e0e0;
     border-radius: 8px;
-    background-color: #f9f9f9;
 }
 
 .users-section h3,

@@ -1,0 +1,9 @@
+.create-article-wrapper {
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    flex-grow: 1;
+    margin: 1rem;
+    border-radius: 1rem;
+    padding: 1rem;
+}

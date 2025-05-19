@@ -23,7 +23,7 @@ const useFetch = (callback, deps = []) => {
         }
     }, [...deps]);
 
-    return [data, isLoading, error]
+    return [data, isLoading, error, setError]
 }
 
 export default useFetch;

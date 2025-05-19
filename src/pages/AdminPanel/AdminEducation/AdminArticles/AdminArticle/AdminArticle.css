@@ -1,0 +1,52 @@
+.admin-article-container {
+    overflow-y: auto;
+    height: 100%;
+    margin: 2rem 2rem;
+    padding: 24px;
+    background-color: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.admin-article-header {
+    display: block;
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 24px;
+    color: #333;
+    text-align: center;
+}
+
+.admin-article-input {
+    display: block;
+    width: 100%;
+    padding: 12px 16px;
+    margin-bottom: 16px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: border-color 0.3s;
+}
+
+.admin-article-input:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 4px rgba(0, 123, 255, 0.3);
+}
+
+.admin-article-editor {
+    /*margin: 1rem 0;*/
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 8px;
+    background-color: #f9f9f9;
+}
+
+.admin-article-save-btn {
+
+}
+
+.admin-article-test-wrapper {
+    border: 1px solid #ddd;
+}
