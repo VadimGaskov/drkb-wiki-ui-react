@@ -4,7 +4,7 @@ import "quill/dist/quill.snow.css";
 import {saveVideo} from "../../services/drkb-file-saver/videoService";
 import {BlockEmbed} from "quill/blots/block"; // Импорт стилей Quill
 /*import {saveVideo} from "../../services/drkb-wiki/VideoService";*/
-
+import "./QuillEditor.css";
 
 ///TODO Добавить удаление видео из сервера при отмене изменений.
 ///Добавить препросмотр видео в редакторе.
@@ -164,7 +164,8 @@ const QuillTextEditor = ({value, setValue, error, setError}) => {
 
             quill.root.innerHTML = value;
         }
-    }, [value, setError, setValue]);
+        //TODO FIX SETVALUE ADDING
+    }, [value, setError]);
 
     return (
         <>

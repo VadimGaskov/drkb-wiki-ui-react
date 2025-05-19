@@ -7,6 +7,7 @@ import {Outlet,useParams} from "react-router-dom";
 import {Button} from "@mui/material";
 import CourseBlock from "../components/CourseBlock/CourseBlock";
 import CreateCourseModal from "../components/CreateCourseModal/CreateCourseModal";
+import CreateArticleModal from "./_components/CreateArticleModal/CreateArticleModal";
 
 const AdminArticles = () => {
     const [articles, isLoadingArticles, articleError] = useFetch(()=> getAllArticles());
@@ -32,7 +33,7 @@ const AdminArticles = () => {
                     {articleError && <ErrorSnackbar errorMessage={articleError}/>}
 
                     <div className={"admin-education-wrapper-top"}>
-                        <Button variant={"contained"} onClick={() => setIsOpenModal(true)}>Создать курс</Button>
+                        <Button variant={"contained"} onClick={() => setIsOpenModal(true)}>Создать статью</Button>
                     </div>
                     <div className={"admin-education-wrapper"}>
                         {isLoadingArticles && (<ProgressBar/>)}
@@ -50,7 +51,7 @@ const AdminArticles = () => {
                         })}
                     </div>
 
-                    <CreateCourseModal open={openModal} onClose={() => setIsOpenModal(false)}/>
+                    <CreateArticleModal open={openModal} onClose={() => setIsOpenModal(false)}/>
                 </>
             )}
         </>

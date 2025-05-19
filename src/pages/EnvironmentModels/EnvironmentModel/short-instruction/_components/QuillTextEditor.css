@@ -1,4 +1,5 @@
-/* Контейнер редактора */
+/*
+!* Контейнер редактора *!
 .editor-container {
     padding: 16px;
     background-color: #f9fafb;
@@ -10,7 +11,7 @@
     height: 100%;
 }
 
-/* Заголовок */
+!* Заголовок *!
 .editor-title {
     font-size: 24px;
     font-weight: bold;
@@ -19,7 +20,7 @@
     text-align: center;
 }
 
-/* Сам редактор */
+!* Сам редактор *!
 .quill-editor {
     background-color: #ffffff;
     border: 1px solid #d1d5db;
@@ -32,10 +33,10 @@
 }
 
 .quill-editor:hover {
-    border-color: #2563eb; /* Синий бордер при наведении */
+    border-color: #2563eb; !* Синий бордер при наведении *!
 }
 
-/* Предпросмотр */
+!* Предпросмотр *!
 .preview-box {
     background-color: #f3f4f6;
     border: 1px solid #d1d5db;
@@ -63,7 +64,7 @@
     overflow-wrap: break-word;
 }
 
-/* Настройки для текста внутри редактора */
+!* Настройки для текста внутри редактора *!
 .ql-editor {
     font-size: 1rem;
     color: #111827;
@@ -81,7 +82,7 @@
     height: 20rem;
 }
 
-/* Кастомизация тулбара */
+!* Кастомизация тулбара *!
 .ql-toolbar {
     position: sticky;
     top: 0;
@@ -101,7 +102,7 @@
     background-color: #e5e7eb;
 }
 
-/* Поддержка адаптивности */
+!* Поддержка адаптивности *!
 @media (max-width: 600px) {
     .editor-container {
         padding: 12px;
@@ -121,4 +122,4 @@
 .editor-save-btn {
     width: 10rem;
     align-self: end;
-}
+}*/

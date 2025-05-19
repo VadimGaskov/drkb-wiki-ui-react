@@ -42,6 +42,7 @@ import AdminArticles from "./pages/AdminPanel/AdminEducation/AdminArticles/Admin
 import AdminTests from "./pages/AdminPanel/AdminEducation/AdminTests/AdminTests";
 import {hasRight} from "./utils/authHelper";
 import ShortInstructionForAll from "./pages/ShortInstructionForAll/ShortInstructionForAll";
+import AdminArticle from "./pages/AdminPanel/AdminEducation/AdminArticles/AdminArticle/AdminArticle";
 
 function App() {
     const { user } = useContext(AuthContext); // Теперь user из контекста
@@ -127,7 +128,7 @@ function App() {
                                     <Route path={":adminCourseId"} element={<AdminCourse />} />
                                 </Route>
                                 <Route path={"articles"} element={<AdminArticles/>}>
-                                    <Route path={":adminArticleId"} element={<AdminArticles/>}/>
+                                    <Route path={":adminArticleId"} element={<AdminArticle/>}/>
                                 </Route>
                                 <Route path={"tests"} element={<AdminTests/>}>
 
