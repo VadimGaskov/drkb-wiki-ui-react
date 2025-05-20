@@ -35,7 +35,7 @@ import Test from "./pages/Courses/Articles/Article/Test/Test";
 import {ArticleContext, ArticleProvider} from "./context/ArticleContext";
 import AdminPanel from "./pages/AdminPanel/AdminPanel";
 import AdminEducation from "./pages/AdminPanel/AdminEducation/AdminEducation";
-import AdminCourse from "./pages/AdminPanel/AdminEducation/AdminCourse/AdminCourse";
+import AdminCourse from "./pages/AdminPanel/AdminEducation/AdminCourses/AdminCourse/AdminCourse";
 import Users from "./pages/AdminPanel/Users/Users";
 import AdminCourses from "./pages/AdminPanel/AdminEducation/AdminCourses/AdminCourses";
 import AdminArticles from "./pages/AdminPanel/AdminEducation/AdminArticles/AdminArticles";
@@ -43,6 +43,7 @@ import AdminTests from "./pages/AdminPanel/AdminEducation/AdminTests/AdminTests"
 import {hasRight} from "./utils/authHelper";
 import ShortInstructionForAll from "./pages/ShortInstructionForAll/ShortInstructionForAll";
 import AdminArticle from "./pages/AdminPanel/AdminEducation/AdminArticles/AdminArticle/AdminArticle";
+import AdminTest from "./pages/AdminPanel/AdminEducation/AdminTests/AdminTest/AdminTest";
 
 function App() {
     const { user } = useContext(AuthContext); // Теперь user из контекста
@@ -131,7 +132,7 @@ function App() {
                                     <Route path={":adminArticleId"} element={<AdminArticle/>}/>
                                 </Route>
                                 <Route path={"tests"} element={<AdminTests/>}>
-
+                                    <Route path={":adminTestId"} element={<AdminTest/>}/>
                                 </Route>
                             </Route>
                             <Route path={"users"} element={<Users/>}>

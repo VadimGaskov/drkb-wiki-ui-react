@@ -1,4 +1,4 @@
-import CommonModalWindow from "../../../../../../components/ModalWindow/CommonModalWindow";
+import CommonModalWindow from "../../../../../../../components/ModalWindow/CommonModalWindow";
 import {DialogTitle} from "@mui/material";
 
 const CourseDetailModal = (open, onClose) => {

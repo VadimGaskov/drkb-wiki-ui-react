@@ -1,18 +1,18 @@
 import "./AdminCourse.css";
 import {useParams} from "react-router-dom";
 import React, {useEffect, useState} from "react";
-import useFetch from "../../../../hooks/useFetch";
-import {getCourseById, getFullCourseInfo, updateCourse} from "../../../../services/drkb-wiki-education/CourseService";
-import ProgressBar from "../../../../components/ProgressBar/ProgressBar";
-import ErrorSnackbar from "../../../../components/ErrorSnackbar/ErrorSnackbar";
-import {getAllDepartmentWithUsers} from "../../../../services/drkb-main/DepartmentService";
+import useFetch from "../../../../../hooks/useFetch";
+import {getCourseById, getFullCourseInfo, updateCourse} from "../../../../../services/drkb-wiki-education/CourseService";
+import ProgressBar from "../../../../../components/ProgressBar/ProgressBar";
+import ErrorSnackbar from "../../../../../components/ErrorSnackbar/ErrorSnackbar";
+import {getAllDepartmentWithUsers} from "../../../../../services/drkb-main/DepartmentService";
 import {Checkbox, Collapse, List, ListItemButton, ListItemText} from "@mui/material";
-import useFetchObject from "../../../../hooks/useFetchObject";
-import {getAllArticles} from "../../../../services/drkb-wiki-education/ArticleService";
-import SuccessSnackbar from "../../../../components/SuccessSnackbar/SuccessSnackbar";
+import useFetchObject from "../../../../../hooks/useFetchObject";
+import {getAllArticles} from "../../../../../services/drkb-wiki-education/ArticleService";
+import SuccessSnackbar from "../../../../../components/SuccessSnackbar/SuccessSnackbar";
 import {ExpandLess, ExpandMore} from "@mui/icons-material";
 
-import {dateConverter} from "../../../../utils/dateConverter";
+import {dateConverter} from "../../../../../utils/dateConverter";
 
 const AdminCourse = () => {
     const {adminCourseId} = useParams();

@@ -57,6 +57,7 @@ const Test = () => {
             if (response.success) {
                 console.log("ЗАБРАЛ ДАННЫЕ О ТЕСТЕ");
                 setFullTest(response.data);
+                console.log(response.data);
             }
             else {
                 setTestError(response.errorMessage);

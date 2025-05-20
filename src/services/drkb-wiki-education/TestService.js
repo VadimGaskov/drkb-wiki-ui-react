@@ -24,6 +24,26 @@ export const getTestByArticle = async (articleId) => {
     return await apiRequest(`${API_URLS.TEST}/get-all-test-by-article?${params}`);
 }
 
+export const updateTest = async (test) => {
+    return await apiRequest(`${API_URLS.TEST}/update-test`, {
+        method: "POST",
+        headers: {
+            "Content-Type" : "application/json"
+        },
+        body: JSON.stringify(test)
+    }, false);
+}
+
+export const createTest = async (test) => {
+    return await apiRequest(`${API_URLS.TEST}/create-test-with-question-and-answers`, {
+        method: "POST",
+        headers: {
+            "Content-Type" : "application/json"
+        },
+        body: JSON.stringify(test)
+    });
+}
+
 export const completeTest = async (testId, answers) => {
     const user = jwtDecode();
     const questionWithAnswers = [];

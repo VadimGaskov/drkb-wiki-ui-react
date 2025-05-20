@@ -1,0 +1,76 @@
+.admin-test {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+}
+
+.admin-test label {
+    display: block;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.admin-test input[type="text"],
+.admin-test input[type="number"] {
+    width: 100%;
+    padding: 6px 10px;
+    margin: 5px 0 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.admin-test button {
+    padding: 8px 14px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    margin: 10px 5px 0 0;
+}
+
+.admin-test button:hover {
+    background-color: #0056b3;
+}
+
+.admin-test .danger {
+    background-color: #dc3545;
+}
+
+.admin-test .danger:hover {
+    background-color: #c82333;
+}
+
+.admin-test .danger.small {
+    padding: 2px 6px;
+    font-size: 14px;
+    margin-left: 5px;
+}
+
+.question-block {
+    border: 1px solid #ddd;
+    padding: 15px;
+    margin-top: 20px;
+    border-radius: 6px;
+    background-color: #f9f9f9;
+}
+
+.question-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.answer-block {
+    margin-left: 20px;
+    margin-top: 10px;
+    padding-left: 10px;
+    border-left: 2px solid #ccc;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.answer-block input[type="text"] {
+    flex: 1;
+}
