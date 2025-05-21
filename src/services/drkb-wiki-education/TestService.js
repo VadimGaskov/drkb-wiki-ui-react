@@ -13,6 +13,11 @@ export const getTestById = async (testId) => {
     return await apiRequest(`${API_URLS.TEST}/get-by-id-test?${params}`);
 }
 
+export const getFullTestById = async (testId) => {
+    const params = configureUrlParams({idTest: testId});
+    return await apiRequest(`${API_URLS.TEST}/get-by-id-full-test?${params}`);
+}
+
 export const getTestSummary = async (testId) => {
     const params = configureUrlParams({idTest: testId});
     return await apiRequest(`${API_URLS.TEST}/get-test-summary?${params}`);

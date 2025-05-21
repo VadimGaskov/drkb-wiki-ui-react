@@ -1,14 +1,15 @@
 import "./AdminTest.css";
 import useFetchObject from "../../../../../hooks/useFetchObject";
-import {getTestById, updateTest} from "../../../../../services/drkb-wiki-education/TestService";
+import {getFullTestById, getTestById, updateTest} from "../../../../../services/drkb-wiki-education/TestService";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import SuccessSnackbar from "../../../../../components/SuccessSnackbar/SuccessSnackbar";
 import ErrorSnackbar from "../../../../../components/ErrorSnackbar/ErrorSnackbar";
 
 const AdminTest = () => {
+    const [refreshKey, setRefreshKey] = useState(0);
     const { adminTestId } = useParams();
-    const [test, isLoadingTest, errorTest, setErrorTest] = useFetchObject(() => getTestById(adminTestId));
+    const [test, isLoadingTest, errorTest, setErrorTest] = useFetchObject(() => getFullTestById(adminTestId), [refreshKey]);
     const [successMessage, setSuccessMessage] = useState(null);
     const [updateTestModel, setUpdateTest] = useState({
         id: "",
@@ -115,6 +116,7 @@ const AdminTest = () => {
         if (response.success) {
             console.log("Тест успешно сохранен");
             setSuccessMessage("Тест успешно сохранен");
+            setRefreshKey(prevState => prevState + 1);
         } else {
             setErrorTest("Ошибка при сохранении теста");
         }
@@ -192,7 +194,7 @@ const AdminTest = () => {
                                 required
                             />*/}
 
-                            <button onClick={() => addAnswer(qi)}>➕ Добавить ответ</button>
+                            <button onClick={() => addAnswer(qi)} type={"button"}>➕ Добавить ответ</button>
 
                             {q.answer.map((a, ai) => (
                                 <div className="answer-block" key={ai}>
@@ -212,12 +214,12 @@ const AdminTest = () => {
                                         />
                                         Правильный
                                     </label>
-                                    <button className="danger small" onClick={() => removeAnswer(qi, ai)}>🗑</button>
+                                    <button className="danger small" onClick={() => removeAnswer(qi, ai)} type={"button"}>🗑</button>
                                 </div>
                             ))}
                         </div>
                     ))}
-                    <button onClick={addQuestion}>➕ Добавить вопрос</button>
+                    <button onClick={addQuestion} type={"button"}>➕ Добавить вопрос</button>
                     <button type={"submit"}>Сохранить</button>
                 </form>
             )}
