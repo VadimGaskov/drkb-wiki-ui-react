@@ -17,9 +17,11 @@ const TopNav = () => {
     return(
         <div className="top-nav">
             <NavItem text="Образование" img={EducationIcon} src={`${ROUTINGS.LIST_COURSES}`}/>
-            <NavItem text="Документы" img={DocumentsIcon}/>
+            {/*<NavItem text="Документы" img={DocumentsIcon}/>*/}
+            <NavItem text="Телефонный справочник" src={"http://nasdrkb2:5000/d/s/uj3VQtiBB7ryQNSN6Z6JEdy5NTBztjWi/rzMsmLSJCJfa4vJh3limYzJloBsprIXL-tb7A2zE0qAo"} img={DocumentsIcon}/>
             {/*<NavItem text="Тесты" img={TestsIcon}/>*/}
             {/*<NavItem text="Журналы" img={JournalsIcon}/>*/}
+            <NavItem text="Клинические рекомендации" img={DocumentsIcon} src={"https://grls.rosminzdrav.ru/Default.aspx"}/>
             <NavItem text="Оборудование"
                      img={MedEnvironmentIcon}
                      src={ userRoles.includes(USER_RIGHTS.CREATE_USER) ? `${ROUTINGS.LIST_DEPARTMENTS}` : `${ROUTINGS.LIST_ENVIRONMENT_MODEL()}`}

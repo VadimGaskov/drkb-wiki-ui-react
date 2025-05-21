@@ -7,6 +7,7 @@ import ProgressBar from "../../../../components/ProgressBar/ProgressBar";
 import CourseBlock from "../components/CourseBlock/CourseBlock";
 import CreateCourseModal from "../components/CreateCourseModal/CreateCourseModal";
 import {getAllTest} from "../../../../services/drkb-wiki-education/TestService";
+import CreateTestModal from "./_components/CreateTestModal";
 
 const AdminTests = () => {
     const [tests, isLoading, error] = useFetch(() => getAllTest());
@@ -49,7 +50,7 @@ const AdminTests = () => {
                         })}
                     </div>
 
-                    <CreateCourseModal open={openModal} onClose={() => setIsOpenModal(false)}/>
+                    <CreateTestModal open={openModal} onClose={() => setIsOpenModal(false)}/>
                 </>
             )}
 
