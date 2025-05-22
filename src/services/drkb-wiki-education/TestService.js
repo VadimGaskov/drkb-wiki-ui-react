@@ -46,7 +46,7 @@ export const createTest = async (test) => {
             "Content-Type" : "application/json"
         },
         body: JSON.stringify(test)
-    });
+    }, false);
 }
 
 export const completeTest = async (testId, answers) => {
