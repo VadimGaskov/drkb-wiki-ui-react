@@ -1,5 +1,6 @@
 .layout-wrapper {
-    background-image: url(../../assets/img/layout/back.png);
+    /*background-image: url(../../assets/img/layout/back.png);*/
+    background-color: #b7daf9;
     background-size: 100% 100%; /* Изображение будет масштабироваться, чтобы покрыть весь экран */
     background-repeat: no-repeat; /* Изображение не будет повторяться */
     background-attachment: fixed; /* Фон будет фиксированным при прокрутке страницы */

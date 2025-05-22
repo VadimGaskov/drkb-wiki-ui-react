@@ -11,7 +11,6 @@ const NewsFeed = () => {
                 <NewsItem newsPreview="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eum quidem quos provident fugiat magnam vero."/>
                 <NewsItem newsPreview="Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consectetur, error aut quam cupiditate rem natus laboriosam laborum id vel nesciunt. Iusto labore facilis vero quidem aliquid nam nulla et excepturi!"/>
                 <NewsItem newsPreview="Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed possimus beatae reprehenderit, eaque asperiores accusamus consequuntur commodi nostrum odio?"/>
-                <NewsItem newsPreview="Lorem ipsum dolor, sit amet consectetur adipisicing elit. Temporibus, deleniti. A cumque corporis, suscipit laudantium eos iure itaque dolor quisquam eveniet dolores!"/>
             </div>
         </div>
     );
