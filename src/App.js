@@ -36,7 +36,7 @@ import {ArticleContext, ArticleProvider} from "./context/ArticleContext";
 import AdminPanel from "./pages/AdminPanel/AdminPanel";
 import AdminEducation from "./pages/AdminPanel/AdminEducation/AdminEducation";
 import AdminCourse from "./pages/AdminPanel/AdminEducation/AdminCourses/AdminCourse/AdminCourse";
-import Users from "./pages/AdminPanel/Users/Users";
+import AdminUsersManagement from "./pages/AdminPanel/AdminUsersManagement/AdminUsersManagement";
 import AdminCourses from "./pages/AdminPanel/AdminEducation/AdminCourses/AdminCourses";
 import AdminArticles from "./pages/AdminPanel/AdminEducation/AdminArticles/AdminArticles";
 import AdminTests from "./pages/AdminPanel/AdminEducation/AdminTests/AdminTests";
@@ -44,6 +44,14 @@ import {hasRight} from "./utils/authHelper";
 import ShortInstructionForAll from "./pages/ShortInstructionForAll/ShortInstructionForAll";
 import AdminArticle from "./pages/AdminPanel/AdminEducation/AdminArticles/AdminArticle/AdminArticle";
 import AdminTest from "./pages/AdminPanel/AdminEducation/AdminTests/AdminTest/AdminTest";
+import AdminDepartments from "./pages/AdminPanel/AdminUsersManagement/AdminDepartments/AdminDepartments";
+import AdminRoles from "./pages/AdminPanel/AdminUsersManagement/AdminRoles/AdminRoles";
+import AdminUsers from "./pages/AdminPanel/AdminUsersManagement/AdminUsers/AdminUsers";
+import AdminDepartment from "./pages/AdminPanel/AdminUsersManagement/AdminDepartments/AdminDepartment/AdminDepartment";
+import AdminEnvironment from "./pages/AdminPanel/AdminEnvironment/AdminEnvironment";
+import AdminEnvironmentModels from "./pages/AdminPanel/AdminEnvironment/AdminEnvironmentModels/AdminEnvironmentModels";
+import AdminEnvironmentModel
+    from "./pages/AdminPanel/AdminEnvironment/AdminEnvironmentModels/AdminEnvironmentModel/AdminEnvironmentModel";
 
 function App() {
     const { user } = useContext(AuthContext); // Теперь user из контекста
@@ -135,8 +143,17 @@ function App() {
                                     <Route path={":adminTestId"} element={<AdminTest/>}/>
                                 </Route>
                             </Route>
-                            <Route path={"users"} element={<Users/>}>
-
+                            <Route path={"equipments"} element={<AdminEnvironment/>}>
+                                <Route path={"equipment-models"} element={<AdminEnvironmentModels/>}>
+                                    <Route path={":adminEnvironmentModelId"} element={<AdminEnvironmentModel/>}/>
+                                </Route>
+                            </Route>
+                            <Route path={"users-management"} element={<AdminUsersManagement/>}>
+                                <Route path={"admin-departments"} element={<AdminDepartments/>}>
+                                    <Route path={":adminDepartmentId"} element={<AdminDepartment/>}/>
+                                </Route>
+                                <Route path={"admin-roles"} element={<AdminRoles/>}/>
+                                <Route path={"admin-users"} element={<AdminUsers/>}/>
                             </Route>
                         </Route>
 

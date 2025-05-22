@@ -8,11 +8,12 @@ import {Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogT
 import {Outlet, useLocation, useNavigate, useParams} from "react-router-dom";
 import CreateCourseModal from "./components/CreateCourseModal/CreateCourseModal";
 import InnerNavMenu from "../_components/InnerNavMenu/InnerNavMenu";
+import EducationInnerNavMenu from "./components/EducationInnerNavMenu/EducationInnerNavMenu";
 const AdminEducation = () => {
 
     return(
         <>
-            <InnerNavMenu/>
+            <EducationInnerNavMenu/>
             <Outlet/>
         </>
     );
