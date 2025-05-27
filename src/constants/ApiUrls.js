@@ -11,7 +11,7 @@ const DRKB_WIKI_EDUCATION_BASE_URL = "http://172.16.2.32:6060";
 
 //const DRKB_WIKI_FILE_SAVER_BASE_URL = "http://localhost:5159";
 //http://172.16.2.32:6060
-const DRKB_WIKI_FILE_SAVER_BASE_URL = "http://172.16.2.32:9095";
+const DRKB_WIKI_FILE_SAVER_BASE_URL = "http://172.16.3.170:5159";
 export const API_URLS = {
     //DRKB-WIKI
     COMMON_DOCUMENT: `${DRKB_WIKI_BASE_URL}/api/common-document`,
@@ -26,6 +26,10 @@ export const API_URLS = {
     //AUTH
     AUTH: `${DRKB_AUTH_BASE_URL}/login`,
     DEPARTMENT: `${DRKB_AUTH_BASE_URL}/api/department`,
+    RIGHTS: `${DRKB_AUTH_BASE_URL}/api/Rights`,
+    POSITIONS: `${DRKB_AUTH_BASE_URL}/api/Position`,
+    USER: `${DRKB_AUTH_BASE_URL}/api/User`,
+    STATUSES: `${DRKB_AUTH_BASE_URL}/api/User`,
 
     //DRKB-WIKI-EDUCATION
     TEST : `${DRKB_WIKI_EDUCATION_BASE_URL}/api/test`,

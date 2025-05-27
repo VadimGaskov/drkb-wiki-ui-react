@@ -15,8 +15,22 @@ export const getAllDepartmentWithUsers = async () => {
     return await apiRequest(`${API_URLS.DEPARTMENT}/get-all-with-users`);
 }
 
+export const getDepartmentWithUsers = async (departmentId) => {
+    const urlParams = configureUrlParams({departmentId: departmentId});
+    return await apiRequest(`${API_URLS.DEPARTMENT}/get-with-users?${urlParams}`);
+}
 
 export const getDepartmentById = async (departmentId) => {
     const params = configureUrlParams({departmentId: departmentId});
     return await apiRequest(`${API_URLS.DEPARTMENT}/get-by-id?${params}`);
+}
+
+export const updateDepartment = async (department) => {
+    return await apiRequest(`${API_URLS.DEPARTMENT}/update`, {
+        method: "POST",
+        headers: {
+            "Content-Type" : "application/json"
+        },
+        body: JSON.stringify(department)
+    }, false)
 }

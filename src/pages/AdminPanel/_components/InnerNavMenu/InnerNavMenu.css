@@ -9,6 +9,7 @@
     justify-content: center;
     align-items: center;
     background-color: #b2d4f7; /* чтобы не просвечивало при скролле */
+    z-index: 1;
 }
 
 .inner-nav-menu a {

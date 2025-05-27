@@ -52,6 +52,8 @@ import AdminEnvironment from "./pages/AdminPanel/AdminEnvironment/AdminEnvironme
 import AdminEnvironmentModels from "./pages/AdminPanel/AdminEnvironment/AdminEnvironmentModels/AdminEnvironmentModels";
 import AdminEnvironmentModel
     from "./pages/AdminPanel/AdminEnvironment/AdminEnvironmentModels/AdminEnvironmentModel/AdminEnvironmentModel";
+import AdminRole from "./pages/AdminPanel/AdminUsersManagement/AdminRoles/AdminRole/AdminRole";
+import AdminUser from "./pages/AdminPanel/AdminUsersManagement/AdminUsers/AdminUser/AdminUser";
 
 function App() {
     const { user } = useContext(AuthContext); // Теперь user из контекста
@@ -152,8 +154,13 @@ function App() {
                                 <Route path={"admin-departments"} element={<AdminDepartments/>}>
                                     <Route path={":adminDepartmentId"} element={<AdminDepartment/>}/>
                                 </Route>
-                                <Route path={"admin-roles"} element={<AdminRoles/>}/>
-                                <Route path={"admin-users"} element={<AdminUsers/>}/>
+                                <Route path={"admin-roles"} element={<AdminRoles/>}>
+                                    <Route path={":adminRoleId"} element={<AdminRole/>}/>
+
+                                </Route>
+                                <Route path={"admin-users"} element={<AdminUsers/>}>
+                                    <Route path={":adminUserId"} element={<AdminUser/>}/>
+                                </Route>
                             </Route>
                         </Route>
 

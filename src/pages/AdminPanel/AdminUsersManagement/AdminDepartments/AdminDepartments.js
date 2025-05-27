@@ -8,6 +8,8 @@ import {Button} from "@mui/material";
 import CourseBlock from "../../AdminEducation/components/CourseBlock/CourseBlock";
 import CreateTestModal from "../../AdminEducation/AdminTests/_components/CreateTestModal";
 import {Outlet,useParams} from "react-router-dom";
+import "./AdminDepartments.css";
+import AdminDepartmentCardElement from "./_components/AdminDepartmentCardElement/AdminDepartmentCardElement";
 const AdminDepartments = () => {
     const [departments, isLoadingDepartments, errorDepartments] = useFetch(() => getAllDepartment())
     const [openModal, setIsOpenModal] = useState(false);
@@ -37,7 +39,7 @@ const AdminDepartments = () => {
                         <div className={"admin-education-wrapper-top"}>
                             <Button variant={"contained"} onClick={() => setIsOpenModal(true)}>Создать тест</Button>
                         </div>
-                        <div className={"admin-education-wrapper"}>
+                        {/*<div className={"admin-education-wrapper"}>
                             {isLoadingDepartments && (<ProgressBar/>)}
                             {errorDepartments && (<ErrorSnackbar errorMessage={errorDepartments} onClose={() => console.log(null) }/>)}
                             {departments.map((department) => {
@@ -51,8 +53,22 @@ const AdminDepartments = () => {
                                     </>
                                 );
                             })}
+                        </div>*/}
+                        {/*<div className="group">
+                            <div className="items-list">
+                                {departments.map((department, index) => (
+                                    <div className="item-card" key={index}>
+                                        <h3 className="item-name">{department.name}</h3>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>*/}
+
+                        <div className="departments-wrapper">
+                                {departments.map((department, index) => (
+                                    <AdminDepartmentCardElement title={department.name} itemId={department.id} key={index}/>
+                                ))}
                         </div>
-    
                         <CreateTestModal open={openModal} onClose={() => setIsOpenModal(false)} setRefreshKey={setRefreshKey}/>
                     </>
                 )}
