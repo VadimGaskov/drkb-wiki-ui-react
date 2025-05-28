@@ -11,7 +11,7 @@ export const getUserById = async (userId) => {
 }
 
 export const createUser = async (user) => {
-    return await apiRequest(`${API_URLS.USER}/create`, {
+    return await apiRequest(`${API_URLS.USER}/create-user`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json"

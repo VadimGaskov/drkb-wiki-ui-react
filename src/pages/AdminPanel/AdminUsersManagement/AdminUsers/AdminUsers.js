@@ -6,6 +6,7 @@ import {useParams} from "react-router-dom";
 import {useEffect, useState} from "react";
 import {Outlet} from "react-router-dom";
 import ItemCardElement from "../../AdminEnvironment/_components/ItemCardElement/ItemCardElement";
+import CreateUserModal from "./_components/CreateUserModal/CreateUserModal";
 
 const AdminUsers = () => {
     const [users, isLoadingUsers, setIsLoadingUsers] = useFetch(() => getAllUsers());
@@ -62,6 +63,7 @@ const AdminUsers = () => {
                     </div>
                 </>
             )}
+            <CreateUserModal open={openModal} onClose={() => setIsOpenModal(false)}/>
         </>
     )
 }

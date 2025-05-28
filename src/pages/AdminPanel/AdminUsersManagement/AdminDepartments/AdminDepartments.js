@@ -10,6 +10,7 @@ import CreateTestModal from "../../AdminEducation/AdminTests/_components/CreateT
 import {Outlet,useParams} from "react-router-dom";
 import "./AdminDepartments.css";
 import AdminDepartmentCardElement from "./_components/AdminDepartmentCardElement/AdminDepartmentCardElement";
+import CreateDepartmentModal from "./_components/CreateDepartmentModal/CreateDepartmentModal";
 const AdminDepartments = () => {
     const [departments, isLoadingDepartments, errorDepartments] = useFetch(() => getAllDepartment())
     const [openModal, setIsOpenModal] = useState(false);
@@ -37,39 +38,14 @@ const AdminDepartments = () => {
                 (
                     <>
                         <div className={"admin-education-wrapper-top"}>
-                            <Button variant={"contained"} onClick={() => setIsOpenModal(true)}>Создать тест</Button>
+                            <Button variant={"contained"} onClick={() => setIsOpenModal(true)}>Создать отделение</Button>
                         </div>
-                        {/*<div className={"admin-education-wrapper"}>
-                            {isLoadingDepartments && (<ProgressBar/>)}
-                            {errorDepartments && (<ErrorSnackbar errorMessage={errorDepartments} onClose={() => console.log(null) }/>)}
-                            {departments.map((department) => {
-                                return (
-                                    <>
-                                        <CourseBlock
-                                            title={department.name}
-                                            description={"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis, voluptatum."}
-                                            courseId={department.id}
-                                        />
-                                    </>
-                                );
-                            })}
-                        </div>*/}
-                        {/*<div className="group">
-                            <div className="items-list">
-                                {departments.map((department, index) => (
-                                    <div className="item-card" key={index}>
-                                        <h3 className="item-name">{department.name}</h3>
-                                    </div>
-                                ))}
-                            </div>
-                        </div>*/}
-
                         <div className="departments-wrapper">
                                 {departments.map((department, index) => (
                                     <AdminDepartmentCardElement title={department.name} itemId={department.id} key={index}/>
                                 ))}
                         </div>
-                        <CreateTestModal open={openModal} onClose={() => setIsOpenModal(false)} setRefreshKey={setRefreshKey}/>
+                        <CreateDepartmentModal open={openModal} onClose={() => setIsOpenModal(false)} setRefreshKey={setRefreshKey}/>
                     </>
                 )}
         </>

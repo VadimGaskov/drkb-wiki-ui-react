@@ -34,3 +34,13 @@ export const updateDepartment = async (department) => {
         body: JSON.stringify(department)
     }, false)
 }
+
+export const createDepartment = async (department) => {
+    return await apiRequest(`${API_URLS.DEPARTMENT}/create`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(department)
+    }, false);
+}
