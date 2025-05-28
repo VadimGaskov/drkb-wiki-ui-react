@@ -27,7 +27,7 @@ const ShortInstruction = () => {
             </Button>
             {environmentModel && (
                 <img
-                    src={`data:image/png;base64,${atob(environmentModel?.shortInstructionQrCode)}`}
+                    src={`data:image/png;base64,${environmentModel?.shortInstructionQrCode}`}
                     style={{ width: "400px", height: "400px", margin: "2rem"}}
                     alt={"QR-кода для этой инструкции нет("}
                 />

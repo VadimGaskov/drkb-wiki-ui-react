@@ -121,9 +121,12 @@ const AdminEnvironmentModel = () => {
                             />
                             <label htmlFor={"content"}>Текст краткой инструкции</label>
                             <div className="admin-article-editor">
-                                <QuillEditor
-                                    value={environmentModel.shortInstruction}
-                                    setValue={(value) => setUpdateEnvironmentModelModel(prevState => ({...prevState, shortInstruction: value}))} />
+                                {environmentModel.shortInstruction && (
+                                    <QuillEditor
+                                        value={environmentModel.shortInstruction}
+                                        setValue={(value) => setUpdateEnvironmentModelModel(prevState => ({...prevState, shortInstruction: value}))}
+                                    />
+                                )}
                             </div>
                             {environmentModel.environments && (
                                 <div className={"admin-article-test-wrapper"}>

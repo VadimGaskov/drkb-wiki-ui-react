@@ -8,6 +8,7 @@ import CreateTestModal from "../../AdminEducation/AdminTests/_components/CreateT
 import {useEffect, useState} from "react";
 import ItemCardElement from "../_components/ItemCardElement/ItemCardElement";
 import {Outlet, useParams} from "react-router-dom";
+import CreateEnvironmentModelModal from "./_components/CreateEnvironmentModelModal/CreateEnvironmentModelModal";
 const AdminEnvironmentModels = () => {
     const [refreshKey, setRefreshKey] = useState(0);
     const [environmentModels, isLoadingEnvironmentModels, errorEnvironmentModels] = useFetch(() => getAllEnvironmentModels());
@@ -42,7 +43,7 @@ const AdminEnvironmentModels = () => {
             {isEnvironmentPath ? (<Outlet/>) : (
                 <>
                     <div className={"admin-education-wrapper-top"}>
-                        <Button variant={"contained"} onClick={() => setIsOpenModal(true)}>Создать тест</Button>
+                        <Button variant={"contained"} onClick={() => setIsOpenModal(true)}>Создать модель оборудования</Button>
                     </div>
                     <div className="grouped-container">
                         {Object.entries(groupedData).map(([letter, items]) => (
@@ -76,7 +77,7 @@ const AdminEnvironmentModels = () => {
                 })}
             </div>*/}
 
-            <CreateTestModal open={openModal} onClose={() => setIsOpenModal(false)} setRefreshKey={setRefreshKey}/>
+            <CreateEnvironmentModelModal open={openModal} onClose={() => setIsOpenModal(false)} setRefreshKey={setRefreshKey}/>
         </>
     )
 }
