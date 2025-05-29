@@ -8,6 +8,7 @@ import CourseBlock from "../components/CourseBlock/CourseBlock";
 import CreateCourseModal from "../components/CreateCourseModal/CreateCourseModal";
 import {getAllTest} from "../../../../services/drkb-wiki-education/TestService";
 import CreateTestModal from "./_components/CreateTestModal";
+import TopButtonWrapper from "../../_components/TopButtonWrapper/TopButtonWrapper";
 
 const AdminTests = () => {
     const [refreshKey, setRefreshKey] = useState(0);
@@ -31,9 +32,8 @@ const AdminTests = () => {
                 <Outlet />
             ) : (
                 <>
-                    <div className={"admin-education-wrapper-top"}>
-                        <Button variant={"contained"} onClick={() => setIsOpenModal(true)}>Создать тест</Button>
-                    </div>
+                    <TopButtonWrapper title={"Создать тест"} onClick={() => setIsOpenModal(true)}/>
+
                     <div className={"admin-education-wrapper"}>
                         {isLoading && (<ProgressBar/>)}
 

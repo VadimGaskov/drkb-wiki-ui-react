@@ -1,6 +1,6 @@
 .top-nav {
-    display: flex;
     height: auto;
+    display: flex;
     justify-content: center;
     gap: 4rem;
     margin-bottom: 1rem;

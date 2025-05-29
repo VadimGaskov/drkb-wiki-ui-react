@@ -1,12 +1,12 @@
 import InnerNavMenu from "../../../_components/InnerNavMenu/InnerNavMenu";
 import {Link} from "react-router-dom";
+import InnerNavMenuElement from "../../../_components/InnerNavMenu/_components/InnerNavMenuElement";
 
 const UsersManagementInnerNavMenu = () => {
     return(
         <InnerNavMenu>
-            <Link to={"/admin/users-management/admin-departments"} className={"admin-nav-link"}>Отделения</Link>
-            {/*<Link to={"/admin/users-management/admin-roles"}>Роли</Link>*/}
-            <Link to={"/admin/users-management/admin-users"}>Пользователи</Link>
+            <InnerNavMenuElement url={"/admin/users-management/admin-departments"} title={"Отделения"} />
+            <InnerNavMenuElement url={"/admin/users-management/admin-users"} title={"Пользователи"} />
         </InnerNavMenu>
     )
 }

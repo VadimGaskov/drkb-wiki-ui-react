@@ -11,6 +11,7 @@ import {Outlet,useParams} from "react-router-dom";
 import "./AdminDepartments.css";
 import AdminDepartmentCardElement from "./_components/AdminDepartmentCardElement/AdminDepartmentCardElement";
 import CreateDepartmentModal from "./_components/CreateDepartmentModal/CreateDepartmentModal";
+import TopButtonWrapper from "../../_components/TopButtonWrapper/TopButtonWrapper";
 const AdminDepartments = () => {
     const [departments, isLoadingDepartments, errorDepartments] = useFetch(() => getAllDepartment())
     const [openModal, setIsOpenModal] = useState(false);
@@ -37,9 +38,10 @@ const AdminDepartments = () => {
                 (<Outlet/>) :
                 (
                     <>
-                        <div className={"admin-education-wrapper-top"}>
-                            <Button variant={"contained"} onClick={() => setIsOpenModal(true)}>Создать отделение</Button>
-                        </div>
+                        {/*<div className={"admin-education-wrapper-top"}>
+                            <Button variant={"contained"} sx={{width: "100%"}} onClick={() => setIsOpenModal(true)}>Создать отделение</Button>
+                        </div>*/}
+                        <TopButtonWrapper title={"Создать отделение"} onClick={() => setIsOpenModal(true)}/>
                         <div className="departments-wrapper">
                                 {departments.map((department, index) => (
                                     <AdminDepartmentCardElement title={department.name} itemId={department.id} key={index}/>

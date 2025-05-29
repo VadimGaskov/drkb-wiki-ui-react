@@ -7,6 +7,7 @@ import {getAllCourses} from "../../../../services/drkb-wiki-education/CourseServ
 import {Outlet, useLocation, useNavigate, useParams, useRoutes} from "react-router-dom";
 import {useEffect, useState} from "react";
 import "./AdminCourses.css";
+import TopButtonWrapper from "../../_components/TopButtonWrapper/TopButtonWrapper";
 
 const AdminCourses = () => {
     const [courses, isLoading, error] = useFetch(() => getAllCourses());
@@ -30,9 +31,8 @@ const AdminCourses = () => {
                 <Outlet />
             ) : (
                 <>
-                    <div className={"admin-education-wrapper-top"}>
-                        <Button variant={"contained"} onClick={() => setIsOpenModal(true)}>Создать курс</Button>
-                    </div>
+                    <TopButtonWrapper title={"Создать курс"} onClick={() => setIsOpenModal(true)}/>
+
                     <div className={"admin-education-wrapper"}>
                         {isLoading && (<ProgressBar/>)}
 

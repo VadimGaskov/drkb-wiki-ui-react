@@ -6,6 +6,7 @@ import ModalWindow from "../../../../components/modal-window/ModalWindow";
 import {EnvironmentModelContext} from "../../../../context/EnvironmentModelContext";
 import ErrorSnackbar from "../../../../components/ErrorSnackbar/ErrorSnackbar";
 import ProgressBars from "../../../../components/ProgressBar/ProgressBar";
+import {getAllFilesByRelatedId} from "../../../../services/drkb-file-saver/fileService";
 
 const Documentation = () => {
     const environmentModel = useContext(EnvironmentModelContext);
@@ -16,7 +17,7 @@ const Documentation = () => {
     useEffect(() => {
         if (!environmentModel) return; // Проверяем, что environmentModel не null
         const fetchDocumentsByEnvironmentModel = async () => {
-            const result = await getAllByEnvironmentModel(environmentModel.id);
+            const result = await getAllFilesByRelatedId(environmentModel.id);
             if (result.success) {
                 setDocuments(result.data);
             }
@@ -39,7 +40,7 @@ const Documentation = () => {
                 documents.length > 0 ? (
                         <ul>
                             {documents.map(document => (
-                                <DocumentationElement key={document.id} title={document.name} downloadSrc={document.documentPath}/>
+                                <DocumentationElement key={document.id} title={document.title} downloadSrc={document.url}/>
                             ))}
                         </ul>
                     ) : (

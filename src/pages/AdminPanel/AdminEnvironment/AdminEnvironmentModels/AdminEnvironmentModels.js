@@ -9,6 +9,7 @@ import {useEffect, useState} from "react";
 import ItemCardElement from "../_components/ItemCardElement/ItemCardElement";
 import {Outlet, useParams} from "react-router-dom";
 import CreateEnvironmentModelModal from "./_components/CreateEnvironmentModelModal/CreateEnvironmentModelModal";
+import TopButtonWrapper from "../../_components/TopButtonWrapper/TopButtonWrapper";
 const AdminEnvironmentModels = () => {
     const [refreshKey, setRefreshKey] = useState(0);
     const [environmentModels, isLoadingEnvironmentModels, errorEnvironmentModels] = useFetch(() => getAllEnvironmentModels());
@@ -42,9 +43,8 @@ const AdminEnvironmentModels = () => {
         <>
             {isEnvironmentPath ? (<Outlet/>) : (
                 <>
-                    <div className={"admin-education-wrapper-top"}>
-                        <Button variant={"contained"} onClick={() => setIsOpenModal(true)}>Создать модель оборудования</Button>
-                    </div>
+                    <TopButtonWrapper title={"Создать модель оборудования"} onClick={() => setIsOpenModal(true)}/>
+
                     <div className="grouped-container">
                         {Object.entries(groupedData).map(([letter, items]) => (
                             <div className="group" key={letter}>

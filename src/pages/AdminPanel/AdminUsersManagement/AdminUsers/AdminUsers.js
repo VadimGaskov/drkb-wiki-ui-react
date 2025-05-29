@@ -7,6 +7,7 @@ import {useEffect, useState} from "react";
 import {Outlet} from "react-router-dom";
 import ItemCardElement from "../../AdminEnvironment/_components/ItemCardElement/ItemCardElement";
 import CreateUserModal from "./_components/CreateUserModal/CreateUserModal";
+import TopButtonWrapper from "../../_components/TopButtonWrapper/TopButtonWrapper";
 
 const AdminUsers = () => {
     const [users, isLoadingUsers, setIsLoadingUsers] = useFetch(() => getAllUsers());
@@ -42,9 +43,8 @@ const AdminUsers = () => {
         <>
             {isUserPath ? (<Outlet/>) : (
                 <>
-                    <div className={"admin-education-wrapper-top"}>
-                        <Button variant={"contained"} onClick={() => setIsOpenModal(true)}>Создать пользователя</Button>
-                    </div>
+                    <TopButtonWrapper title={"Создать пользователя"} onClick={() => setIsOpenModal(true)}/>
+
                     <div className={styles.groupedContainer}>
                         {Object.entries(groupedData).map(([letter, items]) => (
                             <div className={styles.group} key={letter}>

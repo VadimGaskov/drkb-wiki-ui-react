@@ -8,6 +8,7 @@ import {Button} from "@mui/material";
 import CourseBlock from "../components/CourseBlock/CourseBlock";
 import CreateCourseModal from "../components/CreateCourseModal/CreateCourseModal";
 import CreateArticleModal from "./_components/CreateArticleModal/CreateArticleModal";
+import TopButtonWrapper from "../../_components/TopButtonWrapper/TopButtonWrapper";
 
 const AdminArticles = () => {
     const [articles, isLoadingArticles, articleError] = useFetch(()=> getAllArticles());
@@ -32,9 +33,8 @@ const AdminArticles = () => {
                 <>
                     {articleError && <ErrorSnackbar errorMessage={articleError}/>}
 
-                    <div className={"admin-education-wrapper-top"}>
-                        <Button variant={"contained"} onClick={() => setIsOpenModal(true)}>Создать статью</Button>
-                    </div>
+                    <TopButtonWrapper title={"Создать статью"} onClick={() => setIsOpenModal(true)}/>
+
                     <div className={"admin-education-wrapper"}>
                         {isLoadingArticles && (<ProgressBar/>)}
 

@@ -10,6 +10,7 @@ import {
 import "./ModalWindow.css";
 import {createDocument} from "../../services/drkb-wiki/CommonDocumentService";
 import {Navigate, useNavigate} from "react-router-dom";
+import {createFile} from "../../services/drkb-file-saver/fileService";
 
 const ModalWindow = ({ title , environmentModelId}) => {
     const [open, setOpen] = useState(false);
@@ -22,7 +23,7 @@ const ModalWindow = ({ title , environmentModelId}) => {
     };
 
     const handleCreateDocument = async () => {
-        const result = await createDocument({documentName, file, environmentModelId});
+        const result = await createFile(environmentModelId, file);
         console.log(result);
         if (result.success) {
             window.location.reload();

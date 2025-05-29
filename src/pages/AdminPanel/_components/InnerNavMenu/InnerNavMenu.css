@@ -1,21 +1,34 @@
 .inner-nav-menu {
+    height: 3rem;
+    min-height: 3rem;
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid black;
+    font-size: 1.2rem;
+    background-color: #f5f7fa;
+    border-radius: 0 0 0.5rem 0.5rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 0 1rem;
     position: sticky;
     top: 0; /* расстояние от верха */
     width: 100%;
-    height: 3rem;
-    display: flex;
-    gap: 1rem;
-    border: 1px solid orange;
-    justify-content: center;
-    align-items: center;
-    background-color: #b2d4f7; /* чтобы не просвечивало при скролле */
     z-index: 1;
 }
 
-.inner-nav-menu a {
-    display: flex;
-    align-items: center;
+
+/*.inner-nav-menu {
     height: 3rem;
-    text-decoration: none;
-    padding: 0 1rem;
-}
+    display: flex;
+    gap: 1rem;
+
+    position: sticky;
+    top: 0; !* расстояние от верха *!
+    width: 100%;
+    border: 1px solid orange;
+    justify-content: center;
+    align-items: center;
+    background-color: #b2d4f7; !* чтобы не просвечивало при скролле *!
+    z-index: 1;
+}*/
