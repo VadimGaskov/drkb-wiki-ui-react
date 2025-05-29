@@ -8,6 +8,8 @@ import {Outlet, useLocation, useNavigate, useParams, useRoutes} from "react-rout
 import {useEffect, useState} from "react";
 import "./AdminCourses.css";
 import TopButtonWrapper from "../../_components/TopButtonWrapper/TopButtonWrapper";
+import AdminDepartmentCardElement
+    from "../../AdminUsersManagement/AdminDepartments/_components/AdminDepartmentCardElement/AdminDepartmentCardElement";
 
 const AdminCourses = () => {
     const [courses, isLoading, error] = useFetch(() => getAllCourses());
@@ -33,7 +35,7 @@ const AdminCourses = () => {
                 <>
                     <TopButtonWrapper title={"Создать курс"} onClick={() => setIsOpenModal(true)}/>
 
-                    <div className={"admin-education-wrapper"}>
+                    {/*<div className={"admin-education-wrapper"}>
                         {isLoading && (<ProgressBar/>)}
 
                         {courses.map((course) => {
@@ -47,6 +49,12 @@ const AdminCourses = () => {
                                 </>
                             );
                         })}
+                    </div>*/}
+
+                    <div className="departments-wrapper">
+                        {courses.map((course, index) => (
+                            <AdminDepartmentCardElement title={course.title} itemId={course.id} key={index}/>
+                        ))}
                     </div>
 
                     <CreateCourseModal open={openModal} onClose={() => setIsOpenModal(false)}/>

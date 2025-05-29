@@ -9,11 +9,13 @@ import CourseBlock from "../components/CourseBlock/CourseBlock";
 import CreateCourseModal from "../components/CreateCourseModal/CreateCourseModal";
 import CreateArticleModal from "./_components/CreateArticleModal/CreateArticleModal";
 import TopButtonWrapper from "../../_components/TopButtonWrapper/TopButtonWrapper";
+import ItemCardElement from "../../AdminEnvironment/_components/ItemCardElement/ItemCardElement";
 
 const AdminArticles = () => {
     const [articles, isLoadingArticles, articleError] = useFetch(()=> getAllArticles());
     const [isArticlePath, setIsArticlePath] = useState(false);
     const [openModal, setIsOpenModal] = useState(false);
+    const [groupedData, setGroupedData] = useState({});
     const {adminArticleId} = useParams();
 
     useEffect(() => {
@@ -25,6 +27,19 @@ const AdminArticles = () => {
         }
     }, [adminArticleId]);
 
+    useEffect(() => {
+        if (articles.length === 0) return;
+        const grouped = {};
+
+        articles.forEach(item => {
+            const firstLetter = item.title[0].toUpperCase();
+            if (!grouped[firstLetter]) grouped[firstLetter] = [];
+            grouped[firstLetter].push(item);
+        });
+
+        setGroupedData(grouped);
+    }, [articles]);
+
     return(
         <>
             {isArticlePath ? (
@@ -35,7 +50,7 @@ const AdminArticles = () => {
 
                     <TopButtonWrapper title={"Создать статью"} onClick={() => setIsOpenModal(true)}/>
 
-                    <div className={"admin-education-wrapper"}>
+                    {/*<div className={"admin-education-wrapper"}>
                         {isLoadingArticles && (<ProgressBar/>)}
 
                         {articles.map((article) => {
@@ -49,6 +64,19 @@ const AdminArticles = () => {
                                 </>
                             );
                         })}
+                    </div>*/}
+
+                    <div className="grouped-container">
+                        {Object.entries(groupedData).map(([letter, items]) => (
+                            <div className="group" key={letter}>
+                                <h2 className="group-title">{letter}</h2>
+                                <div className="items-list">
+                                    {items.map((item, index) => (
+                                        <ItemCardElement key={index} title={item.title} itemId={item.id}/>
+                                    ))}
+                                </div>
+                            </div>
+                        ))}
                     </div>
 
                     <CreateArticleModal open={openModal} onClose={() => setIsOpenModal(false)}/>
