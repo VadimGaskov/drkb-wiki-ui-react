@@ -18,6 +18,7 @@ import {ExpandLess, ExpandMore} from "@mui/icons-material";
 import ErrorSnackbar from "../../../../../components/ErrorSnackbar/ErrorSnackbar";
 import "./CreateCourseModal.css";
 import {createCourse} from "../../../../../services/drkb-wiki-education/CourseService";
+import QuillEditor from "../../../../../components/QuillEditor/QuillEditor";
 
 
 const CreateCourseModal = ({open, onClose}) => {
@@ -25,7 +26,7 @@ const CreateCourseModal = ({open, onClose}) => {
     const [articles, isLoadingArticles, errorArticles] = useFetch(()=> getAllArticles());
     const [createCourseData, setCreateCourseData] = useState({
         title: '',
-        dateCreation: '',
+        description: '',
         dateDeadline: '',
         userIds: [],
         articleIds: []
@@ -35,8 +36,8 @@ const CreateCourseModal = ({open, onClose}) => {
     const [openDepartments, setOpenDepartments] = useState({});
 
     const handleSaveCourse = async () => {
-        const response = await createCourse(createCourseData);
-        if (response.ok) {
+        const result = await createCourse(createCourseData);
+        if (result.success) {
             console.log("ВСЕ ОК СОЗДАЛСЯ КУРС")
         }
         else {
@@ -99,53 +100,47 @@ const CreateCourseModal = ({open, onClose}) => {
 
     return(
         <CommonModalWindow isOpen={open} onClose={onClose} maxWidth={"lg"}>
+
             <DialogTitle>Создание курса</DialogTitle>
-            <div>
-                <div className={"create-course-wrapper"}>
-                    <div className={"create-course-wrapper-left"}>
-                        <div className={"create-course-inputs-wrapper"}>
-                            <label htmlFor={"title"} className={"create-course-input-title"}>Название курса</label>
-                            <input className={"admin-input"} type="text" name="title" onChange={handleChange} value={createCourseData.title} />
 
-                            <label htmlFor={"title"} className={"create-course-input-title"}>Дата создания</label>
-                            <input className={"admin-input"} type="date" name="dateCreation" onChange={handleChange} value={createCourseData.dateCreation} />
+            <div className={"create-article-wrapper"}>
+                <form onSubmit={(e) => {
+                    e.preventDefault();
+                    handleSaveCourse();
+                }}>
+                    <div className={"create-course-inputs-wrapper"}>
+                        <label htmlFor={"title"} className={"create-course-input-title"}>Название курса</label>
+                        <input
+                            className={"admin-input"}
+                            type="text" name="title"
+                            onChange={handleChange}
+                            value={createCourseData.title}
+                            required
+                        />
 
-                            <label htmlFor={"title"} className={"create-course-input-title"}>Дата окончания курса</label>
-                            <input className={"admin-input"} type="date" name="dateDeadline" onChange={handleChange} value={createCourseData.dateDeadline} />
-                        </div>
-                        <div className={"create-course-deps-wrapper"}>
-                            <h4>Выберите сотрудников кому будет назначен курс</h4>
-                            <List>
-                                {departments && departments.map((department) => (
-                                    <>
-                                        <ListItemButton onClick={() => toggleDepartment(department.id)} >
-                                            <ListItemText primary={department.name} />
-                                            {openDepartments[department.id] ? <ExpandLess /> : <ExpandMore />}
-                                        </ListItemButton>
+                        <label htmlFor={"title"} className={"create-course-input-title"}>Описание</label>
+                        <input
+                            className={"admin-input"}
+                            type="text"
+                            name="description"
+                            onChange={handleChange}
+                            value={createCourseData.description}
+                            required
+                        />
 
-                                        <Collapse in={openDepartments[department.id]} timeout="auto" unmountOnExit >
-                                            <List component="div">
-                                                {department.users.map((user) => (
-                                                    <ListItemButton key={user.id} sx={{ pl: 4 }}>
-                                                        <Checkbox
-                                                            value={user.id}
-                                                            name="user"
-                                                            onChange={(e) => handleUserIdsChange(e)}
-                                                            checked={createCourseData.userIds.includes(user.id)}
-                                                            color={"primary"}
-                                                        />
-                                                        <ListItemText primary={`${user.name} ${user.surname}`} />
-                                                    </ListItemButton>
-                                                ))}
-                                            </List>
-                                        </Collapse>
-                                    </>
-                                ))}
-                            </List>
-                        </div>
+                        <label htmlFor={"title"} className={"create-course-input-title"}>Дата окончания курса</label>
+                        <input
+                            className={"admin-input"}
+                            type="date"
+                            name="dateDeadline"
+                            onChange={handleChange}
+                            value={createCourseData.dateDeadline}
+                            required
+                        />
                     </div>
-                    <div className={"create-course-wrapper-right"}>
-                        <h4>Выберите статьи которые будут содержаться в курсе</h4>
+
+                    <label htmlFor={"title"} className={"create-course-input-title"}>Выберите статьи которые будут содержаться в курсе</label>
+                    <div className={"users-section"}>
                         <List>
                             <ListItemButton onClick={() => setIsOpenArticles(!openArticles)}>
                                 <ListItemText primary={"Список статей"} />
@@ -173,15 +168,47 @@ const CreateCourseModal = ({open, onClose}) => {
                             </Collapse>
                         </List>
                     </div>
-                </div>
-                <DialogActions sx={{position: "sticky"}}>
-                    <Button onClick={onClose} autoFocus color={"error"} variant={"contained"}>
-                        Закрыть
-                    </Button>
-                    <Button autoFocus onClick={handleSaveCourse} variant={"contained"}>
-                        Сохранить
-                    </Button>
-                </DialogActions>
+
+                    <label htmlFor={"title"} className={"create-course-input-title"}>Выберите сотрудников кому будет назначен курс</label>
+                    <div className={"users-section"}>
+                        <List>
+                            {departments && departments.map((department) => (
+                                <>
+                                    <ListItemButton onClick={() => toggleDepartment(department.id)} >
+                                        <ListItemText primary={department.name} />
+                                        {openDepartments[department.id] ? <ExpandLess /> : <ExpandMore />}
+                                    </ListItemButton>
+
+                                    <Collapse in={openDepartments[department.id]} timeout="auto" unmountOnExit >
+                                        <List component="div">
+                                            {department.users.map((user) => (
+                                                <ListItemButton key={user.id} sx={{ pl: 4 }}>
+                                                    <Checkbox
+                                                        value={user.id}
+                                                        name="user"
+                                                        onChange={(e) => handleUserIdsChange(e)}
+                                                        checked={createCourseData.userIds.includes(user.id)}
+                                                        color={"primary"}
+                                                    />
+                                                    <ListItemText primary={`${user.name} ${user.surname}`} />
+                                                </ListItemButton>
+                                            ))}
+                                        </List>
+                                    </Collapse>
+                                </>
+                            ))}
+                        </List>
+                    </div>
+
+                    <DialogActions sx={{position: "sticky"}}>
+                        <Button onClick={onClose} autoFocus color={"error"} variant={"contained"}>
+                            Закрыть
+                        </Button>
+                        <Button autoFocus type={"submit"} variant={"contained"}>
+                            Сохранить
+                        </Button>
+                    </DialogActions>
+                </form>
             </div>
 
             <ErrorSnackbar errorMessage={errorDeparments} />

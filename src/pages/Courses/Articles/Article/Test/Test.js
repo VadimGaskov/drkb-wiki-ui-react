@@ -79,12 +79,6 @@ const Test = () => {
             <img src={FoxImg} alt="" className="common-template1-fox-img" />
             <div className="caption-wrapper">
                 <h1 className="test-title">{testSummary?.title || "Загрузка..."}</h1>
-                {testStarted ?
-                    <></> :
-                    <Button variant="contained" onClick={() => setTestStarted(true)}>
-                        Начать тест
-                    </Button>
-                }
             </div>
             <div className="list-environment-model">
                 {isLoading && <ProgressBar />}
@@ -117,6 +111,9 @@ const Test = () => {
                                 <span>Необходимое количество очков для прохождения теста: {testSummary.totalPointsRequired}</span>
                                 <span>Общее число попыток для прохождения теста: {testSummary.numberOfTries}</span>
                                 <span>Попыток осталось: {testSummary.numberOfTriesLeft}</span>
+                                <Button variant="contained" onClick={() => setTestStarted(true)} sx={{width: "20%", marginTop: "1rem"}}>
+                                    Начать тест
+                                </Button>
                             </div>
                         }
 

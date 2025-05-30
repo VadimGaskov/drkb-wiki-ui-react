@@ -40,7 +40,7 @@ import AdminUsersManagement from "./pages/AdminPanel/AdminUsersManagement/AdminU
 import AdminCourses from "./pages/AdminPanel/AdminEducation/AdminCourses/AdminCourses";
 import AdminArticles from "./pages/AdminPanel/AdminEducation/AdminArticles/AdminArticles";
 import AdminTests from "./pages/AdminPanel/AdminEducation/AdminTests/AdminTests";
-import {hasRight} from "./utils/authHelper";
+import {getUserDepartments, hasRight} from "./utils/authHelper";
 import ShortInstructionForAll from "./pages/ShortInstructionForAll/ShortInstructionForAll";
 import AdminArticle from "./pages/AdminPanel/AdminEducation/AdminArticles/AdminArticle/AdminArticle";
 import AdminTest from "./pages/AdminPanel/AdminEducation/AdminTests/AdminTest/AdminTest";

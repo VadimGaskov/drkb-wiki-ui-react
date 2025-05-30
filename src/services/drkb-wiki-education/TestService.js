@@ -3,6 +3,7 @@ import {apiRequest, configureUrlParams} from "../ApiService";
 import {getCurrentUser} from "../AuthService";
 import {useNavigate} from "react-router-dom";
 import {jwtDecode} from "jwt-decode";
+import {getUserFromToken} from "../../utils/authHelper";
 
 export const getAllTest = async () => {
     return await apiRequest(`${API_URLS.TEST}/get-all-test`);
@@ -50,8 +51,6 @@ export const createTest = async (test) => {
 }
 
 export const completeTest = async (testId, answers) => {
-    const user = jwtDecode();
-    const questionWithAnswers = [];
     /*for (let key in answers) {
         const pair = answers[key]; // объект вида { questionId: answerId }
         for (let questionId in pair) {
@@ -64,16 +63,19 @@ export const completeTest = async (testId, answers) => {
         const [questionId, answerId] = Object.entries(obj)[0];
         return { questionId, answerId };
     });*/
+    const questionWithAnswers = [];
 
     answers.forEach((value, key) => {
         questionWithAnswers.push({questionId: key, answerId: value});
     })
 
+    const user = getUserFromToken();
+
     console.log(questionWithAnswers);
 
     const model = {
         testId: testId,
-        userId: user.user.id,
+        userId: user.id,
         questionWithAnswers: questionWithAnswers
     }
 

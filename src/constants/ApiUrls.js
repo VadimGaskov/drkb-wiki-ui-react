@@ -3,11 +3,11 @@
 const DRKB_WIKI_BASE_URL = "http://172.16.2.32:5065";
 //http://172.16.2.32:9090
 //const DRKB_AUTH_BASE_URL = "http://localhost:5064";
-const DRKB_AUTH_BASE_URL = "http://172.16.2.32:9090";
+const DRKB_AUTH_BASE_URL = "http://172.16.2.32:5001";
 
 //const DRKB_WIKI_EDUCATION_BASE_URL = "http://localhost:5264";
 //http://172.16.2.32:6060
-const DRKB_WIKI_EDUCATION_BASE_URL = "http://172.16.2.32:6060";
+const DRKB_WIKI_EDUCATION_BASE_URL = "http://172.16.2.32:5003";
 
 //const DRKB_WIKI_FILE_SAVER_BASE_URL = "http://localhost:5159";
 //http://172.16.2.32:6060

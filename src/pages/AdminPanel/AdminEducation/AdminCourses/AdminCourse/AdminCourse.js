@@ -23,6 +23,7 @@ const AdminCourse = () => {
     const [successMessage, setSuccessMessage] = useState(null);
     const [updateCourseData, setUpdateCourseData] = useState({
         title: '',
+        description: '',
         dateDeadline: '',
         userIds: [],
         articleIds: []
@@ -48,6 +49,7 @@ const AdminCourse = () => {
                 ...prevState,
                 id: course.id,
                 title: course.title,
+                description: course.description,
                 dateDeadline: dateConverter(course.dateDeadline),
                 userIds: course.userCourse.map(userCourse => userCourse.userId),
                 articleIds: course.courseArticle.map(courseArticle => courseArticle.article.id)
@@ -122,6 +124,20 @@ const AdminCourse = () => {
                                 setUpdateCourseData((prevState) => ({
                                     ...prevState,
                                     title: e.target.value,
+                                }))
+                            }
+                        />
+                    </div>
+
+                    <div className="form-group">
+                        <span>Описание</span>
+                        <input
+                            type="text"
+                            value={updateCourseData.description}
+                            onChange={(e) =>
+                                setUpdateCourseData((prevState) => ({
+                                    ...prevState,
+                                    description: e.target.value,
                                 }))
                             }
                         />

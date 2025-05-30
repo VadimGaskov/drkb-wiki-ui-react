@@ -29,16 +29,22 @@ const EnvironmentModels = () => {
     const navigate = useNavigate();
     const userDepartments = getUserDepartments();
 
+    useEffect(() => {
+        console.log(userDepartments);
+    }, [userDepartments]);
+
     const [isEnvironmentModelPath, setIsEnvModelPath] = useState(false);
 
     const {id} = useParams();
 
     useEffect(() => {
         const fetchEnvironmentModels = async () => {
+            console.log(departmentId);
             if (departmentId === ':departmentId') {
+                console.log(userDepartments);
                 navigate(`${ROUTINGS.LIST_ENVIRONMENT_MODEL(userDepartments[1])}`);
             }
-            const result = await getAllEnvironmentModelsByDepartment(departmentId === null ? userDepartments[1] : departmentId);
+            const result = await getAllEnvironmentModelsByDepartment(departmentId === null ? userDepartments[0] : departmentId);
             if (result.success) {
                 setEnvironmentModels(result.data);
             }
@@ -51,7 +57,7 @@ const EnvironmentModels = () => {
         }
 
         fetchEnvironmentModels();
-    }, [addedNewEnvironment, user, departmentId, navigate]);
+    }, [addedNewEnvironment, user, departmentId, navigate, userDepartments]);
 
     useEffect(() => {
         console.log(userDepartments)
