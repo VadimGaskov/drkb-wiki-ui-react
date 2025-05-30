@@ -42,7 +42,7 @@ const EnvironmentModels = () => {
             console.log(departmentId);
             if (departmentId === ':departmentId') {
                 console.log(userDepartments);
-                navigate(`${ROUTINGS.LIST_ENVIRONMENT_MODEL(userDepartments[1])}`);
+                navigate(`${ROUTINGS.LIST_ENVIRONMENT_MODEL(userDepartments[0])}`);
             }
             const result = await getAllEnvironmentModelsByDepartment(departmentId === null ? userDepartments[0] : departmentId);
             if (result.success) {

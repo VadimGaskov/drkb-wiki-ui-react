@@ -6,11 +6,11 @@ const NewsFeed = () => {
             <h1 className="news-title">Новости</h1>
             {/*TODO Динамически доставать новости из бд*/}
             <div className="news-wrapper">
-                <NewsItem newsPreview="Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui, eum."/>
-                <NewsItem newsPreview="Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias voluptas dolor perspiciatis architecto vero ipsam doloremque accusantium dicta adipisci nesciunt!"/>
-                <NewsItem newsPreview="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eum quidem quos provident fugiat magnam vero."/>
-                <NewsItem newsPreview="Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consectetur, error aut quam cupiditate rem natus laboriosam laborum id vel nesciunt. Iusto labore facilis vero quidem aliquid nam nulla et excepturi!"/>
-                <NewsItem newsPreview="Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed possimus beatae reprehenderit, eaque asperiores accusamus consequuntur commodi nostrum odio?"/>
+                <NewsItem newsPreview="Июнь – старт работы Детского лагеря труда и отдыха для несовершеннолетних детей работников ДРКБ «Активные каникулы»"/>
+                <NewsItem newsPreview="11.06 – Торжественное мероприятие, посвященное Дню медицинского работника"/>
+                <NewsItem newsPreview="07.06 – Торжественное мероприятие, посвященное 25-летию Главной детской больнице Республики Бурятия"/>
+                <NewsItem newsPreview="04.06 – итоговая защита проектов-участников Общебольничного конкурса «Медлидер"/>
+                <NewsItem newsPreview="30.05 – первое собеседование с кандидатами на целевое обучение по программе среднего профессионального образования"/>
             </div>
         </div>
     );
